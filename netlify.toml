@@ -1,0 +1,8 @@
+# netlify.toml
+
+[build]
+  # Astro's build command
+  command = "npm run build"
+
+  # The output folder for the static site
+  publish = "dist"

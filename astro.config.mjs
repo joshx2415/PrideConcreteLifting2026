@@ -1,0 +1,23 @@
+// @ts-check
+
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
+
+import tailwindcss from '@tailwindcss/vite';
+
+import alpinejs from '@astrojs/alpinejs';
+
+import icon from 'astro-icon';
+
+import vue from '@astrojs/vue';
+
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://example.com',
+  integrations: [mdx(), sitemap(), alpinejs(), icon(), vue()],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
