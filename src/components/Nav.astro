@@ -22,10 +22,10 @@ import { Icon } from 'astro-icon/components';
             <svg class="fill-current ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
             </span>
             <ul class="dropdown-menu absolute w-full invisible opacity-0 text-blue-500 text-center group-hover:bg-white group-hover:visible group-hover:opacity-100 group-hover:transition-all delay-150 duration-500 ease-in-out">
-            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/driveways">Driveways</a></li>
-            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/pooldecks">Pooldecks</a></li>
-            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/sidewalks">Sidewalks</a></li>
-            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/roadways">Roadways</a></li>
+            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/Driveways">Driveways</a></li>
+            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/Pooldecks">Pooldecks</a></li>
+            <!--<li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/Sidewalks">Sidewalks</a></li>
+            <li class=""><a class="bg-white text-lg font-medium hover:bg-blue-500 hover:text-white py-2 px-4 block whitespace-no-wrap" href="/Roadways">Roadways</a></li>-->
             </ul>
         </li>
         <li class="flex justify-center whitespace-nowrap md:mr-4">
@@ -39,18 +39,18 @@ import { Icon } from 'astro-icon/components';
             href="/#contact">Contact</a></li>
     </ul>
 
-    <ul class="hidden md:flex flex-col">
-        <li><a class="items-center py-3 mt-2 text-base font-normal tracking-tight text-white lg:mx-8 md:mt-0 md:ml-4"
+    <div class="hidden md:flex flex-col">
+        <a class="items-center py-3 mt-2 text-base font-normal tracking-tight text-white lg:mx-8 md:mt-0 md:ml-4"
             href="#contact">
-            <Icon name="heroicons:envelope" class="w-6 h-6" /> <strong>Send us an Email</strong>: contact@prideconcretelifting.com</a></li>
-        <li><a class="items-center py-3 mt-2 text-base font-normal tracking-tight text-white lg:mx-8 md:mt-0 md:ml-4"
+            <Icon name="fa-solid:envelope" class="w-6 h-6" /> <strong>Send us an Email</strong>: contact@prideconcretelifting.com</a>
+        <a class="items-center py-3 mt-2 text-base font-normal tracking-tight text-white lg:mx-8 md:mt-0 md:ml-4"
             href="tel:817-888-6254">
-            <Icon name="heroicons:phone" class="w-6 h-6" /> <strong>Give us a Call</strong>: 817-888-6254</a></li>
-    </ul>
+            <Icon name="fa-solid:phone" class="w-6 h-6" /> <strong>Give us a Call</strong>: 817-888-6254</a>
+    </div>
 
     <a id="burger" :class="isOpen ? 'toggled' : ''"
         class="md:hidden flex space-between transition duration-500 ease-in-out transform sm:target-burger"
-        @click.prevent="isOpen = !isOpen" aria-label="Open Menu">
+        @click.prevent="drawer" aria-label="Open Menu">
         <ul class="buns">
             <li class="bun"></li>
             <li class="bun"></li>
@@ -67,27 +67,27 @@ import { Icon } from 'astro-icon/components';
         <span class="mt-2"><PrimaryLogo /></span>
         <span @click="isOpen = false"
             class="flex mt-4 pt-4 pb-4 align-center font-bold text-lg hover:bg-blue-800 text-white ">
-            <a href="/#how-it-works" class="ml-6 w-full"><Icon name="heroicons:information-circle" class="w-6 h-6 mr-2" />
+            <a href="/#how-it-works" class="ml-6 w-full"><Icon name="fa-solid:project-diagram" class="w-6 h-6 mr-2" />
             How It Works</a>
         </span>
         <span @click="isOpen = false"
             class="flex pt-4 pb-4 align-center font-bold text-lg hover:bg-blue-800 text-white ">
-            <a href="/#about" class="ml-6 w-full"><Icon name="heroicons:user" class="w-6 h-6 mr-2" />
+            <a href="/#about" class="ml-6 w-full"><Icon name="fa-solid:id-card" class="w-6 h-6 mr-2" />
             About Us</a>
         </span>
         <span @click="isOpen = false"
             class="flex pt-4 pb-4 align-center font-bold text-lg hover:bg-blue-800 text-white ">
-            <a href="/#contact" class="ml-6 w-full"><Icon name="heroicons:paper-airplane" class="w-6 h-6 mr-2" />
+            <a href="/#contact" class="ml-6 w-full"><Icon name="fa-solid:paper-plane" class="w-6 h-6 mr-2" />
             Contact</a>
         </span>
         <span @click="isOpen = false"
             class="flex pt-4 pb-4 flex-col justify-center font-bold text-lg hover:bg-blue-800 text-white ">
-            <span><Icon name="heroicons:wrench" class="w-6 h-6 ml-6 mr-2" />Areas of Expertise</span>
+            <span><Icon name="fa-solid:tools" class="w-6 h-6 ml-6 mr-2" />Areas of Expertise</span>
             <ul class="w-full opacity-100 text-white group-hover:bg-blue-800 group-hover:opacity-100 transition duration-500 ease-in-out">
-                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/driveways"><span class="ml-7">Driveways</span></a></li>
-                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/pooldecks"><span class="ml-7">Pooldecks</span></a></li>
-                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/sidewalks"><span class="ml-7">Sidewalks</span></a></li>
-                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/roadways"><span class="ml-7">Roadways</span></a></li>
+                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/Driveways"><span class="ml-7">Driveways</span></a></li>
+                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/Pooldecks"><span class="ml-7">Pooldecks</span></a></li>
+                <!--<li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/Sidewalks"><span class="ml-7">Sidewalks</span></a></li>
+                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-blue-800 py-2 px-4 block whitespace-no-wrap" href="/Roadways"><span class="ml-7">Roadways</span></a></li>-->
             </ul>
         </span>
         <ul @click="isOpen = false" class="flex flex-col p-4">
@@ -101,29 +101,6 @@ import { Icon } from 'astro-icon/components';
     </aside>
 
 </header>
-
-<script>
-document.addEventListener('alpine:init', () => {
-    Alpine.data('header', () => ({
-        isOpen: false,
-        scrolled: false,
-        showNavbar: true,
-        lastScrollPosition: 0,
-        handleScroll() {
-            this.scrolled = window.scrollY > 0;
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            if (currentScrollPosition < 0) {
-                return;
-            }
-            this.showNavbar = currentScrollPosition < this.lastScrollPosition;
-            this.lastScrollPosition = currentScrollPosition;
-        },
-        drawer() {
-            this.isOpen = !this.isOpen;
-        }
-    }));
-});
-</script>
 
 <style>
   .navbar {
