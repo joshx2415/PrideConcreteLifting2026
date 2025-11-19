@@ -1,67 +1,67 @@
 <template>
   <form name="PrideForm" id="myForm" method="post" data-netlify="true" enctype="application/x-www-form-urlencoded"
     @submit.prevent="checkForm"
-    class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-gray-800 bg-opacity-75 border md:rounded-lg lg:w-1/2">
+    class="flex flex-col w-full max-w-4xl p-10 px-8 pt-8 pb-8 mx-auto transition duration-500 ease-in-out transform bg-white rounded-xl shadow-2xl">
     <input type="hidden" name="form-name" value="PrideForm" />
+    
     <div class="flex flex-wrap mb-6 -mx-3">
-
       <!-- NAME -->
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
-        <label class="text-2xl leading-7 text-white" for="grid-title">Name</label>
+        <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-title">Name</label>
         <input
-          class="form-input"
-          id="grid-title" type="text" name="name" v-model="formData.name" placeholder="eg. John Smith">
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pride-red focus:border-transparent"
+          id="grid-title" type="text" name="name" v-model="formData.name" placeholder="John Smith">
       </div>
 
       <!-- PHONE NUMBER -->
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
-        <label class="text-2xl leading-7 text-white" for="grid-url">Phone Number</label>
+        <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-url">Phone Number</label>
         <input
-          class="form-input"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pride-red focus:border-transparent"
           id="grid-url" type="tel" name="telephone" v-model="formData.telephone" placeholder="(123) 456-7890">
       </div>
     </div>
 
-    <div class="flex flex-wrap mb-2 -mx-3">
-
+    <div class="flex flex-wrap mb-6 -mx-3">
       <!-- EMAIL -->
-      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
-        <label class="text-2xl leading-7 text-white" for="email"> Email <span
-            class="text-red">*</span></label>
+      <div class="w-full px-3">
+        <label class="block mb-2 text-lg font-semibold text-navy-900" for="email"> 
+          Email <span class="text-pride-red">*</span>
+        </label>
         <input
-          class="form-input"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pride-red focus:border-transparent"
           id="email" type="email" name="email" v-model="formData.email" placeholder="email@example.com"
           required="">
       </div>
-
     </div>
 
     <div class="flex flex-wrap mb-6 -mx-3">
       <!-- MESSAGE -->
       <div class="w-full px-3">
-        <label class="text-2xl leading-7 text-white" for="message">Message <span
-            class="text-red">*</span></label>
+        <label class="block mb-2 text-lg font-semibold text-navy-900" for="message">
+          Message <span class="text-pride-red">*</span>
+        </label>
         <textarea
-          class="form-input apearance-none autoexpand"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pride-red focus:border-transparent min-h-[150px]"
           id="description" type="text" name="message" v-model="formData.message" placeholder="Your Message..."
           required=""></textarea>
       </div>
     </div>
 
-    <div class="flex items-center w-full pt-4">
-
+    <div class="flex flex-col items-center w-full pt-4 space-y-4">
       <!-- ERRORS! -->
-      <div v-if="errors.length" class="text-red p-3">
-        <b>Please correct the following error(s):</b>
-        <ul>
-          <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+      <div v-if="errors.length" class="w-full p-4 text-pride-red bg-red-50 border border-red-200 rounded-lg">
+        <p class="font-semibold mb-2">Please correct the following error(s):</p>
+        <ul class="list-disc list-inside">
+          <li v-for="error in errors" :key="error">{{ error }}</li>
         </ul>
       </div>
 
       <!-- SUBMIT -->
-      <button type="submit" name="button" class="flex justify-center w-full butt py-3 font-semibold text-white transition duration-500 ease-in-out transform bg-blue-900 border-blue-600 rounded-sm text-base focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800 ">
-        Submit
-        <icon name="fa-solid:paper-plane" class="w-6 h-6" />
+      <button type="submit" name="button" 
+        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300">
+        <span>Submit</span>
+        <icon name="fa-solid:paper-plane" class="w-5 h-5" />
       </button>
     </div>
 
@@ -96,11 +96,11 @@
           })
             .then(() => {
               document.getElementById("myForm").innerHTML = `
-            <div class="flex flex-col w-full mb-4 text-left p-4 lg:text-center">
-              <h1 id="contact" class="mb-2 text-3xl font-bold text-black tracking-tighter lg:text-5xl md:text-4xl">
+            <div class="flex flex-col w-full p-8 text-center">
+              <h3 class="mb-4 text-3xl font-bold text-navy-900">
                 Contact Form Submitted!
-              </h1>
-              <p class="mt-4 text-lg tracking-wide text-black">
+              </h3>
+              <p class="text-xl text-gray-600">
                 Thank you for reaching out to us - we will contact you as soon as we are able.
               </p>
             </div>
@@ -121,26 +121,12 @@
   }
 </script>
 
-<style>
+<style scoped>
 .form-input {
-  width: 100%;
-  padding: 0.5rem 0;
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
-  color: white;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid white;
   transition: all 0.3s ease-in-out;
 }
 
 .form-input:focus {
   outline: none;
-  border-bottom-color: #3b82f6;
-  background-color: transparent;
-}
-
-.form-input::placeholder {
-  color: white;
 }
 </style>

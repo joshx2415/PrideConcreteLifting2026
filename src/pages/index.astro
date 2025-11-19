@@ -4,274 +4,287 @@ import ContactForm from '../components/ContactForm.vue';
 import { Icon } from 'astro-icon/components';
 ---
 <BaseLayout title="Pride Concrete Lifting and Repair in Dallas / Fort Worth">
-    <div class="transition-colors duration-1000 bg-white dark:bg-gray-700">
+    <div class="bg-white">
 
-        <!------ WELCOME TO THE PRIDE CONCRETE LIFTING WEBSITE - STAY A WHILE, GIVE US A CALL,
-        SEND US A MESSAGE, LET US KNOW HOW WE CAN HELP YOU. THANK YOU! ------->
+        <!-- Hero Section -->
+        <section class="relative flex items-center min-h-screen hero-bg">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+          <div class="container relative px-6 py-32 mx-auto max-w-7xl lg:px-8 md:pt-40">
 
-        <section class="flex items-center h-screen bg-center body-font bg-patterns outer-container">
-          <div class="container px-8 pt-32 md:pt-40 pb-24 mx-auto lg:px-4 ">
-
-            <div class="flex flex-col w-full mb-8 text-center">
-              <h1 class="mb-6 text-4xl font-bold tracking-tighter text-white md:text-8xl lg:text-6xl title-font">
+            <div class="flex flex-col w-full mb-12 text-center">
+              <h1 class="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-6xl">
                 Concrete Lifting
                 <br class="hidden lg:block">
                 and Soil Stabilization
               </h1>
-              <p class="mx-auto text-lg leading-snug tracking-tight text-white lg:w-1/2">
+              <p class="mx-auto text-xl leading-relaxed text-white lg:w-2/3 max-w-4xl">
                 We take pride in being able to deliver superior results in our concrete lifting and soil stabilization work.
                 Our team has over 25 years of experience in the concrete lifting industry, and we bring all of that
-                knowledge with us when we come to do the job.</p>
+                knowledge with us when we come to do the job.
+              </p>
             </div>
 
             <div class="flex justify-center">
-              <div class="flex flex-col mt-8 md:flex-row">
-                <a href="#contact"><button
-                    class="group butt inline-flex items-center px-4 py-3 mt-2 text-white transition-all duration-500 ease-in-out transform bg-black rounded-lg focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-900 focus:outline-none">
-                    <Icon name="fa-solid:paper-plane" class="group-hover:filter group-hover:transform group-hover:drop-shadow-lg group-hover:scale-150 transition-all duration-500 ease-in-out w-6 h-6" />
-                    <span class="flex flex-col items-start ml-4 leading-none">
-                      <span class="mb-1 text-xs text-blueGray-400">FREE ESTIMATES</span>
-                      <span class="font-medium text-white title-font">Send Us A Message</span>
-                    </span>
-                  </button></a>
+              <a href="#contact">
+                <button class="group inline-flex items-center px-6 py-4 text-lg font-semibold text-white transition-all duration-500 ease-in-out transform bg-pride-red rounded-lg shadow-xl hover:bg-red-700 hover:scale-105 focus:ring-4 focus:ring-red-300 focus:outline-none">
+                  <Icon name="fa-solid:paper-plane" class="w-6 h-6 transition-transform duration-500 group-hover:scale-125" />
+                  <span class="flex flex-col items-start ml-4 leading-tight">
+                    <span class="text-lg text-blue-100">FREE ESTIMATES</span>
+                    <span class="text-white">Send Us A Message</span>
+                  </span>
+                </button>
+              </a>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="py-20 bg-white">
+          <div class="container px-6 mx-auto max-w-7xl lg:px-8">
+
+            <div class="mb-16 text-center">
+              <img class="mx-auto mb-12 w-80" src="/images/logo.png"
+                alt="Pride Concrete Lifting - We Take Pride in our Work and our Experience.">
+              <h2 id="about" class="mb-6 text-4xl font-bold text-navy-900 lg:text-5xl">
+                Professional Concrete Lifting and Stabilization Using Time-Tested Industry Standards
+              </h2>
+              <p class="mx-auto mt-6 text-xl leading-relaxed text-gray-600 max-w-5xl">
+                We've been Lifting and Leveling concrete for a long time, and with that experience we're able to employ tried and true
+                methods alongside today's more efficient technology to get the job done quicker, safer, and cheaper - with
+                no loss of the quality that we pride ourselves on.
+              </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
+              <div class="space-y-4">
+                <h3 class="text-3xl font-bold text-navy-900">We Turn This...</h3>
+                <img class="w-full rounded-lg shadow-xl" src="/images/work/fallen_curb.jpg" alt="Fallen Sidewalk Curb">
+              </div>
+              <div class="space-y-4">
+                <h3 class="text-3xl font-bold text-navy-900">Into This...</h3>
+                <img class="w-full rounded-lg shadow-xl" src="/images/work/raised_curb.jpg" alt="Sidewalk Curb Now Raised">
               </div>
             </div>
 
           </div>
         </section>
 
-        <!------ WHAT IS PRIDE CONCRETE ABOUT, WELL LET ME TELL YOU... ------->
-        <section class="mb-12 body-font">
-          <div class="container px-4 py-10 mx-auto lg:px-24 ">
-
-            <!-- ABOUT SECTION -->
-            <div class="container">
-              <div class="flex flex-col w-full mb-2 text-left px-4">
-                <img class="mx-auto md:w-1/3 mb-10" src="/images/logo.png"
-                  alt="Pride Concrete Lifting - We Take Pride in our Work and our Experience.">
-                <h1 id="about"
-                  class="mb-2 text-3xl font-black tracking-tighter text-black text-center lg:text-5xl md:text-4xl">
-                  Professional Concrete Lifting and Stabilization Using Time-Tested Industry Standards
-                </h1>
-                <p class="mt-4 text-lg leading-snug tracking-tight text-gray-500">
-                  We've been Lifting and Leveling concrete for a long time, and with that experience we're able to employ tried and true
-                  methods alongside today's more efficient technology to get the job done quicker, safer, and cheaper - with
-                  no loss of the quality that we pride ourselves on.
+        <!-- Services Section -->
+        <section class="py-20 bg-gray-50">
+          <div class="container px-6 mx-auto max-w-7xl lg:px-8">
+            
+            <div class="mx-auto mb-16 max-w-5xl">
+              <h2 id="services" class="mb-6 text-4xl font-bold text-center text-navy-900">We Work Where the Concrete Is</h2>
+              <p class="mb-8 text-lg leading-relaxed text-gray-600">
+                Concrete is everywhere - Your home is built on top of it, your driveway was poured with it, the roads
+                you drive on and the sidewalks you walk on, even the airport runways commercial airlines rely on for a
+                safe landing!
+              </p>
+              <div class="p-8 rounded-xl bg-navy-900 shadow-xl">
+                <p class="text-3xl font-bold text-center text-white leading-relaxed">
+                  Stable and Level Concrete is Critical to the Safety of our Infrastructure
                 </p>
               </div>
-              <div class="flex flex-col md:flex-row h-auto">
-                <div class="mb-8 md:w-1/2 md:px-4">
-                  <h2 class="mt-4 mb-4 text-3xl font-bold text-black ">We Turn This...</h2>
-                  <img class="shadow-md" src="/images/work/fallen_curb.jpg" alt="Fallen Sidewalk Curb">
-                </div>
-                <div class="mb-8 md:w-1/2 md:px-4">
-                  <h2 class="mt-4 mb-4 text-3xl font-bold text-black ">Into This...</h2>
-                  <img class="shadow-md" src="/images/work/raised_curb.jpg" alt="Sidewalk Curb Now Raised">
-                </div>
+              <p class="mt-8 text-lg leading-relaxed text-gray-600">
+                We depend on the concrete to hold us up, but over time soil erosion and constant pressure
+                causes that concrete to sink, and that's where we come in to lift that concrete back to its proper place
+                and stabilize it for the future.
+              </p>
+            </div>
+
+            <div class="grid gap-8 mb-16 md:grid-cols-2">
+              <div class="hidden md:block">
+                <div class="w-full h-full rounded-lg shadow-xl poolside-bg min-h-[400px]"></div>
+              </div>
+              <div class="space-y-8">
+                <img class="w-full rounded-lg shadow-xl" src="/images/markets/airport-gallery-image.jpg" alt="Airport Runway">
+                <img class="w-full rounded-lg shadow-xl" src="/images/markets/residential-gallery-image.jpg" alt="Residential Neighborhood">
               </div>
             </div>
-            <!------------------->
 
-            <!-- SERVICES SECTION -->
-            <div class="container md:px-4 lg:pt-4 lg:py-4">
-              <div class="flex flex-col lg:flex-row">
-                <div class="w-full px-4 mt-4 text-lg leading-snug tracking-tight text-gray-500 lg:px-0">
-                  <h2 id="services" class="mt-4 mb-4 text-3xl font-bold text-black ">We Work Where the Concrete Is</h2>
-                  <p class="pb-6">
-                    Concrete is everywhere - Your home is built on top of it, your driveway was poured with it, the roads
-                    you drive on and the sidewalks you walk on, even the airport runways commercial airlines rely on for a
-                    safe landing!
-                  </p>
-                  <div
-                    class="p-4 pl-4 mb-6 italic font-bold tracking-tight text-gray-300 bg-black border border-gray-800 rounded-lg lg:text-4xl">
-                    Stable and Level Concrete is Critical to the Safety of our Infrastructure</div>
-                  <p class="pb-6">We depend on the concrete to hold us up, but over time soil erosion and constant pressure
-                    causes that concrete to sink, and that's where we come in to lift that concrete back to its proper place
-                    and stabilize it for the future.</p>
-                </div>
-              </div>
-              <div class="container flex flex-col items-center py-4 md:flex-row">
-                <section class="py-8 px-4">
-                  <div class="flex flex-wrap -mx-4">
-                    <div class="hidden md:block md:w-1/2 px-4">
-                      <div class="h-full w-full bg-cover shadow-md left-image"></div>
-                    </div>
-                    <div class="md:w-1/2 h-auto px-4">
-                      <div class="mb-8"><img class="shadow-md" src="/images/markets/airport-gallery-image.jpg"
-                          alt="Airport Runway"></div>
-                      <div><img class="shadow-md" src="/images/markets/residential-gallery-image.jpg"
-                          alt="Residential Neighborhood"></div>
-                    </div>
+            <div class="grid gap-12 items-center mx-auto max-w-6xl lg:grid-cols-2">
+              <div class="space-y-6">
+                <h3 class="text-3xl font-bold text-navy-900">
+                  The Cost Effective Way to Level Surfaces and Void-Fill
+                </h3>
+                <p class="text-lg leading-relaxed text-gray-600">
+                  Our methods of lifting and void-filling are less invasive and more cost-efficient than tearing out and
+                  replacing. No waiting on concrete to dry or anything to set up - when we leave, the area is immediately
+                  ready for use.
+                </p>
+                <div class="space-y-4">
+                  <div class="flex items-start">
+                    <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 mt-1 mr-4 rounded-full bg-pride-red">
+                      <Icon name="fa-solid:check" class="w-4 h-4 text-white" />
+                    </span>
+                    <span class="text-lg text-gray-700">Driveways, Sidewalks, Patios, and Pool Decks</span>
                   </div>
-                </section>
-              </div>
-
-              <div class="container flex flex-col items-center py-4 mx-auto md:flex-row px-4">
-                <div
-                  class="flex flex-col items-start w-full pt-0 mb-16 text-left lg:flex-grow md:w-1/2 xl:mr-10 md:pr-10 md:mb-0 ">
-                  <h1 class="mb-8 text-2xl font-bold tracking-tighter text-left text-black lg:text-2xl title-font">
-                    The Cost Effective Way to Level Surfaces and Void-Fill
-                  </h1>
-                  <p class="mb-8 text-base leading-relaxed text-left text-gray-500 ">
-                    Our methods of lifting and void-filling are less invasive and more cost-efficient than tearing out and
-                    replacing. No waiting on concrete to dry or anything to set up - when we leave, the area is immediately
-                    ready for use.
-                  </p>
-                  <p class="flex items-center mb-2 text-gray-600 "><span
-                      class="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 mr-2 rounded-full">
-                      <!-- <faicon class="w-6 h-6" :icon="['fas','check']" /> -->
-                    </span> Driveways, Sidewalks, Patios, and Pool Decks.</p>
-                  <p class="flex items-center mb-2 text-gray-600 ">
-                    <span class="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 mr-2 rounded-full">
-                      <!-- <faicon class="w-6 h-6" :icon="['fas','check']" /> -->
-                    </span> Highways, Streets, Bridges.
-                  </p>
-                  <p class="flex items-center mb-6 text-gray-600">
-                    <span class="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 mr-2 rounded-full">
-                      <!-- <faicon class="w-6 h-6" :icon="['fas','check']" /> -->
-                    </span> Airport Runways, Racetracks, Bulkheads and Seawalls.
-                  </p>
-                </div>
-                <div class="w-full lg:w-5/6 lg:max-w-lg md:w-1/2">
-                  <img class="object-cover object-center shadow-md" alt="Cross Section Showing Void Filled"
-                    src="/images/work/cross_section_concrete_and_foam.jpg">
+                  <div class="flex items-start">
+                    <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 mt-1 mr-4 rounded-full bg-pride-red">
+                      <Icon name="fa-solid:check" class="w-4 h-4 text-white" />
+                    </span>
+                    <span class="text-lg text-gray-700">Highways, Streets, Bridges</span>
+                  </div>
+                  <div class="flex items-start">
+                    <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 mt-1 mr-4 rounded-full bg-pride-red">
+                      <Icon name="fa-solid:check" class="w-4 h-4 text-white" />
+                    </span>
+                    <span class="text-lg text-gray-700">Airport Runways, Racetracks, Bulkheads and Seawalls</span>
+                  </div>
                 </div>
               </div>
-
-            </div>
-            <!---------------------->
-
-            <!-- ADDITIONAL INFO SECTION -->
-            <div class="container flex flex-col items-center px-4 py-8 mx-auto">
-              <div class="flex flex-col w-full mb-6 text-left lg:text-center">
-                <h1 class="mb-2 text-3xl font-black tracking-tighter text-black lg:text-5xl md:text-4xl">
-                  Stagnant Water Got You Itching?
-                </h1>
-                <p class="mt-4 text-lg leading-snug tracking-tight text-gray-500">
-                  Over time, as concrete settles water can form "bird baths" and not drain properly. While the birds may
-                  enjoy a place to swim, these standing puddles of water are the perfect breeding ground for mosquitoes
-                  and a chance for disease to spread.
-                </p>
-              </div>
-              <div class="flex flex-col md:flex-row h-auto">
-                <div class="mb-8 md:w-1/2 md:px-4">
-                  <h2 class="mt-4 mb-4 text-3xl font-bold text-black text-center">Standing Water Before</h2>
-                  <img class="shadow-md" src="/images/work/alley2_before.jpg" alt="Standing Water in an Alleyway">
-                </div>
-                <div class="mb-8 md:w-1/2 md:px-4">
-                  <h2 class="mt-4 mb-4 text-3xl font-bold text-black text-center">Water Draining After</h2>
-                  <img class="shadow-md" src="/images/work/alley2_after.jpg"
-                    alt="Water-Free Alleyway After Concrete Lifting">
-                </div>
-              </div>
-              <div class="flex flex-col md:flex-row h-auto">
-                <div class="mb-8 md:w-1/2 md:px-4">
-                  <h2 class="mt-4 mb-4 text-3xl font-bold text-black text-center">Non-Draining Water</h2>
-                  <img class="shadow-md" src="/images/work/standing-water.jpg" alt="Non-Draining Water in an Alley">
-                </div>
-                <div class="mb-8 md:w-1/2 md:px-4">
-                  <h2 class="mt-4 mb-4 text-3xl font-bold text-black text-center">Water Draining After Leveling</h2>
-                  <img class="shadow-md" src="/images/work/drain_runoff_1.jpg"
-                    alt="Water Flowing Properly After Being Raised">
-                </div>
+              <div>
+                <img class="w-full rounded-lg shadow-xl" alt="Cross Section Showing Void Filled"
+                  src="/images/work/cross_section_concrete_and_foam.jpg">
               </div>
             </div>
-            <!----------------------------->
 
-            <!-- HOW IT WORKS SECTION -->
-            <div class="flex flex-col w-full mb-6 text-left lg:text-center">
-              <div class="flex flex-col w-full mb-12 text-left lg:text-center">
-                <h1 id="how-it-works" class="mb-2 text-3xl font-black tracking-tighter text-black lg:text-5xl md:text-4xl">
-                  Want to See How It Works?
-                </h1>
-                <h2 class="mt-4 text-2xl tracking-widest text-gray-500">
-                  Minimally Invasive. Quick. Effective.
-                </h2>
+          </div>
+        </section>
+
+        <!-- Drainage Section -->
+        <section class="py-20 bg-white">
+          <div class="container px-6 mx-auto max-w-7xl lg:px-8">
+            
+            <div class="mb-16 text-center">
+              <h2 class="mb-6 text-4xl font-bold text-navy-900 lg:text-5xl">
+                Stagnant Water Got You Itching?
+              </h2>
+              <p class="mx-auto text-xl leading-relaxed text-gray-600 max-w-5xl">
+                Over time, as concrete settles water can form "bird baths" and not drain properly. While the birds may
+                enjoy a place to swim, these standing puddles of water are the perfect breeding ground for mosquitoes
+                and a chance for disease to spread.
+              </p>
+            </div>
+
+            <div class="grid gap-8 mb-12 mx-auto max-w-6xl md:grid-cols-2">
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-center text-navy-900">Standing Water Before</h3>
+                <img class="w-full rounded-lg shadow-xl" src="/images/work/alley2_before.jpg" alt="Standing Water in an Alleyway">
               </div>
-              <div class="flex flex-col md:flex-row h-auto">
-                <a class="mb-8 md:w-1/2 md:px-4" href="https://www.ncfigeo.com/"><img class=""
-                    src="/images/NCFI/NCFI GEo DB R.png" alt="NCFI Geotechnical Logo">
-                </a>
-                <p class="mb-8 md:w-1/2 md:px-4 mt-4 text-lg leading-snug tracking-tight text-gray-500">
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-center text-navy-900">Water Draining After</h3>
+                <img class="w-full rounded-lg shadow-xl" src="/images/work/alley2_after.jpg" alt="Water-Free Alleyway After Concrete Lifting">
+              </div>
+            </div>
+
+            <div class="grid gap-8 mx-auto max-w-6xl md:grid-cols-2">
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-center text-navy-900">Non-Draining Water</h3>
+                <img class="w-full rounded-lg shadow-xl" src="/images/work/standing-water.jpg" alt="Non-Draining Water in an Alley">
+              </div>
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-center text-navy-900">Water Draining After Leveling</h3>
+                <img class="w-full rounded-lg shadow-xl" src="/images/work/drain_runoff_1.jpg" alt="Water Flowing Properly After Being Raised">
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-20 bg-gray-50">
+          <div class="container px-6 mx-auto max-w-7xl lg:px-8">
+            
+            <div class="mb-16 text-center">
+              <h2 id="how-it-works" class="mb-4 text-4xl font-bold text-navy-900 lg:text-5xl">
+                Want to See How It Works?
+              </h2>
+              <p class="text-2xl font-semibold tracking-wide text-pride-red">
+                Minimally Invasive. Quick. Effective.
+              </p>
+            </div>
+
+            <div class="grid gap-12 items-center mb-16 mx-auto max-w-6xl md:grid-cols-2">
+              <a href="https://www.ncfigeo.com/" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-90">
+                <img class="w-full" src="/images/NCFI/NCFI GEo DB R.png" alt="NCFI Geotechnical Logo">
+              </a>
+              <div>
+                <p class="text-lg leading-relaxed text-gray-600">
                   Pride Concrete Lifting proudly uses NCFI Geotechnical Polyurethane Formulations in all of our jobs. To
                   achieve the goal of lifting pavement, asphalt, or any other concrete material foundation - we inject a
-                  polyurethane formulation underneath the material that fills any voided space and as the formulation sets
-                  up
+                  polyurethane formulation underneath the material that fills any voided space and as the formulation sets up
                   it begins to expand to bring the concrete back to grade and filling the voided space ensuring long lasting
                   results.
                 </p>
               </div>
             </div>
 
-            <div class="flex flex-wrap -mx-4 -mt-4 -mb-10 space-y-6 sm:-m-4 md:space-y-0">
-              <div class="flex p-4 lg:w-1/3 ">
-                <div class="flex-grow">
-                  <div class="w-full mb-2">
-                    <img alt="Foam Being Injected Under Concrete" style="height:400px;"
-                      class="object-cover object-center w-full h-64 rounded-sm lg:h-auto"
-                      src="/images/NCFI/1st step slab lift graphic.png">
-                  </div>
-                  <h1 class="mb-2 text-2xl font-semibold font-black title-font">
-                    Foam is Injected</h1>
-                  <p class="text-lg leading-snug tracking-tight text-gray-500">
+            <div class="grid gap-8 mx-auto max-w-6xl md:grid-cols-3">
+              <div class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl">
+                <div class="overflow-hidden h-80">
+                  <img alt="Foam Being Injected Under Concrete"
+                    class="object-cover w-full h-full"
+                    src="/images/NCFI/1st step slab lift graphic.png">
+                </div>
+                <div class="p-6">
+                  <h3 class="mb-3 text-2xl font-bold text-navy-900">Foam is Injected</h3>
+                  <p class="leading-relaxed text-gray-600">
                     After assessing the material to be raised, a 1/2" or 5/8" hole is drilled to precise depths to gain
                     access to the foundation of the affected area.
-                    .</p>
+                  </p>
                 </div>
               </div>
-              <div class="flex p-4 lg:w-1/3 ">
-                <div class="flex-grow">
-                  <div class="w-full mb-2">
-                    <img alt="Foam Expanding Underneath Concrete" style="height:400px;"
-                      class="object-cover object-center w-full h-64 rounded-sm lg:h-auto"
-                      src="/images/NCFI/2nd step slab lift graphic.png">
-                  </div>
-                  <h1 class="mb-2 text-2xl font-semibold font-black title-font">
-                    Expansion of Foam</h1>
-                  <p class="text-lg leading-snug tracking-tight text-gray-500">
+
+              <div class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl">
+                <div class="overflow-hidden h-80">
+                  <img alt="Foam Expanding Underneath Concrete"
+                    class="object-cover w-full h-full"
+                    src="/images/NCFI/2nd step slab lift graphic.png">
+                </div>
+                <div class="p-6">
+                  <h3 class="mb-3 text-2xl font-bold text-navy-900">Expansion of Foam</h3>
+                  <p class="leading-relaxed text-gray-600">
                     A polyurethane foam is then carefully injected into the subgrade, that expands and lifts the material
-                    back to proper grade. </p>
+                    back to proper grade.
+                  </p>
                 </div>
               </div>
-              <div class="flex p-4 lg:w-1/3 ">
-                <div class="flex-grow">
-                  <div class="w-full mb-2">
-                    <img alt="Foam Causing Concrete to Lift" style="height:400px;"
-                      class="object-cover object-center w-full h-64 rounded-sm lg:h-auto"
-                      src="/images/NCFI/3rd step slab lift graphic.png">
-                  </div>
-                  <h1 class="mb-2 text-2xl font-semibold font-black title-font">
-                    Lifting and Stabilization</h1>
-                  <p class="text-lg leading-snug tracking-tight text-gray-500">
+
+              <div class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl">
+                <div class="overflow-hidden h-80">
+                  <img alt="Foam Causing Concrete to Lift"
+                    class="object-cover w-full h-full"
+                    src="/images/NCFI/3rd step slab lift graphic.png">
+                </div>
+                <div class="p-6">
+                  <h3 class="mb-3 text-2xl font-bold text-navy-900">Lifting and Stabilization</h3>
+                  <p class="leading-relaxed text-gray-600">
                     Once level has been achieved, the foam will then solidify and all voids underneath will be filled,
                     preventing future sinkage or damage to the concrete.
                   </p>
                 </div>
               </div>
             </div>
-            <!-------------------------->
 
           </div>
         </section>
 
-        <!-- CONTACT US AND LET US GIVE YOU A FREE ESTIMATE -->
-        <section>
-          <div class="bg-black items-center py-6">
+        <!-- Contact Section -->
+        <section class="py-20 bg-navy-900">
+          <div class="container px-6 mx-auto max-w-7xl lg:px-8">
 
-            <div class="flex flex-col w-full mb-4 p-4 text-center">
-              <h1 id="contact" class="mb-2 text-3xl font-bold text-white tracking-tighter lg:text-5xl md:text-4xl">
-                Send Us A Message.
-              </h1>
-              <p class="mt-4 text-lg tracking-wide text-white">
-                Let Us Know How we Can Help You
+            <div class="mb-12 text-center">
+              <h2 id="contact" class="mb-4 text-4xl font-bold text-white lg:text-5xl">
+                Send Us A Message
+              </h2>
+              <p class="mb-6 text-xl text-gray-300">
+                Let Us Know How We Can Help You
               </p>
-              <p class="mb-8 md:w-1/2 md:px-10 mt-4 mx-auto text-lg leading-snug tracking-tight text-gray-300">
-                Fill out the form below to get in contact with us! We can also be reached via email at:
-                <span class="md:text-xl text-blue-300">
-                  <Icon name="fa-solid:envelope" class="w-6 h-6" /> contact@prideconcretelifting.com</span> or via telephone at:
-                <span class="md:text-xl text-blue-300"> <a href="tel:817-888-6254">
-                  <Icon name="fa-solid:phone" class="w-6 h-6" /> 817-888-6254</a></span>.
-              </p>
+              <div class="mx-auto space-y-2 text-lg text-gray-300 max-w-4xl">
+                <p>Fill out the form below to get in contact with us! We can also be reached via email at:</p>
+                <p class="flex items-center justify-center gap-2 text-xl">
+                  <Icon name="fa-solid:envelope" class="w-5 h-5 text-pride-red" />
+                  <span class="font-semibold text-white">contact@prideconcretelifting.com</span>
+                </p>
+                <p class="flex items-center justify-center gap-2 text-xl">
+                  <Icon name="fa-solid:phone" class="w-5 h-5 text-pride-red" />
+                  <a href="tel:817-888-6254" class="font-semibold text-white transition-colors hover:text-pride-red">
+                    817-888-6254
+                  </a>
+                </p>
+              </div>
             </div>
 
             <ContactForm client:load />
@@ -280,22 +293,19 @@ import { Icon } from 'astro-icon/components';
         </section>
 
       </div>
+
     <style>
-      .outer-container {
-        background-image: linear-gradient(rgb(0, 0, 0, 0.75), rgba(255, 255, 255, 0)), url("/images/mega-highway-pride-concrete-can-lift-everything.jpg");
+      .hero-bg {
+        background-image: url("/images/mega-highway-pride-concrete-can-lift-everything.jpg");
         background-size: cover;
-        background-position: top;
+        background-position: center;
         background-repeat: no-repeat;
-        height: 100vh;
       }
 
-      button:hover {
-        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
-        transform: scale(1.03);
-      }
-
-      .left-image {
+      .poolside-bg {
         background-image: url('/images/markets/poolside-gallery-image.jpg');
+        background-size: cover;
+        background-position: center;
       }
     </style>
 </BaseLayout>
