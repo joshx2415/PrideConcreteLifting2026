@@ -19,8 +19,29 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
-	<body>
+	<body x-data="{
+    isOpen: false,
+    scrolled: false,
+    showNavbar: true,
+    lastScrollPosition: 0,
+    handleScroll() {
+        this.scrolled = window.scrollY > 0;
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScrollPosition < 0) {
+            return;
+        }
+        this.showNavbar = currentScrollPosition < this.lastScrollPosition;
+        this.lastScrollPosition = currentScrollPosition;
+    },
+    drawer() {
+        this.isOpen = !this.isOpen;
+    }
+	}">
     <Nav />
 		<slot />
     <Footer />
