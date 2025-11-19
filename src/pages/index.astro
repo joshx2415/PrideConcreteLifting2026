@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.vue';
+import { Icon } from 'astro-icon/components';
 ---
 <BaseLayout title="Pride Concrete Lifting and Repair in Dallas / Fort Worth">
     <div class="transition-colors duration-1000 bg-white dark:bg-gray-700">
@@ -27,9 +28,7 @@ import ContactForm from '../components/ContactForm.vue';
               <div class="flex flex-col mt-8 md:flex-row">
                 <a href="#contact"><button
                     class="group butt inline-flex items-center px-4 py-3 mt-2 text-white transition-all duration-500 ease-in-out transform bg-black rounded-lg focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-900 focus:outline-none">
-                    <!-- <faicon
-                      class="group-hover:filter group-hover:transform group-hover:drop-shadow-lg group-hover:scale-150 transition-all duration-500 ease-in-out w-6 h-6"
-                      :icon="['fas','paper-plane']" /> -->
+                    <Icon name="fa-solid:paper-plane" class="group-hover:filter group-hover:transform group-hover:drop-shadow-lg group-hover:scale-150 transition-all duration-500 ease-in-out w-6 h-6" />
                     <span class="flex flex-col items-start ml-4 leading-none">
                       <span class="mb-1 text-xs text-blueGray-400">FREE ESTIMATES</span>
                       <span class="font-medium text-white title-font">Send Us A Message</span>
@@ -48,7 +47,7 @@ import ContactForm from '../components/ContactForm.vue';
             <!-- ABOUT SECTION -->
             <div class="container">
               <div class="flex flex-col w-full mb-2 text-left px-4">
-                <img class="mx-auto md:w-1/3 mb-10" src="/images/Pride-Concrete.png"
+                <img class="mx-auto md:w-1/3 mb-10" src="/images/logo.png"
                   alt="Pride Concrete Lifting - We Take Pride in our Work and our Experience.">
                 <h1 id="about"
                   class="mb-2 text-3xl font-black tracking-tighter text-black text-center lg:text-5xl md:text-4xl">
@@ -259,7 +258,7 @@ import ContactForm from '../components/ContactForm.vue';
         <section>
           <div class="bg-black items-center py-6">
 
-            <div class="flex flex-col w-full mb-4 text-left p-4 lg:text-center">
+            <div class="flex flex-col w-full mb-4 p-4 text-center">
               <h1 id="contact" class="mb-2 text-3xl font-bold text-white tracking-tighter lg:text-5xl md:text-4xl">
                 Send Us A Message.
               </h1>
@@ -269,9 +268,9 @@ import ContactForm from '../components/ContactForm.vue';
               <p class="mb-8 md:w-1/2 md:px-10 mt-4 mx-auto text-lg leading-snug tracking-tight text-gray-300">
                 Fill out the form below to get in contact with us! We can also be reached via email at:
                 <span class="md:text-xl text-blue-300">
-                  <!-- <faicon class="w-6 h-6" :icon="['fas','envelope']" /> --> contact@prideconcretelifting.com</span> or via telephone at:
+                  <Icon name="fa-solid:envelope" class="w-6 h-6" /> contact@prideconcretelifting.com</span> or via telephone at:
                 <span class="md:text-xl text-blue-300"> <a href="tel:817-888-6254">
-                  <!-- <faicon class="w-6 h-6" :icon="['fas','phone']" /> --> 817-888-6254</a></span>.
+                  <Icon name="fa-solid:phone" class="w-6 h-6" /> 817-888-6254</a></span>.
               </p>
             </div>
 
@@ -283,7 +282,7 @@ import ContactForm from '../components/ContactForm.vue';
       </div>
     <style>
       .outer-container {
-        background-image: linear-gradient(rgb(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("/images/mega-highway-pride-concrete-can-lift-everything.jpg");
+        background-image: linear-gradient(rgb(0, 0, 0, 0.75), rgba(255, 255, 255, 0)), url("/images/mega-highway-pride-concrete-can-lift-everything.jpg");
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
@@ -296,7 +295,7 @@ import ContactForm from '../components/ContactForm.vue';
       }
 
       .left-image {
-        background-image: url('/images/markets/we-lift-driveways.jpg');
+        background-image: url('/images/markets/poolside-gallery-image.jpg');
       }
     </style>
 </BaseLayout>
