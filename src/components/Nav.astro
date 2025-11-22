@@ -1,166 +1,216 @@
 ---
 import PrimaryLogo from './PrimaryLogo.astro';
 import { Icon } from 'astro-icon/components';
+const { isHomepage = false } = Astro.props;
 ---
-<header x-data="{ isOpen: false, scrolled: false, showNavbar: true, lastScrollPosition: 0 }"
-  @scroll.window="const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop; if (currentScrollPosition >= 0) { showNavbar = currentScrollPosition < lastScrollPosition; lastScrollPosition = currentScrollPosition; } scrolled = window.scrollY > 0;"
-  :class="{ 'navbar--hidden': !showNavbar, 'scrolled': scrolled }"
-  class="navbar w-screen flex items-center fixed px-4 py-2 z-50 body-font justify-between md:justify-between">
-  <a href="/" class="flex items-center justify-center">
-    <PrimaryLogo style="height: 44px; max-width: 120px; width: auto;" class="object-fit object-center shadow-md mlogo transition duration-500 ease-in-out transform hover:text-pride-red" />
+<header
+  x-data={`{ isOpen:false, scrolled:false, showNavbar:true, lastScrollPosition:0, isHomepage: ${isHomepage} }`}
+  x-effect="document.body.style.overflow = isOpen ? 'hidden' : 'auto'"
+  @scroll.window="if(!isOpen){const cur=window.pageYOffset||document.documentElement.scrollTop;showNavbar=cur<lastScrollPosition;lastScrollPosition=cur;scrolled=window.scrollY>0;}"
+  :class="{ 'navbar--hidden': !showNavbar, 'scrolled': scrolled || !isHomepage }"
+  class="navbar w-screen fixed px-4 py-2 z-50 grid grid-cols-3 items-center"
+>
+  <a href="/" class="flex items-center justify-self-start">
+    <PrimaryLogo style="height: 44px; max-width: 120px; width: auto;" class="object-fit object-center transition duration-300 ease-in-out" />
   </a>
 
-  <ul class="hidden md:flex justify-center">
-    <li class="dropdown group inline-block relative whitespace-nowrap md:mr-2">
-      <span class="transition duration-500 ease-in-out group-hover:bg-white group-hover:text-pride-red text-white text-base font-medium px-4 py-2 mt-2 md:mt-0 inline-flex items-center cursor-default">
+  <nav class="hidden md:flex items-center justify-self-center gap-1">
+    <div class="dropdown group relative">
+      <span class="nav-link inline-flex items-center cursor-default">
         Areas of Expertise
-        <svg class="fill-current ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+        <svg class="fill-current ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
       </span>
-      <ul class="dropdown-menu absolute w-full invisible opacity-0 text-pride-red text-center group-hover:bg-white group-hover:visible group-hover:opacity-100 group-hover:transition-all delay-150 duration-500 ease-in-out">
-        <li><a class="bg-white text-base font-medium hover:bg-pride-red hover:text-white py-1 px-3 block whitespace-no-wrap" href="/Driveways">Driveways</a></li>
-        <li><a class="bg-white text-base font-medium hover:bg-pride-red hover:text-white py-1 px-3 block whitespace-no-wrap" href="/Pooldecks">Pooldecks</a></li>
+      <ul class="dropdown-menu absolute left-0 mt-1 w-44 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 bg-navy-900 rounded-md shadow-xl overflow-hidden">
+        <li><a class="block px-4 py-2 text-sm text-white hover:bg-pride-red transition-colors" href="/driveways">Driveways</a></li>
+        <li><a class="block px-4 py-2 text-sm text-white hover:bg-pride-red transition-colors" href="/pooldecks">Pooldecks</a></li>
       </ul>
-    </li>
-    <li class="flex justify-center whitespace-nowrap md:mr-2">
-      <a class="items-center px-4 py-2 mt-2 text-base font-medium tracking-tight transition duration-500 ease-in-out transform text-white md:mt-0 hover:text-pride-red hover:bg-white" href="#how-it-works">How It Works</a></li>
-    <li class="flex justify-center whitespace-nowrap md:mr-2">
-      <a class="items-center px-4 py-2 mt-2 text-base font-medium tracking-tight transition duration-500 ease-in-out transform text-white md:mt-0 hover:text-pride-red hover:bg-white" href="#about">About Us</a></li>
-    <li class="flex justify-center whitespace-nowrap md:mr-2">
-      <a class="items-center px-4 py-2 mt-2 text-base font-medium tracking-tight transition duration-500 ease-in-out transform text-white md:mt-0 hover:text-pride-red hover:bg-white" href="#contact">Contact</a></li>
-  </ul>
+    </div>
+    <a class="nav-link" href="#how-it-works">How It Works</a>
+    <a class="nav-link" href="#about">About Us</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </nav>
 
-  <ul class="hidden md:flex flex-col">
-    <li><a class="items-center py-2 mt-1 text-sm font-normal tracking-tight text-white lg:mx-4 md:mt-0 md:ml-2" href="#contact"><Icon name="fa-solid:envelope" class="w-5 h-5 mr-2" /> <strong>Send us an Email</strong>: contact@prideconcretelifting.com</a></li>
-    <li><a class="items-center py-2 mt-1 text-sm font-normal tracking-tight text-white lg:mx-4 md:mt-0 md:ml-2" href="tel:817-888-6254"><Icon name="fa-solid:phone" class="w-5 h-5 mr-2" /> <strong>Give us a Call</strong>: 817-888-6254</a></li>
-  </ul>
-
-    <a id="burger" :class="isOpen ? 'toggled' : ''"
-        class="md:hidden flex space-between transition duration-500 ease-in-out transform sm:target-burger"
-        @click.prevent="isOpen = !isOpen" aria-label="Open Menu">
-        <ul class="buns">
-            <li class="bun"></li>
-            <li class="bun"></li>
-        </ul>
+  <div class="hidden lg:flex flex-col text-right text-xs justify-self-end">
+    <a class="flex items-center justify-end py-1 text-white/90 hover:text-pride-red transition-colors" href="#contact">
+      <Icon name="fa-solid:envelope" class="w-4 h-4 mr-2" />contact@prideconcretelifting.com
     </a>
+    <a class="flex items-center justify-end py-1 text-white/90 hover:text-pride-red transition-colors" href="tel:817-888-6254">
+      <Icon name="fa-solid:phone" class="w-4 h-4 mr-2" />817-888-6254
+    </a>
+  </div>
 
-    <div x-show="isOpen" class="z-10 h-screen fixed inset-0 transition-opacity" style="display: none;">
-        <div @click="isOpen = false" class="absolute inset-0 bg-black opacity-50" tabindex="0"></div>
+  <button id="burger" :class="isOpen ? 'toggled' : ''" @click="isOpen = !isOpen" aria-label="Open Menu"
+    class="md:hidden relative w-8 h-8 flex items-center justify-center justify-self-end z-40">
+    <span class="bun"></span>
+    <span class="bun bun-bottom"></span>
+  </button>
+
+  <div x-show="isOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+    class="fixed inset-0 bg-black/50 z-30" @click="isOpen = false" style="display: none;"></div>
+
+<aside
+  class="fixed top-0 left-0 w-80 h-screen z-[9999] flex flex-col overflow-auto transform transition-transform duration-300 ease-in-out"
+  :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
+  style="background: linear-gradient(180deg, #001f54 0%, #001240 100%);"
+>
+    
+    <!-- Close button -->
+    <button @click="isOpen = false" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Logo -->
+    <div class="p-6 pt-8">
+      <PrimaryLogo />
     </div>
 
-    <aside
-        class="transform flex flex-col justify-evenly h-screen top-0 left-0 w-64 bg-navy-900 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
-        :class="isOpen ? 'translate-x-0' : '-translate-x-full'">
-        <span class="mt-2"><PrimaryLogo /></span>
-        <span @click="isOpen = false"
-            class="flex mt-4 pt-4 pb-4 align-center font-bold text-lg hover:bg-pride-red text-white transition-colors">
-            <a href="/#how-it-works" class="ml-6 w-full flex items-center"><Icon name="fa-solid:project-diagram" class="w-6 h-6 mr-2" />
-            How It Works</a>
+    <!-- Navigation -->
+    <nav class="flex-1 px-4 py-6 space-y-1 overflow-auto">
+      <a @click="isOpen = false" href="/#how-it-works" class="mobile-nav-item">
+        <span class="mobile-nav-icon"><Icon name="fa-solid:project-diagram" class="w-5 h-5" /></span>
+        <span>How It Works</span>
+      </a>
+      <a @click="isOpen = false" href="/#about" class="mobile-nav-item">
+        <span class="mobile-nav-icon"><Icon name="fa-solid:id-card" class="w-5 h-5" /></span>
+        <span>About Us</span>
+      </a>
+      <a @click="isOpen = false" href="/#contact" class="mobile-nav-item">
+        <span class="mobile-nav-icon"><Icon name="fa-solid:paper-plane" class="w-5 h-5" /></span>
+        <span>Contact</span>
+      </a>
+      
+      <!-- Expertise Section -->
+      <div class="pt-4 mt-4 border-t border-white/10">
+        <span class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-white/50 uppercase tracking-wider">
+          <Icon name="fa-solid:tools" class="w-4 h-4" />Areas of Expertise
         </span>
-        <span @click="isOpen = false"
-            class="flex pt-4 pb-4 align-center font-bold text-lg hover:bg-pride-red text-white transition-colors">
-            <a href="/#about" class="ml-6 w-full flex items-center"><Icon name="fa-solid:id-card" class="w-6 h-6 mr-2" />
-            About Us</a>
-        </span>
-        <span @click="isOpen = false"
-            class="flex pt-4 pb-4 align-center font-bold text-lg hover:bg-pride-red text-white transition-colors">
-            <a href="/#contact" class="ml-6 w-full flex items-center"><Icon name="fa-solid:paper-plane" class="w-6 h-6 mr-2" />
-            Contact</a>
-        </span>
-        <span @click="isOpen = false"
-            class="flex pt-4 pb-4 flex-col justify-center font-bold text-lg hover:bg-pride-red text-white transition-colors">
-            <span class="flex items-center"><Icon name="fa-solid:tools" class="w-6 h-6 ml-6 mr-2" />Areas of Expertise</span>
-            <ul class="w-full opacity-100 text-white group-hover:bg-pride-red group-hover:opacity-100 transition duration-500 ease-in-out">
-                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-pride-red py-2 px-4 block whitespace-no-wrap" href="/Driveways"><span class="ml-7">Driveways</span></a></li>
-                <li class=""><a class="text-lg font-medium hover:bg-white hover:text-pride-red py-2 px-4 block whitespace-no-wrap" href="/Pooldecks"><span class="ml-7">Pooldecks</span></a></li>
-            </ul>
-        </span>
-        <ul @click="isOpen = false" class="flex flex-col p-4">
-            <li><a class="items-center py-3 mt-2 text-base font-normal tracking-tight text-white lg:mx-8 md:mt-0 md:ml-4"
-                href="#contact">
-                contact@prideconcretelifting.com</a>
-            </li>
-            <li><a class="items-center py-3 mt-2 text-base font-normal tracking-tight text-white lg:mx-8 md:mt-0 md:ml-4"
-                href="tel:817-888-6254">817-888-6254</a></li>
-        </ul>
-    </aside>
+        <a @click="isOpen = false" href="/driveways" class="mobile-nav-item pl-12">Driveways</a>
+        <a @click="isOpen = false" href="/pooldecks" class="mobile-nav-item pl-12">Pooldecks</a>
+      </div>
+    </nav>
 
+    <!-- Contact Footer -->
+    <div class="p-6 mt-auto bg-black/20">
+      <p class="text-xs font-semibold text-white/50 uppercase tracking-wider mb-3">Get in Touch</p>
+      <a href="mailto:contact@prideconcretelifting.com" class="flex items-center gap-3 py-2 text-sm text-white/80 hover:text-pride-red transition-colors">
+        <Icon name="fa-solid:envelope" class="w-4 h-4" />
+        contact@prideconcretelifting.com
+      </a>
+      <a href="tel:817-888-6254" class="flex items-center gap-3 py-2 text-sm text-white/80 hover:text-pride-red transition-colors">
+        <Icon name="fa-solid:phone" class="w-4 h-4" />
+        817-888-6254
+      </a>
+    </div>
+  </aside>
 </header>
 
 <style>
   .navbar {
     transform: translate3d(0, 0, 0);
-    transition: all .2s ease-in;
+    transition: all 0.3s ease;
     min-height: 56px;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
   }
 
   .navbar.navbar--hidden {
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: none;
     transform: translate3d(0, -100%, 0);
-    transition: all 400ms;
-  }
-
-  .dropdown:hover .dropdown-menu {
-    display: block;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
-    clip-path: inset(0px -10px -10px -10px);
-  }
-
-  button:focus {
-    outline: 0;
-  }
-
-  .target-burger {
-    margin: 0.5em;
-    width: 2.5em;
-    height: 2.5em;
-    display: block;
-    transition: all 0.5s ease;
-  }
-
-  .target-burger:hover {
-    cursor: pointer;
-    opacity: 0.45;
-  }
-
-  .toggled ul.buns li.bun {
-    transform: rotate(45deg) translateZ(0);
-  }
-
-  .toggled ul.buns li.bun:last-child {
-    transform: rotate(-45deg) translateZ(0);
-  }
-
-  .buns {
-    width: 1.25em;
-    height: 1.25em;
-    list-style: none;
-    padding: 0;
-    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), color 1s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: translateZ(0);
-    color: #fff;
-  }
-
-  .bun {
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    position: absolute;
-    top: 50%;
-    margin-top: -0.75px;
-    transform: translateY(-3.75px) translateZ(0);
-    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), background-color 1s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .bun:last-child {
-    transform: translateY(3.75px) translateZ(0);
+    opacity: 0;
   }
 
   .scrolled {
     background-color: #001f54;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #c8102e;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover {
+    color: #c8102e;
+  }
+
+  .nav-link:hover::after {
+    width: 80%;
+  }
+
+  .dropdown-menu {
+    transform: translateY(-10px);
+  }
+
+  .dropdown:hover .dropdown-menu {
+    transform: translateY(0);
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #c8102e;
+  }
+
+  .mobile-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.375rem;
+  }
+
+  .mobile-nav-item:hover .mobile-nav-icon {
+    background-color: #c8102e;
+    color: white;
+  }
+
+  .bun {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateY(-4px);
+  }
+
+  .bun-bottom {
+    transform: translateY(4px);
+  }
+
+  .toggled .bun {
+    transform: rotate(45deg);
+  }
+
+  .toggled .bun-bottom {
+    transform: rotate(-45deg);
   }
 </style>
