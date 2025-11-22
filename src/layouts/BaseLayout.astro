@@ -5,9 +5,10 @@ import '../styles/global.css';
 
 export interface Props {
 	title: string;
+    isHomepage?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, isHomepage = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,25 +25,8 @@ const { title } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
-	<body x-data="{
-    isOpen: false,
-    scrolled: false,
-    showNavbar: true,
-    lastScrollPosition: 0,
-    handleScroll() {
-        this.scrolled = window.scrollY > 0;
-        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScrollPosition < 0) {
-            return;
-        }
-        this.showNavbar = currentScrollPosition < this.lastScrollPosition;
-        this.lastScrollPosition = currentScrollPosition;
-    },
-    drawer() {
-        this.isOpen = !this.isOpen;
-    }
-	}">
-    <Nav />
+	<body>
+    <Nav isHomepage={isHomepage}/>
 		<slot />
     <Footer />
 	</body>
