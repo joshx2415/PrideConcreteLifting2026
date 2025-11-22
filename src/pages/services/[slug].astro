@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.vue';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+
+  return services.map(service => ({
+    params: { slug: service.id },
+    props: { service },
+  }));
+}
+
+import { render } from 'astro:content';
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+---
+
+<BaseLayout title={service.data.title} description={service.data.description}>
+  <div class="transition-colors duration-1000 bg-white">
+    <section class="text-gray-700 mx-auto lg:w-3/4 lg:px-0 items-center pt-32">
+      <div class="flex flex-col w-full mx-auto px-5 mb-2 text-left">
+        <h1 class="mb-2 text-3xl font-black tracking-tighter text-black lg:text-7xl md:text-4xl">
+          {service.data.title}
+        </h1>
+
+        {service.data.heroImage && (
+          <div class="flex flex-col items-start py-4 mx-auto lg:items-center md:flex-row">
+            <div class="w-full mb-10 lg:w-5/6 lg:max-w-lg md:w-1/2">
+              <img class="object-cover object-center shadow-md" alt={service.data.title} loading="lazy"
+                src={service.data.heroImage}>
+            </div>
+          </div>
+        )}
+
+        <div class="prose max-w-none">
+          <Content />
+        </div>
+
+      </div>
+    </section>
+
+    {service.data.gallery && (
+      <div class="px-5 mx-auto lg:py-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {service.data.gallery.map(image => (
+            <div class="mb-8 md:px-4">
+               <img class="shadow-md w-full h-auto object-cover" src={image} alt="Gallery image" />
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- CONTACT US AND LET US GIVE YOU A FREE ESTIMATE -->
+    <section>
+      <div class="bg-black items-center py-6">
+
+        <div class="flex flex-col w-full mb-4 text-left p-4 lg:text-center">
+          <h1 id="contact" class="mb-2 text-3xl font-bold text-white tracking-tighter lg:text-5xl md:text-4xl">
+            Send Us A Message.
+          </h1>
+          <p class="mt-4 text-lg tracking-wide text-white">
+            Let Us Know How we Can Help You
+          </p>
+          <p class="mb-8 md:w-1/2 md:px-10 mt-4 mx-auto text-lg leading-snug tracking-tight text-gray-300">
+            Fill out the form below to get in contact with us! We can also be reached via email at:
+            <span class="md:text-xl text-blue-300">
+              contact@prideconcretelifting.com</span> or via telephone at:
+            <span class="md:text-xl text-blue-300"> <a href="tel:817-888-6254">
+                817-888-6254</a></span>.
+          </p>
+        </div>
+
+        <ContactForm client:load />
+
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  header {
+    background-color: #000 !important;
+  }
+</style>
