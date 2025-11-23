@@ -15,10 +15,10 @@ services.sort((a, b) => a.data.title.localeCompare(b.data.title));
   x-effect="document.body.style.overflow = isOpen ? 'hidden' : 'auto'"
   @scroll.window="if(!isOpen){const cur=window.pageYOffset||document.documentElement.scrollTop;showNavbar=cur<lastScrollPosition;lastScrollPosition=cur;scrolled=window.scrollY>0;}"
   :class="{ 'navbar--hidden': !showNavbar, 'scrolled': scrolled || !isHomepage }"
-  class="navbar w-screen fixed px-4 py-2 z-50 grid grid-cols-3 items-center"
+  class="navbar w-screen fixed px-4 py-2 z-50 grid grid-cols-2 md:grid-cols-3 items-center gap-4"
 >
   <a href="/" class="flex items-center justify-self-start">
-    <PrimaryLogo style="height: 44px; max-width: 120px; width: auto;" class="object-fit object-center transition duration-300 ease-in-out" />
+    <PrimaryLogo style="height: 44px; width: auto;" class="object-fit object-center transition duration-300 ease-in-out" />
   </a>
 
   <nav class="hidden md:flex items-center justify-self-center gap-1">

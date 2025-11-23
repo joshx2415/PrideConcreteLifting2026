@@ -5,7 +5,8 @@
     "**/*"
   ],
   "exclude": [
-    "dist"
+    "dist",
+    "**/*.mdx"
   ],
   "compilerOptions": {
     "strictNullChecks": true,
