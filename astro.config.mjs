@@ -17,6 +17,12 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://prideconcretelifting.com',
+  redirects: {
+    '/driveways': '/services/driveways',
+    '/pooldecks': '/services/pooldecks',
+    '/roadways': '/services/roadways',
+    '/sidewalks': '/services/sidewalks',
+  },
   integrations: [mdx(), sitemap(), alpinejs(), icon(), vue()],
   vite: {
     server: {

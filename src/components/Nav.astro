@@ -1,17 +1,24 @@
 ---
 import PrimaryLogo from './PrimaryLogo.astro';
 import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+
 const { isHomepage = false } = Astro.props;
+
+const services = await getCollection('services', ({ data }) => {
+    return data.title !== undefined;
+});
+services.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 <header
   x-data={`{ isOpen:false, scrolled:false, showNavbar:true, lastScrollPosition:0, isHomepage: ${isHomepage} }`}
   x-effect="document.body.style.overflow = isOpen ? 'hidden' : 'auto'"
   @scroll.window="if(!isOpen){const cur=window.pageYOffset||document.documentElement.scrollTop;showNavbar=cur<lastScrollPosition;lastScrollPosition=cur;scrolled=window.scrollY>0;}"
   :class="{ 'navbar--hidden': !showNavbar, 'scrolled': scrolled || !isHomepage }"
-  class="navbar w-screen fixed px-4 py-2 z-50 grid grid-cols-3 items-center"
+  class="navbar w-screen fixed px-4 py-2 z-50 grid grid-cols-2 md:grid-cols-3 items-center gap-4"
 >
   <a href="/" class="flex items-center justify-self-start">
-    <PrimaryLogo style="height: 44px; max-width: 120px; width: auto;" class="object-fit object-center transition duration-300 ease-in-out" />
+    <PrimaryLogo style="height: 44px; width: auto;" class="object-fit object-center transition duration-300 ease-in-out" />
   </a>
 
   <nav class="hidden md:flex items-center justify-self-center gap-1">
@@ -21,8 +28,14 @@ const { isHomepage = false } = Astro.props;
         <svg class="fill-current ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
       </span>
       <ul class="dropdown-menu absolute left-0 mt-1 w-44 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 bg-navy-900 rounded-md shadow-xl overflow-hidden">
-        <li><a class="block px-4 py-2 text-sm text-white hover:bg-pride-red transition-colors" href="/driveways">Driveways</a></li>
-        <li><a class="block px-4 py-2 text-sm text-white hover:bg-pride-red transition-colors" href="/pooldecks">Pooldecks</a></li>
+        {services.map((service) => (
+          <li>
+            <a class="block px-4 py-2 text-sm text-white hover:bg-pride-red transition-colors"
+               href={`/services/${service.id}`}>
+              {service.data.title}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
     <a class="nav-link" href="#how-it-works">How It Works</a>
@@ -88,8 +101,13 @@ const { isHomepage = false } = Astro.props;
         <span class="flex items-center gap-3 px-4 py-2 text-sm font-semibold text-white/50 uppercase tracking-wider">
           <Icon name="fa-solid:tools" class="w-4 h-4" />Areas of Expertise
         </span>
-        <a @click="isOpen = false" href="/driveways" class="mobile-nav-item pl-12">Driveways</a>
-        <a @click="isOpen = false" href="/pooldecks" class="mobile-nav-item pl-12">Pooldecks</a>
+        {services.map((service) => (
+          <a @click="isOpen = false"
+             href={`/services/${service.id}`}
+             class="mobile-nav-item pl-12">
+            {service.data.title}
+          </a>
+        ))}
       </div>
     </nav>
 
