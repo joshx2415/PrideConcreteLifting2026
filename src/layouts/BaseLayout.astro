@@ -1,33 +1,84 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import StructuredData from '../components/StructuredData.astro';
 import '../styles/global.css';
 
 export interface Props {
-	title: string;
-    isHomepage?: boolean;
+  title: string;
+  description?: string;
+  isHomepage?: boolean;
+  ogImage?: string;
+  keywords?: string;
+  structuredDataType?: 'business' | 'service';
 }
 
-const { title, isHomepage = false } = Astro.props;
+const { 
+  title, 
+  description = "Professional concrete lifting and soil stabilization services in Dallas/Fort Worth. Over 25 years of experience lifting driveways, sidewalks, patios, and more.",
+  isHomepage = false,
+  ogImage = "/images/logo.png",
+  keywords = "concrete lifting, soil stabilization, polyurethane foam injection, slab jacking, concrete leveling, Dallas, Fort Worth, DFW",
+  structuredDataType = 'business'
+} = Astro.props;
+
+const siteName = "Pride Concrete Lifting";
+const fullTitle = isHomepage ? title : `${title} | ${siteName}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-	</head>
-	<body>
-    <Nav isHomepage={isHomepage}/>
-		<slot />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:site_name" content={siteName} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+    
+    <!-- Business Information -->
+    <meta name="geo.region" content="US-TX" />
+    <meta name="geo.placename" content="Dallas-Fort Worth" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Structured Data -->
+    <StructuredData type={structuredDataType} title={title} description={description} image={ogImage} />
+  </head>
+  <body>
+    <Nav isHomepage={isHomepage} />
+    <slot />
     <Footer />
-	</body>
+  </body>
 </html>
