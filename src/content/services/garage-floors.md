@@ -1,10 +1,10 @@
 ---
 title: "Garage Floor Leveling & Apron Repair | Dallas-Fort Worth"
 description: "Fix the bump into your garage and stop water from pooling. Pride Concrete Lifting levels garage floors and aprons in DFW. Fast, clean, and affordable."
-heroImage: "/images/markets/garage-leveling.jpg"
+heroImage: "../../assets/markets/garage-leveling.jpg"
 gallery:
-  - "/images/work/garage-apron-repair.jpg"
-  - "/images/work/garage-floor-lift.jpg"
+  - "../../assets/work/garage-apron-repair.jpg"
+  - "../../assets/work/garage-floor-lift.jpg"
 ---
 
 ## Fix the "Bump" Before It Breaks Your Tires.

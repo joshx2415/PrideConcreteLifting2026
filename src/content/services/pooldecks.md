@@ -1,11 +1,11 @@
 ---
 title: "Pool Deck Repair & Infinity Pool Leveling | Dallas-Fort Worth"
 description: "Fix sunken concrete pool decks and level infinity pool edges in DFW. Remove trip hazards and save water with our fast, clean polyurethane foam lifting."
-heroImage: "/images/markets/poolside-gallery-image.jpg"
+heroImage: "../../assets/markets/poolside-gallery-image.jpg"
 gallery:
-  - "/images/work/infinity-pool-leveling.jpg"
-  - "/images/work/pool-deck-sunken.jpg"
-  - "/images/work/pool-deck-lifting.jpg"
+  - "../../assets/work/infinity-pool-leveling.jpg"
+  - "../../assets/work/pool-deck-sunken.jpg"
+  - "../../assets/work/pool-deck-lifting.jpg"
 ---
 
 Your pool is the centerpiece of your backyard oasis—a place to relax and cool off. But when the concrete deck around it begins to sink or shift, that oasis can quickly turn into a liability.

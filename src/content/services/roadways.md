@@ -1,14 +1,14 @@
 ---
 title: "Municipal Roadway Lifting & Infrastructure Repair | Texas"
 description: "Concrete lifting and soil stabilization for highways, streets, and bridge approaches. Fast, cost-effective infrastructure repair for Texas municipalities and DOTs."
-heroImage: "/images/markets/we-lift-driveways.jpg"
+heroImage: "../../assets/markets/we-lift-driveways.jpg"
 gallery:
-  - "/images/work/roadway-highway.jpg"
-  - "/images/work/bridge-approach.jpg"
+  - "../../assets/work/roadway-highway.jpg"
+  - "../../assets/work/bridge-approach.jpg"
 ---
 
 <a href="https://www.ncfigeo.com/" target="_blank" class="block mb-8">
-  <img src="/images/NCFI/NCFI GEo DB R.png" alt="NCFI Geotechnical Logo" class="h-20 w-auto" />
+  <img src="../../assets/NCFI/NCFI GEo DB R.png" alt="NCFI Geotechnical Logo" class="h-20 w-auto" />
 </a>
 
 Maintaining public infrastructure is a battle against time, budget constraints, and the shifting Texas soil. When roadways settle, they create dangerous liabilities—from blown tires to major accidents—and costly drainage issues.

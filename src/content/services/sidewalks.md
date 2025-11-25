@@ -1,10 +1,10 @@
 ---
 title: "Sidewalk Repair & Trip Hazard Removal | Dallas-Fort Worth"
 description: "Eliminate trip hazards and meet ADA compliance on your sidewalks. Pride Concrete Lifting levels walkways for homes and businesses in DFW. Fast & Affordable."
-heroImage: "/images/work/sunken-sidewalk.jpg"
+heroImage: "../../assets/work/sunken-sidewalk.jpg"
 gallery:
-  - "/images/work/roadway-repair-level.jpg"
-  - "/images/work/sidewalk-after.jpg"
+  - "../../assets/work/roadway-repair-level.jpg"
+  - "../../assets/work/sidewalk-after.jpg"
 ---
 
 ## Don't Let a Trip Hazard Become a Lawsuit.

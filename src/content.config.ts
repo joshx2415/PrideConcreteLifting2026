@@ -17,13 +17,12 @@ const blog = defineCollection({
 });
 
 const services = defineCollection({
-  // Load Markdown files in the `src/content/services/` directory.
-  loader: glob({ base: './src/content/services', pattern: '**/*.md' }),
-  schema: z.object({
+  type: 'content',
+  schema: ({ image }) => z.object({
     title: z.string(),
-    description: z.string().optional(),
-    heroImage: z.string().optional(),
-    gallery: z.array(z.string()).optional(),
+    description: z.string(),
+    heroImage: image().optional(),
+    gallery: z.array(image()).optional(),
   }),
 });
 
