@@ -1,27 +1,46 @@
 ---
-title: "Roadway Lifting and Stabilization"
-description: "Roadway Lifting and Stabilization services by Pride Concrete Lifting."
-heroImage: "/images/markets/we-lift-driveways.jpg"
+title: "Municipal Roadway Lifting & Infrastructure Repair | Texas"
+description: "Concrete lifting and soil stabilization for highways, streets, and bridge approaches. Fast, cost-effective infrastructure repair for Texas municipalities and DOTs."
+heroImage: "../../assets/markets/highway-gallery-image.jpg"
+gallery:
+  - "../../assets/work/roadway-repair.jpg"
+  - "../../assets/work/roadway-repair-fixed.jpg"
+  - "../../assets/work/roadway-repair-level.jpg"
 ---
 
-## Keeping our roads safe and level.
-
-<a href="https://www.ncfigeo.com/" target="_blank">
-  <img src="/images/NCFI/NCFI GEo DB R.png" alt="NCFI Geotechnical Logo" />
+<a href="https://www.ncfigeo.com/" target="_blank" class="block mb-8">
+  <img src="../../assets/NCFI/NCFI GEo DB R.png" alt="NCFI Geotechnical Logo" class="h-20 w-auto" />
 </a>
 
-Pride Concrete Lifting proudly uses NCFI Geotechnical Polyurethane Formulations in all of our jobs. To achieve the goal of lifting pavement, asphalt, or any other concrete material foundation - we inject a polyurethane formulation underneath the material that fills any voided space and as the formulation sets up it begins to expand to bring the concrete back to grade and filling the voided space ensuring long lasting results.
+Maintaining public infrastructure is a battle against time, budget constraints, and the shifting Texas soil. When roadways settle, they create dangerous liabilities—from blown tires to major accidents—and costly drainage issues.
 
-## Leveling Roadways for a Smoother, Safer Ride
+**Pride Concrete Lifting** partners with Municipalities, Departments of Transportation (DOT), and HOAs to stabilize infrastructure at a fraction of the cost of replacement.
 
-From major highways to local streets, Pride Concrete Lifting is here to help keep our roadways safe and level. Sunken or uneven roadways can cause major problems for drivers, from blown tires to accidents. We can lift and level concrete roadways to ensure a smooth and safe ride for everyone.
+## The Alternative to "Rip and Replace"
+Closing a road to tear out and repour concrete is a logistical nightmare. It involves days of traffic control, heavy equipment, and curing time.
 
-We have experience working with municipalities and departments of transportation to ensure that our work is up to code and will last for years to come. We are also able to work on airport runways, racetracks, and other large-scale projects.
+Our **Polyurethane Soil Stabilization** process offers a smarter alternative:
+* **Minimal Traffic Disruption:** Our high-density foam cures to 90% strength in **15 minutes**. We can treat a section of highway and reopen the lane immediately.
+* **High Load Capacity:** We use industrial-grade NCFI Geotechnical polymers capable of supporting heavy highway traffic and freight loads.
+* **Cost Efficiency:** Repairing the slab is typically **50-70% cheaper** than replacement, allowing you to stretch your maintenance budget further.
 
-> "A level road is a safe road"
+## Deep Injection & Soil Stabilization
+It’s not just about lifting the concrete; it’s about fixing the sub-grade.
+For roadways, we often utilize **Deep Injection** techniques. We insert probes to inject expanding foam at various depths into the soil. This densifies loose, weak soil and displaces water, creating a solid, weight-bearing strata that prevents future settling.
 
-If you are a city manager or a department of transportation official, please contact us to discuss your project. We are happy to provide a free estimate and to answer any questions you may have.
+### Common Infrastructure Applications
+We have the equipment and experience to handle large-scale projects, including:
+* **Bridge Approaches & Departures:** Smoothing the "bump" where the bridge deck meets the road.
+* **Highway Panels:** Lifting sunken slabs to restore a smooth ride.
+* **Curb & Gutter:** Realigning curbs to ensure proper water drainage.
+* **Airport Runways & Taxiways:** Precision leveling for critical aviation surfaces.
 
-## We're Here to Help
+> "A level road is a safe road. A stabilized road is a lasting road."
 
-We have the experience and the equipment to handle any size job, from a small section of sidewalk to a major highway. We are committed to providing our clients with the highest quality of work and customer service.
+## Trusted by Public Works Officials
+We understand the compliance and safety standards required for public works.
+If you are a **City Manager, Public Works Director, or HOA Board Member**, we can provide a detailed assessment of your failing infrastructure.
+
+**Pride Concrete Lifting** brings over 25 years of experience to the table. We don't just patch the surface; we stabilize the foundation for years to come.
+
+**[Contact our Commercial Team for a Quote](#contact)**
