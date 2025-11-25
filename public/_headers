@@ -1,0 +1,41 @@
+# 1. Long Cache for Astro Build Assets (Immutable)
+# Astro (Vite) adds unique hashes to filenames (e.g., index.a1b2.css),
+# so we can cache them "forever". If the code changes, the hash changes,
+# and the browser downloads the new version automatically.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 2. Long Cache for Static Media (Images/Fonts)
+# Since this is a brochure site, images likely won't change often.
+# If you DO update an image, it's best to rename it (e.g., hero-v2.jpg)
+# to force users to see the new one.
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+/*.gif
+  Cache-Control: public, max-age=31536000, immutable
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# 3. Default Rules for HTML (The "Safe" Rules)
+# This catches everything else (mostly your HTML pages).
+# "max-age=0, must-revalidate" tells the browser: "You can keep a copy,
+# but ask Netlify if it has changed before showing it."
+# This ensures users see your text updates immediately.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  # Security Headers (Good for SEO & Trust)
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

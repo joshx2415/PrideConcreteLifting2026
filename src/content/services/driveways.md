@@ -1,17 +1,42 @@
 ---
-title: "Driveway Lifting & Leveling"
-description: "Driveway Lifting & Leveling services by Pride Concrete Lifting."
+title: "Driveway Lifting & Repair Services | Dallas-Fort Worth"
+description: "Restore your sunken driveway with Pride Concrete Lifting. We use high-density polyurethane foam to lift and level concrete in Dallas-Fort Worth. Fast, clean, and permanent."
 heroImage: "/images/markets/we-lift-driveways.jpg"
+gallery:
+  - "/images/gallery/driveway-before.jpg"
+  - "/images/gallery/driveway-after.jpg"
 ---
 
-Driveways are the gateway to your home - we want to make sure you make a smooth entrance by lifting and stabilizing your concrete driveway.
+Your driveway is the first thing people see when they visit your home. If your slabs have sunk, shifted, or become uneven, it’s not just an eyesore—it’s a liability.
 
-Settling happens whether it's from water eroding the soil beneath concrete or from heavy loads (such as driving or parking vehicles on it every day) compacting the soil. Your concrete needs a strong base, and with our polyurethane foam - we can raise your driveway back to grade and provide a new strong foundation so you don't have to worry about further settling.
+At **Pride Concrete Lifting**, we specialize in restoring the safety and curb appeal of your home without the massive cost of tearing out and pouring new concrete.
+
+## Why Do Driveways Sink?
+In the Dallas-Fort Worth area, soil movement is the enemy of concrete. Settling usually occurs due to:
+* **Soil Erosion:** Water washes away the dirt supporting your slab.
+* **Compaction:** Heavy vehicle loads compress the soil over time.
+* **Clay Soil:** The natural expansion and contraction of Texas clay creates voids underneath your driveway.
+
+Once a void forms, the concrete has no support. Eventually, it cracks and sinks.
+
+## The Solution: Polyurethane Foam Injection
+We use **NCFI Geotechnical Polyurethane Formulations**, the industry gold standard for concrete leveling. This high-density foam is injected through dime-sized holes in your concrete. As it expands, it fills the voids below and gently lifts the slab back to its original grade.
+
+### Why Foam is Better Than "Mudjacking"
+Old-school mudjacking uses a heavy slurry of cement and water to lift slabs. We prefer polyurethane foam because:
+1.  **It's Lightweight:** Mudjacking adds heavy weight to already unstable soil, often causing it to sink again. Foam is light and puts no burden on the soil.
+2.  **It's Hydrophobic:** Our foam is waterproof. It won't wash away, and it actually helps seal the soil against future erosion.
+3.  **It's Fast:** Mudjacking takes days to cure. With foam, you can park your car on your driveway **15 minutes after we finish.**
 
 ## No Easier Way to Raise a Fallen Driveway
+Our process is designed to be minimally invasive. There is no heavy machinery tearing up your yard and no loud construction noise.
+* **Clean:** No concrete splatter or dust.
+* **Precise:** We control the lift within a fraction of an inch.
+* **Aesthetic:** We patch the small injection holes to match your existing concrete.
 
-Our concrete foam lifting and soil stablization process is the fastest and most reliable way to lift your driveway back to grade with minimal invasiveness. We use NCFI Geotechnical Polyurethane Formulations in all of our jobs - the expanding foam both lifts and fills voids underneath your driveway. Say goodbye to those bumpy landings and hello to smooth sailing.
+## Ready to Fix Your Driveway?
+Don't wait for the problem to get worse. Sunken concrete often leads to severe cracking, which increases the cost of repair.
 
-## Ready to Raise your Curb Appeal?
+**Pride Concrete Lifting** brings you over 25 years of experience in the industry. We provide the care, knowledge, and fair pricing our customers deserve.
 
-Contact us today to schedule a free estimate and discuss options for your driveway repair. Pride Concrete Lifting brings you over 25 years of experience in the Foam Lifting Industry providing the Care, Knowledge, and Pricing our customers deserve.
+**[Get a Free Estimate Today](#contact)**

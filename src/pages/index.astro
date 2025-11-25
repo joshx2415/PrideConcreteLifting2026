@@ -23,12 +23,13 @@ import { Icon } from "astro-icon/components";
         class="container relative px-6 py-32 mx-auto max-w-7xl lg:px-8 md:pt-40"
       >
         <div class="flex flex-col w-full mb-12 text-center">
-          <h1
-            class="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-6xl"
-          >
+          <h1 class="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-6xl">
             Concrete Lifting
             <br class="hidden lg:block" />
             and Soil Stabilization
+            <span class="block mt-2 text-2xl font-medium text-gray-200 md:text-3xl">
+              Serving Dallas, Fort Worth & North Texas
+            </span>
           </h1>
           <p
             class="mx-auto text-xl leading-relaxed text-white lg:w-2/3 max-w-4xl"
@@ -147,16 +148,21 @@ import { Icon } from "astro-icon/components";
             </div>
           </div>
           <div class="space-y-8">
-            <img
-              class="w-full rounded-lg shadow-xl"
-              src="/images/markets/airport-gallery-image.jpg"
-              alt="Airport Runway"
-            />
-            <img
-              class="w-full rounded-lg shadow-xl"
-              src="/images/markets/residential-gallery-image.jpg"
-              alt="Residential Neighborhood"
-            />
+            <a href="/services/roadways" class="block group">
+              <div class="relative overflow-hidden rounded-lg shadow-xl">
+                <img class="w-full transition-transform duration-500 group-hover:scale-105"
+                    src="/images/markets/airport-gallery-image.jpg"
+                    alt="Airport Runway Repair" />
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span class="text-white font-bold text-xl">Commercial & Municipal</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/driveways" class="block group">
+              <div class="relative overflow-hidden rounded-lg shadow-xl">
+                </div>
+            </a>
           </div>
         </div>
 
@@ -417,11 +423,9 @@ import { Icon } from "astro-icon/components";
             </p>
             <p class="flex items-center justify-center gap-2 text-xl">
               <Icon name="fa-solid:phone" class="w-5 h-5 text-pride-red" />
-              <a
-                href="tel:817-888-6254"
-                class="font-semibold text-white transition-colors hover:text-pride-red"
-              >
-                817-888-6254
+              <a href="tel:817-888-6254" class="inline-flex items-center px-6 py-3 mt-4 text-lg font-bold text-white bg-pride-red rounded-full hover:bg-red-700 md:hidden">
+                <Icon name="fa-solid:phone" class="w-5 h-5 mr-2" />
+                Call 817-888-6254
               </a>
             </p>
           </div>

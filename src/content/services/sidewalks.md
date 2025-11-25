@@ -1,23 +1,39 @@
 ---
-title: "Sidewalk and Walkway Repair"
-description: "Sidewalk and Walkway Repair services by Pride Concrete Lifting."
+title: "Sidewalk Repair & Trip Hazard Removal | Dallas-Fort Worth"
+description: "Eliminate trip hazards and meet ADA compliance on your sidewalks. Pride Concrete Lifting levels walkways for homes and businesses in DFW. Fast & Affordable."
 heroImage: "/images/work/sunken-sidewalk.jpg"
 gallery:
   - "/images/work/roadway-repair-level.jpg"
+  - "/images/work/sidewalk-after.jpg"
 ---
 
-## Don't let tripping hazards trip you up.
+## Don't Let a Trip Hazard Become a Lawsuit.
 
-Whether you're a home owner with shaky sidewalks, or a business whose walkways have settled over time creating tripping hazards for you and your customers, we're able to lift the concrete back and make straight those paths. Make your paths safe again by getting it raised and stabilized. We not only lift your concrete, our polyurethane foam also fills voids and stabilizes the concrete to protect against future settlement.
+Whether it is a customer walking into your business or a neighbor walking their dog past your house, a raised sidewalk edge is a liability waiting to happen.
 
-> **Make Your Paths Safe Again.**
+At **Pride Concrete Lifting**, we smooth out the path. We lift sunken walkway slabs back to their original position, eliminating trip hazards and restoring the safety of your property.
 
-Sunken or uneven sidewalks can be a major liability for businesses and homeowners. Pride Concrete Lifting can help you to eliminate this tripping hazard and make your sidewalks safe again. We have experience working with both residential and commercial clients to repair sidewalks, walkways, and other concrete surfaces.
+## Commercial: ADA Compliance & Liability
+For business owners and property managers, uneven concrete isn't just ugly—it's a legal risk.
+* **ADA Compliance:** The Americans with Disabilities Act (ADA) has strict requirements for surface smoothness. A difference of just 1/4 inch can be considered a violation.
+* **Liability Reduction:** Trip-and-fall accidents are one of the most common lawsuits businesses face.
+* **Minimal Downtime:** Unlike replacing concrete, which closes off your entrance for days, our foam injection process allows foot traffic to resume **immediately** after we finish.
 
-## We're Here to Help
+## Residential: HOA & City Code Compliance
+Homeowners in DFW often receive notices from their City or HOA regarding uneven sidewalks.
+Instead of spending thousands to tear out the sidewalk (and ruin your landscaping in the process), let us level it.
+* **Save Your Lawn:** Our equipment is small and runs on long hoses. We don't need to drive heavy trucks over your grass.
+* **Save Your Trees:** Sidewalks often lift due to tree roots. We can often adjust the slabs to accommodate the roots without needing to kill the tree or destroy the concrete.
 
-## No job is too big or too small
+## The Pride Advantage: Precision Lifting
+We use high-density polyurethane foam to lift and stabilize your concrete.
+1.  **Drill:** We drill penny-sized holes in the concrete.
+2.  **Pump:** We inject the foam, which expands to fill voids and gently lift the slab.
+3.  **Patch:** We patch the holes with cement, leaving a smooth, safe surface.
 
-We have the experience and the equipment to handle any size job, from a small section of sidewalk to a large commercial project. We are committed to providing our clients with the highest quality of work and customer service.
+## No Job is Too Small
+From a single uneven square on a residential walkway to a mile-long path for a master-planned community, we have the equipment to handle it.
 
-If you have a sunken or uneven sidewalk, please contact us to discuss your project. We are happy to provide a free estimate and to answer any questions you may have.
+**Pride Concrete Lifting** helps you keep your path straight and your visitors safe.
+
+**[Get a Free Estimate Today](#contact)**
