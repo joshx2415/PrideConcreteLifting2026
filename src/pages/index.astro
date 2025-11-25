@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.vue";
+import Gallery from "../components/Gallery.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-
 //import heroBg from "../assets/mega-highway-pride-concrete-can-lift-everything.jpg";
 import heroBg from "../assets/work/church-parking-lot.jpeg";
 import logo from "../assets/logo.png";
@@ -22,7 +22,8 @@ import ncfiStep1 from "../assets/NCFI/1st step slab lift graphic.png";
 import ncfiStep2 from "../assets/NCFI/2nd step slab lift graphic.png";
 import ncfiStep3 from "../assets/NCFI/3rd step slab lift graphic.png";
 
-// Simple helper for the background image style
+const galleryFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{jpeg,jpg,png,gif}', { eager: true });
+const homeGalleryImages = Object.values(galleryFiles).map((file) => file.default);
 const heroStyle = `background-image: url('${heroBg.src}');`;
 ---
 
@@ -425,6 +426,12 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
       </div>
     </section>
 
+    {homeGalleryImages.length > 0 && (
+      <section class="py-20 bg-white">
+        <Gallery images={homeGalleryImages} />
+      </section>
+    )}
+    
     <section class="py-20 bg-navy-900">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mb-12 text-center">

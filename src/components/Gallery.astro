@@ -1,15 +1,13 @@
 ---
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro'; // Import the type
+import type { ImageMetadata } from 'astro';
 
 export interface Props {
-  // Update type from string[] to ImageMetadata[]
   images: ImageMetadata[]; 
 }
 
 const { images } = Astro.props;
 
-// Prepare a simple array of strings for AlpineJS to use
 const imageUrls = images.map(img => img.src);
 ---
 
@@ -20,7 +18,7 @@ const imageUrls = images.map(img => img.src);
     <div 
       x-data={`{
         currentImage: 0,
-        images: ${JSON.stringify(imageUrls)}, // Pass the string array, not the object array
+        images: ${JSON.stringify(imageUrls)},
         lightboxOpen: false,
         openLightbox(index) {
           this.currentImage = index;
@@ -42,13 +40,12 @@ const imageUrls = images.map(img => img.src);
       @keydown.arrow-right.window="lightboxOpen && nextImage()"
       @keydown.arrow-left.window="lightboxOpen && prevImage()"
     >
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
         {images.map((image, index) => (
           <div 
-            class="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-video bg-gray-100"
+            class="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-video bg-gray-100 flex-shrink-0 w-[85vw] md:w-auto snap-center"
             @click={`openLightbox(${index})`}
           >
-            {/* Use Astro Image component here for optimization */}
             <Image 
               src={image} 
               alt={`Gallery image ${index + 1}`}
@@ -121,3 +118,14 @@ const imageUrls = images.map(img => img.src);
     </div>
   </div>
 </section>
+
+<style>
+  /* Optional: Hide scrollbar for cleaner look */
+  .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+  }
+  .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  }
+</style>
