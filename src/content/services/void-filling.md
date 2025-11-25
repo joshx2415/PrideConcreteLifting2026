@@ -1,10 +1,14 @@
 ---
 title: "Void Filling & Soil Stabilization | Dallas-Fort Worth"
 description: "Fill underground voids before your concrete cracks. Pride Concrete Lifting stabilizes seawalls, culverts, and utility trenches with hydrophobic foam."
-heroImage: "../../assets/markets/void-filling.jpg"
+heroImage: "../../assets/work/cross_section_concrete_and_foam.jpg"
 gallery:
-  - "../../assets/work/seawall-stabilization.jpg"
-  - "../../assets/work/void-fill-process.jpg"
+  - "../../assets/work/eroded-concrete-base.jpg"
+  - "../../assets/work/exterior-wall-pad-settling.jpg"
+  - "../../assets/NCFI/1st step slab lift graphic.png"
+  - "../../assets/NCFI/2nd step slab lift graphic.png"
+  - "../../assets/NCFI/3rd step slab lift graphic.png"
+  - "../../assets/NCFI/foundation soil layers.png"
 ---
 
 ## The Problem You Can't See (Yet).

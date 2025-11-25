@@ -2,9 +2,6 @@
 title: "Driveway Lifting & Repair Services | Dallas-Fort Worth"
 description: "Restore your sunken driveway with Pride Concrete Lifting. We use high-density polyurethane foam to lift and level concrete in Dallas-Fort Worth. Fast, clean, and permanent."
 heroImage: "../../assets/markets/we-lift-driveways.jpg"
-gallery:
-  - "../../assets/gallery/driveway-before.jpg"
-  - "../../assets/gallery/driveway-after.jpg"
 ---
 
 Your driveway is the first thing people see when they visit your home. If your slabs have sunk, shifted, or become uneven, it’s not just an eyesore—it’s a liability.

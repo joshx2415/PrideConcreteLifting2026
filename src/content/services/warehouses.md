@@ -1,10 +1,7 @@
 ---
 title: "Warehouse Floor Leveling & Industrial Slab Repair | Texas"
 description: "Stabilize rocking slabs and level warehouse floors without shutting down operations. Pride Concrete Lifting repairs industrial concrete for forklift safety and efficiency."
-heroImage: "../../assets/markets/warehouse-floor.jpg"
-gallery:
-  - "../../assets/work/warehouse-joint-repair.jpg"
-  - "../../assets/work/industrial-floor-leveling.jpg"
+heroImage: "../../assets/NCFI/Pinpoint Lifting Foam.png"
 ---
 
 ## Stop Production Downtime. Fix Your Floor.

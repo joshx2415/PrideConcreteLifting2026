@@ -1,10 +1,7 @@
 ---
 title: "Garage Floor Leveling & Apron Repair | Dallas-Fort Worth"
 description: "Fix the bump into your garage and stop water from pooling. Pride Concrete Lifting levels garage floors and aprons in DFW. Fast, clean, and affordable."
-heroImage: "../../assets/markets/garage-leveling.jpg"
-gallery:
-  - "../../assets/work/garage-apron-repair.jpg"
-  - "../../assets/work/garage-floor-lift.jpg"
+heroImage: "../../assets/work/elevation.jpeg"
 ---
 
 ## Fix the "Bump" Before It Breaks Your Tires.
@@ -21,7 +18,7 @@ The "apron" is the section of driveway immediately outside your garage door. In 
 * **Tripping Hazards:** A dangerous step-down that catches toes and causes falls.
 * **Water Intrusion:** Instead of draining *away* from your home, the sunken concrete funnels rainwater right under your garage door, rotting the seal and flooding your floor.
 
-## The Solution: Lift It, Don't Replace It
+## The Solution: Lift It.
 Tearing out a garage floor is a massive headache. You have to move everything out, deal with jackhammers, and wait weeks for new concrete to cure.
 
 **Our Polyurethane Foam Injection is the smarter choice:**

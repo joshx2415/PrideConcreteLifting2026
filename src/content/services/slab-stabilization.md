@@ -1,10 +1,7 @@
 ---
 title: "Interior Floor Leveling & Slab Stabilization | Dallas-Fort Worth"
 description: "Level uneven concrete floors before installing new tile or wood. Clean, dust-free interior slab repair in DFW. Fix sticking doors and cracks."
-heroImage: "../../assets/markets/interior-floor-leveling.jpg"
-gallery:
-  - "../../assets/work/interior-lift-process.jpg"
-  - "../../assets/work/floor-prep-leveling.jpg"
+heroImage: "../../assets/markets/residential-gallery-image.jpg"
 ---
 
 ## Preparing for New Floors? Start with a Level Base.

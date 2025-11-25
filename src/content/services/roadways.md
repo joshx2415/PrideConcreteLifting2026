@@ -1,10 +1,11 @@
 ---
 title: "Municipal Roadway Lifting & Infrastructure Repair | Texas"
 description: "Concrete lifting and soil stabilization for highways, streets, and bridge approaches. Fast, cost-effective infrastructure repair for Texas municipalities and DOTs."
-heroImage: "../../assets/markets/we-lift-driveways.jpg"
+heroImage: "../../assets/markets/highway-gallery-image.jpg"
 gallery:
-  - "../../assets/work/roadway-highway.jpg"
-  - "../../assets/work/bridge-approach.jpg"
+  - "../../assets/work/roadway-repair.jpg"
+  - "../../assets/work/roadway-repair-fixed.jpg"
+  - "../../assets/work/roadway-repair-level.jpg"
 ---
 
 <a href="https://www.ncfigeo.com/" target="_blank" class="block mb-8">

@@ -1,4 +1,13 @@
 ---
+import { Image } from "astro:assets";
+// Make sure this path matches exactly where you put the file in src/assets/
+// based on your previous messages, it might be in an 'images' subfolder now:
+import logo from "../assets/pride_lifting_white.png"; 
 ---
-  <img class="object-fit object-center h-20 shadow-md mlogo transition duration-500 ease-in-out transform hover:text-blue-500" alt="Pride Concrete Lifting Logo" loading="lazy"
-  src="/images/pride_lifting_white.png">
+
+<Image 
+  src={logo}
+  alt="Pride Concrete Lifting Logo"
+  class="object-contain object-center h-20 mlogo transition duration-500 ease-in-out transform hover:text-blue-500"
+  loading="eager"
+/>

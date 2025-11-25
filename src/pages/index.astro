@@ -2,19 +2,39 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.vue";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+//import heroBg from "../assets/mega-highway-pride-concrete-can-lift-everything.jpg";
+import heroBg from "../assets/work/church-parking-lot.jpeg";
+import logo from "../assets/logo.png";
+import fallenCurb from "../assets/work/fallen_curb.jpg";
+import raisedCurb from "../assets/work/raised_curb.jpg";
+import poolsideGallery from "../assets/markets/poolside-gallery-image.jpg";
+import airportGallery from "../assets/markets/airport-gallery-image.jpg";
+import residentialGallery from "../assets/markets/residential-gallery-image.jpg";
+import crossSection from "../assets/work/cross_section_concrete_and_foam.jpg";
+import alleyBefore from "../assets/work/alley2_before.jpg";
+import alleyAfter from "../assets/work/alley2_after.jpg";
+import standingWater from "../assets/work/standing-water.jpg";
+import drainageAfter from "../assets/work/drain_runoff_1.jpg";
+import ncfiLogo from "../assets/NCFI/NCFI GEo DB R.png";
+import ncfiStep1 from "../assets/NCFI/1st step slab lift graphic.png";
+import ncfiStep2 from "../assets/NCFI/2nd step slab lift graphic.png";
+import ncfiStep3 from "../assets/NCFI/3rd step slab lift graphic.png";
+
+// Simple helper for the background image style
+const heroStyle = `background-image: url('${heroBg.src}');`;
 ---
 
 <BaseLayout
-  title="Pride Concrete Lifting and Repair in Dallas / Fort Worth"
+  title="Concrete Lifting & Stabilization | Dallas - Fort Worth"
   description="Professional concrete lifting and soil stabilization in DFW. 25+ years experience. Free estimates on driveways, patios, sidewalks, and more."
   isHomepage={true}
-  keywords="concrete lifting Dallas, concrete leveling Fort Worth, polyurethane foam injection, slab jacking DFW, mudjacking, concrete repair Texas"
-  ogImage="../../assets/logo.png"
+  ogImage={logo.src} 
   structuredDataType="business"
 >
   <div class="bg-white">
-    <!-- Hero Section -->
-    <section class="relative flex items-center min-h-screen hero-bg">
+    <section class="relative flex items-center min-h-screen bg-cover bg-center bg-no-repeat" style={heroStyle}>
       <div
         class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"
       >
@@ -23,12 +43,14 @@ import { Icon } from "astro-icon/components";
         class="container relative px-6 py-32 mx-auto max-w-7xl lg:px-8 md:pt-40"
       >
         <div class="flex flex-col w-full mb-12 text-center">
-          <h1 class="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-6xl">
+          <h1
+            class="mb-8 text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-6xl"
+          >
             Concrete Lifting
             <br class="hidden lg:block" />
             and Soil Stabilization
             <span class="block mt-2 text-2xl font-medium text-gray-200 md:text-3xl">
-              Serving Dallas, Fort Worth & North Texas
+                Serving Dallas, Fort Worth & North Texas
             </span>
           </h1>
           <p
@@ -57,17 +79,23 @@ import { Icon } from "astro-icon/components";
             </button>
           </a>
         </div>
+        <div class="flex justify-center mt-6 md:hidden">
+            <a href="tel:817-888-6254" class="inline-flex items-center px-6 py-3 text-lg font-bold text-white bg-pride-red rounded-full hover:bg-red-700">
+              <Icon name="fa-solid:phone" class="w-5 h-5 mr-2" />
+              Call 817-888-6254
+            </a>
+        </div>
       </div>
     </section>
 
-    <!-- About Section -->
     <section class="py-20 bg-white">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mb-16 text-center">
-          <img
+          <Image
             class="mx-auto mb-12 w-80"
-            src="../../assets/logo.png"
+            src={logo}
             alt="Pride Concrete Lifting - We Take Pride in our Work and our Experience."
+            loading="eager"
           />
           <h2
             id="about"
@@ -90,17 +118,17 @@ import { Icon } from "astro-icon/components";
         <div class="grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
           <div class="space-y-4">
             <h3 class="text-3xl font-bold text-navy-900">We Turn This...</h3>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
-              src="../../assets/work/fallen_curb.jpg"
+              src={fallenCurb}
               alt="Fallen Sidewalk Curb"
             />
           </div>
           <div class="space-y-4">
             <h3 class="text-3xl font-bold text-navy-900">Into This...</h3>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
-              src="../../assets/work/raised_curb.jpg"
+              src={raisedCurb}
               alt="Sidewalk Curb Now Raised"
             />
           </div>
@@ -108,7 +136,6 @@ import { Icon } from "astro-icon/components";
       </div>
     </section>
 
-    <!-- Services Section -->
     <section class="py-20 bg-gray-50">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mx-auto mb-16 max-w-5xl">
@@ -141,27 +168,30 @@ import { Icon } from "astro-icon/components";
         </div>
 
         <div class="grid gap-8 mb-16 md:grid-cols-2">
-          <div class="hidden md:block">
-            <div
-              class="w-full h-full rounded-lg shadow-xl poolside-bg min-h-[400px]"
-            >
-            </div>
-          </div>
-          <div class="space-y-8">
-            <a href="/services/roadways" class="block group">
-              <div class="relative overflow-hidden rounded-lg shadow-xl">
-                <img class="w-full transition-transform duration-500 group-hover:scale-105"
-                    src="../../assets/markets/airport-gallery-image.jpg"
-                    alt="Airport Runway Repair" />
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span class="text-white font-bold text-xl">Commercial & Municipal</span>
-                </div>
-              </div>
+          <div class="hidden md:block h-full min-h-[400px]">
+            <a href="/services/pool-decks" class="block h-full w-full transition-transform hover:scale-[1.02] duration-300">
+              <Image
+                class="w-full h-full object-cover rounded-lg shadow-xl"
+                src={poolsideGallery}
+                alt="Poolside Concrete Lifting"
+              />
             </a>
+          </div>
 
-            <a href="/services/driveways" class="block group">
-              <div class="relative overflow-hidden rounded-lg shadow-xl">
-                </div>
+          <div class="space-y-8">
+            <a href="/services/roadways" class="block group transition-transform hover:scale-[1.02] duration-300">
+              <Image
+                class="w-full rounded-lg shadow-xl"
+                src={airportGallery}
+                alt="Airport Runway"
+              />
+            </a>
+            <a href="/services/driveways" class="block group transition-transform hover:scale-[1.02] duration-300">
+              <Image
+                class="w-full rounded-lg shadow-xl"
+                src={residentialGallery}
+                alt="Residential Neighborhood"
+              />
             </a>
           </div>
         </div>
@@ -211,17 +241,16 @@ import { Icon } from "astro-icon/components";
             </div>
           </div>
           <div>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
               alt="Cross Section Showing Void Filled"
-              src="../../assets/work/cross_section_concrete_and_foam.jpg"
+              src={crossSection}
             />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Drainage Section -->
     <section class="py-20 bg-white">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mb-16 text-center">
@@ -241,9 +270,9 @@ import { Icon } from "astro-icon/components";
             <h3 class="text-2xl font-bold text-center text-navy-900">
               Standing Water Before
             </h3>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
-              src="../../assets/work/alley2_before.jpg"
+              src={alleyBefore}
               alt="Standing Water in an Alleyway"
             />
           </div>
@@ -251,9 +280,9 @@ import { Icon } from "astro-icon/components";
             <h3 class="text-2xl font-bold text-center text-navy-900">
               Water Draining After
             </h3>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
-              src="../../assets/work/alley2_after.jpg"
+              src={alleyAfter}
               alt="Water-Free Alleyway After Concrete Lifting"
             />
           </div>
@@ -264,9 +293,9 @@ import { Icon } from "astro-icon/components";
             <h3 class="text-2xl font-bold text-center text-navy-900">
               Non-Draining Water
             </h3>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
-              src="../../assets/work/standing-water.jpg"
+              src={standingWater}
               alt="Non-Draining Water in an Alley"
             />
           </div>
@@ -274,9 +303,9 @@ import { Icon } from "astro-icon/components";
             <h3 class="text-2xl font-bold text-center text-navy-900">
               Water Draining After Leveling
             </h3>
-            <img
+            <Image
               class="w-full rounded-lg shadow-xl"
-              src="../../assets/work/drain_runoff_1.jpg"
+              src={drainageAfter}
               alt="Water Flowing Properly After Being Raised"
             />
           </div>
@@ -284,7 +313,6 @@ import { Icon } from "astro-icon/components";
       </div>
     </section>
 
-    <!-- How It Works Section -->
     <section class="py-20 bg-gray-50">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mb-16 text-center">
@@ -308,9 +336,9 @@ import { Icon } from "astro-icon/components";
             rel="noopener noreferrer"
             class="transition-opacity hover:opacity-90"
           >
-            <img
+            <Image
               class="w-full"
-              src="../../assets/NCFI/NCFI GEo DB R.png"
+              src={ncfiLogo}
               alt="NCFI Geotechnical Logo"
             />
           </a>
@@ -332,10 +360,10 @@ import { Icon } from "astro-icon/components";
             class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl"
           >
             <div class="overflow-hidden h-80">
-              <img
+              <Image
                 alt="Foam Being Injected Under Concrete"
                 class="object-cover w-full h-full"
-                src="../../assets/NCFI/1st step slab lift graphic.png"
+                src={ncfiStep1}
               />
             </div>
             <div class="p-6">
@@ -354,10 +382,10 @@ import { Icon } from "astro-icon/components";
             class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl"
           >
             <div class="overflow-hidden h-80">
-              <img
+              <Image
                 alt="Foam Expanding Underneath Concrete"
                 class="object-cover w-full h-full"
-                src="../../assets/NCFI/2nd step slab lift graphic.png"
+                src={ncfiStep2}
               />
             </div>
             <div class="p-6">
@@ -376,10 +404,10 @@ import { Icon } from "astro-icon/components";
             class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl"
           >
             <div class="overflow-hidden h-80">
-              <img
+              <Image
                 alt="Foam Causing Concrete to Lift"
                 class="object-cover w-full h-full"
-                src="../../assets/NCFI/3rd step slab lift graphic.png"
+                src={ncfiStep3}
               />
             </div>
             <div class="p-6">
@@ -397,7 +425,6 @@ import { Icon } from "astro-icon/components";
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="py-20 bg-navy-900">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mb-12 text-center">
@@ -423,9 +450,11 @@ import { Icon } from "astro-icon/components";
             </p>
             <p class="flex items-center justify-center gap-2 text-xl">
               <Icon name="fa-solid:phone" class="w-5 h-5 text-pride-red" />
-              <a href="tel:817-888-6254" class="inline-flex items-center px-6 py-3 mt-4 text-lg font-bold text-white bg-pride-red rounded-full hover:bg-red-700 md:hidden">
-                <Icon name="fa-solid:phone" class="w-5 h-5 mr-2" />
-                Call 817-888-6254
+              <a
+                href="tel:817-888-6254"
+                class="font-semibold text-white transition-colors hover:text-pride-red"
+              >
+                817-888-6254
               </a>
             </p>
           </div>
@@ -436,16 +465,8 @@ import { Icon } from "astro-icon/components";
     </section>
   </div>
 
-  <style>
-    .hero-bg {
-      background-image: url("../../assets/mega-highway-pride-concrete-can-lift-everything.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
+  <style>    
     .poolside-bg {
-      background-image: url("../../assets/markets/poolside-gallery-image.jpg");
       background-size: cover;
       background-position: center;
     }
