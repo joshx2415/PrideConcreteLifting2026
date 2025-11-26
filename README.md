@@ -1,95 +1,131 @@
-# Astro Website
+# Pride Concrete Lifting Website
 
-This is a website built with [Astro](https://astro.build/), a modern static site generator. This README provides instructions for setting up, developing, and deploying the project.
+This repository contains the source code for the **Pride Concrete Lifting** website (https://prideconcretelifting.com), a modern static site built with [Astro](https://astro.build/).
 
-## Getting Started
+## 🚀 Getting Started
 
-Follow these instructions to get the project running locally.
+Follow these instructions to set up the project locally for development.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (version 18.x or later recommended)
-- [npm](https://www.npmjs.com/) (or another package manager like yarn or pnpm)
+- [Node.js](https://nodejs.org/) (v18.17.1 or higher)
+- [npm](https://www.npmjs.com/) (installed with Node.js)
 
 ### Installation
 
 1.  **Clone the repository:**
-
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone <repository-url>
+    cd <repository-directory>
     ```
 
 2.  **Install dependencies:**
-
     ```bash
     npm install
     ```
+    *Note: This project uses `@iconify-json/heroicons` for icons and specific Astro integrations.*
 
-### Running the Development Server
+### Running Development Server
 
-To start the local development server, run the following command:
+To start the local development server with hot module replacement:
 
 ```bash
 npm run dev
 ```
 
-This will start a hot-reloading development server, typically at `http://localhost:4321`.
+Open your browser to `http://localhost:4321` to view the site.
 
-## Project Structure
+## 📝 Content Management
 
-The project follows a standard Astro project structure:
+The site's service pages are managed using **Astro Content Collections**.
 
--   `src/`: Contains all of the website's source code.
-    -   `assets/`: For static assets like images, fonts, etc.
-    -   `components/`: Reusable Astro, Vue, or other framework components.
-    -   `content/`: For content collections (e.g., blog posts, documentation).
-    -   `layouts/`: Defines the basic UI structure for pages.
-    -   `pages/`: Each file in this directory becomes a page on your site.
-    -   `styles/`: For global CSS styles.
--   `public/`: For files that don't need to be processed (e.g., `favicon.ico`, `robots.txt`).
--   `astro.config.mjs`: The Astro configuration file.
--   `package.json`: Lists project dependencies and scripts.
--   `tailwind.config.mjs`: The Tailwind CSS configuration file.
+### Updating Service Pages
 
-## Creating and Updating Pages
+Service pages are located in `src/content/services/`. Each file is a Markdown (`.md`) file representing a specific service (e.g., `driveways.md`).
 
-### Astro Pages
+**To edit a service:**
+1.  Open the relevant `.md` file in `src/content/services/`.
+2.  Update the **Frontmatter** (metadata at the top between `---`):
+    *   `title`: The page heading and browser tab title.
+    *   `description`: Used for SEO meta description.
+    *   `heroImage`: Path to the main image (e.g., `/images/markets/we-lift-driveways.jpg`).
+3.  Update the **Body** content using standard Markdown syntax.
 
-To create a new page, add a `.astro` file to the `src/pages/` directory. The filename will determine the page's URL. For example, `src/pages/about.astro` will create a page at `/about`.
+**To add a new service:**
+1.  Create a new `.md` file in `src/content/services/` (e.g., `patio-leveling.md`).
+2.  Add the required frontmatter:
+    ```markdown
+    ---
+    title: "Patio Leveling"
+    description: "Expert patio leveling services..."
+    heroImage: "/images/path/to/image.jpg"
+    ---
+    ```
+3.  Write your content below the frontmatter.
+4.  The new page will be automatically generated at `/services/patio-leveling`.
 
-### Markdown/MDX Pages
+### Images
 
-You can also create pages using Markdown (`.md`) or MDX (`.mdx`) in the `src/pages/` directory. This is useful for content-heavy pages like blog posts or documentation.
+-   Static images are stored in the `public/images/` directory.
+-   Reference them in markdown or code starting with `/images/...`.
 
-## Styling
+## 🔍 SEO Configuration
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling. You can add utility classes directly to your HTML elements. For global styles, edit the files in the `src/styles/` directory.
+Search Engine Optimization is a key part of this architecture.
 
-The Tailwind CSS configuration is in `tailwind.config.mjs`. You can customize your design system (colors, fonts, spacing, etc.) in this file.
+### Global Configuration
+-   **Base Layout:** `src/layouts/BaseLayout.astro` handles the global HTML structure, including:
+    -   Canonical URLs (auto-generated).
+    -   Open Graph (Facebook) and Twitter card meta tags.
+    -   Structured Data (Schema.org).
+-   **Sitemap:** Automatically generated at build time via `@astrojs/sitemap`. Configuration is in `astro.config.mjs`.
 
-## Icons
+### Page-Level SEO
+For every page, ensure the following are set correctly:
+1.  **Title:** Be descriptive and include keywords (e.g., "Driveway Lifting & Leveling").
+2.  **Description:** A concise summary (150-160 chars) appearing in search results.
+3.  **Keywords:** (Optional) Can be passed to `BaseLayout` if needed, though modern search engines prioritize content.
 
-We use the [`astro-icon`](https://github.com/natemoo-re/astro-icon) component to display icons. This component makes it easy to add icons from various icon sets. The project is pre-configured with the Heroicons set.
-
-**Example Usage:**
-
-```astro
----
-import { Icon } from 'astro-icon/components';
----
-
-<Icon name="heroicons:arrow-right" />
+### Redirects
+Legacy URLs (from the previous version of the site) are redirected to new paths in `astro.config.mjs`:
+```js
+redirects: {
+  '/driveways': '/services/driveways',
+  // ...
+}
 ```
+Update this list if you change URL structures to maintain SEO ranking.
 
-To add other icon sets, you'll need to install them via npm (e.g., `npm install @iconify-json/mdi`) and then you can use them in your components.
+## 🛠 Technical Details
 
-## Deployment
+### Technology Stack
+-   **Framework:** [Astro 5](https://astro.build/)
+-   **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+-   **Interactivity:**
+    -   [Alpine.js](https://alpinejs.dev/) for lightweight UI interactions (mobile menu).
+    -   [Vue.js](https://vuejs.org/) for complex components like the Contact Form.
+-   **Icons:** `astro-icon` with Heroicons.
 
-To build the site for production, run:
+### Project Structure
+-   `src/content/`: Markdown sources for service pages.
+-   `src/pages/`: Route definitions.
+    -   `index.astro`: Homepage.
+    -   `services/[slug].astro`: Dynamic route for service pages.
+-   `src/components/`: Reusable UI components (Nav, Footer, ContactForm).
+-   `src/layouts/`: Page wrappers (`BaseLayout.astro`).
+
+## 📦 Building and Deployment
+
+To create a production build:
 
 ```bash
 npm run build
 ```
 
-This will create a `dist/` directory with the optimized, static files for your website. You can then deploy this directory to any static hosting provider like Netlify, Vercel, or GitHub Pages.
+This generates a `dist/` directory containing the static HTML, CSS, and JS files.
+
+### Deployment
+The `dist/` folder is ready to be uploaded to any static hosting provider (Netlify, Vercel, GitHub Pages, etc.).
+
+---
+*Maintained by the Pride Concrete Lifting Development Team.*
