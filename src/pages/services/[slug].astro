@@ -7,7 +7,14 @@ import ContactForm from '../../components/ContactForm.vue';
 import Gallery from '../../components/Gallery.astro';
 
 export async function getStaticPaths() {
-  const services = await getCollection('services');
+  const services = await getCollection('services', ({ data }) => {
+    // If we are in Production (Netlify), hide drafts.
+    // If we are in Dev (npm run dev), show them so you can work on them!
+    if (import.meta.env.PROD) {
+        return data.draft !== true;
+    }
+    return true;
+  });
 
   return services.map(service => ({
     params: { slug: service.slug },

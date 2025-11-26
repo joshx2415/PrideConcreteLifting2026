@@ -23,6 +23,7 @@ const services = defineCollection({
     description: z.string(),
     heroImage: image().optional(),
     gallery: z.array(image()).optional(),
+    draft: z.boolean().default(false),
   }),
 });
 
