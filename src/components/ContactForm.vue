@@ -1,11 +1,24 @@
 <template>
-  <form name="PrideForm" id="myForm" method="post" data-netlify="true" enctype="application/x-www-form-urlencoded"
+  <form 
+    name="PrideForm2026" 
+    id="myForm" 
+    method="post" 
+    netlify-honeypot="bot-field" 
+    data-netlify="true" 
+    enctype="application/x-www-form-urlencoded"
     @submit.prevent="checkForm"
-    class="flex flex-col w-full max-w-4xl p-10 px-8 pt-8 pb-8 mx-auto transition duration-500 ease-in-out transform bg-white rounded-xl shadow-2xl">
-    <input type="hidden" name="form-name" value="PrideForm" />
+    class="flex flex-col w-full max-w-4xl p-10 px-8 pt-8 pb-8 mx-auto transition duration-500 ease-in-out transform bg-white rounded-xl shadow-2xl"
+  >
+    <input type="hidden" name="form-name" value="PrideForm2026" />
     
+    <div class="hidden">
+      <label>
+        Don't fill this out if you're human: 
+        <input name="bot-field" v-model="formData.botField" />
+      </label>
+    </div>
+
     <div class="flex flex-wrap mb-6 -mx-3">
-      <!-- NAME -->
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-title">Name</label>
         <input
@@ -13,7 +26,6 @@
           id="grid-title" type="text" name="name" v-model="formData.name" placeholder="John Smith">
       </div>
 
-      <!-- PHONE NUMBER -->
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-url">Phone Number</label>
         <input
@@ -23,7 +35,6 @@
     </div>
 
     <div class="flex flex-wrap mb-6 -mx-3">
-      <!-- EMAIL -->
       <div class="w-full px-3">
         <label class="block mb-2 text-lg font-semibold text-navy-900" for="email"> 
           Email <span class="text-pride-red">*</span>
@@ -36,7 +47,6 @@
     </div>
 
     <div class="flex flex-wrap mb-6 -mx-3">
-      <!-- MESSAGE -->
       <div class="w-full px-3">
         <label class="block mb-2 text-lg font-semibold text-navy-900" for="message">
           Message <span class="text-pride-red">*</span>
@@ -49,7 +59,6 @@
     </div>
 
     <div class="flex flex-col items-center w-full pt-4 space-y-4">
-      <!-- ERRORS! -->
       <div v-if="errors.length" class="w-full p-4 text-pride-red bg-red-50 border border-red-200 rounded-lg">
         <p class="font-semibold mb-2">Please correct the following error(s):</p>
         <ul class="list-disc list-inside">
@@ -57,7 +66,6 @@
         </ul>
       </div>
 
-      <!-- SUBMIT -->
       <button type="submit" name="button" 
         class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300">
         <span>Submit</span>
@@ -78,7 +86,8 @@
           name: null,
           telephone: null,
           email: null,
-          message: null
+          message: null,
+          botField: ""
         },
         errors: [],
       }
@@ -94,29 +103,23 @@
           fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: this.encode({ "form-name": "PrideForm", ...this.formData })
+            body: this.encode({ 
+              "form-name": "PrideForm2026", 
+              "bot-field": this.formData.botField, 
+              ...this.formData 
+            })
           })
             .then(() => {
-              document.getElementById("myForm").innerHTML = `
-            <div class="flex flex-col w-full p-8 text-center">
-              <h3 class="mb-4 text-3xl font-bold text-navy-900">
-                Contact Form Submitted!
-              </h3>
-              <p class="text-xl text-gray-600">
-                Thank you for reaching out to us - we will contact you as soon as we are able.
-              </p>
-            </div>
-            `
+              // ... success ...
+              document.getElementById("myForm").innerHTML = `<div class="flex flex-col w-full p-8 text-center"><h3 class="mb-4 text-3xl font-bold text-navy-900">Contact Form Submitted!</h3><p class="text-xl text-gray-600">Thank you for reaching out to us - we will contact you as soon as we are able.</p></div>`
             })
             .catch(error => alert(error));
         }
+        
+        // ... error handling ...
         this.errors = [];
-        if (!this.formData.email) {
-          this.errors.push('Email required.');
-        }
-        if (!this.formData.message) {
-          this.errors.push('Message required.');
-        }
+        if (!this.formData.email) this.errors.push('Email required.');
+        if (!this.formData.message) this.errors.push('Message required.');
         e.preventDefault();
       }
     }
@@ -127,7 +130,6 @@
 .form-input {
   transition: all 0.3s ease-in-out;
 }
-
 .form-input:focus {
   outline: none;
 }
