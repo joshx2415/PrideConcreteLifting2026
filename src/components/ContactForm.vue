@@ -66,11 +66,17 @@
         </ul>
       </div>
 
-      <button type="submit" name="button" 
-        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300">
-        <span>Submit</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor">
+      <button type="submit" name="button" :disabled="isSubmitting"
+        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-pride-red disabled:hover:scale-100">
+        <span v-if="!isSubmitting">Submit</span>
+        <span v-else>Sending...</span>
+
+        <svg v-if="!isSubmitting" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor">
           <path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/>
+        </svg>
+        <svg v-else class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
       </button>
     </div>
@@ -90,6 +96,7 @@
           botField: ""
         },
         errors: [],
+        isSubmitting: false,
       }
     },
     methods: {
@@ -99,27 +106,35 @@
           .join("&");
       },
       checkForm: function (e) {
-        if (this.formData.email && this.formData.message) {
-          fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: this.encode({ 
-              "form-name": "PrideForm2026", 
-              "bot-field": this.formData.botField, 
-              ...this.formData 
-            })
-          })
-            .then(() => {
-              // ... success ...
-              document.getElementById("myForm").innerHTML = `<div class="flex flex-col w-full p-8 text-center"><h3 class="mb-4 text-3xl font-bold text-navy-900">Contact Form Submitted!</h3><p class="text-xl text-gray-600">Thank you for reaching out to us - we will contact you as soon as we are able.</p></div>`
-            })
-            .catch(error => alert(error));
-        }
-        
-        // ... error handling ...
         this.errors = [];
         if (!this.formData.email) this.errors.push('Email required.');
         if (!this.formData.message) this.errors.push('Message required.');
+
+        if (this.errors.length > 0) {
+          e.preventDefault();
+          return;
+        }
+
+        this.isSubmitting = true;
+
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: this.encode({
+            "form-name": "PrideForm2026",
+            "bot-field": this.formData.botField,
+            ...this.formData
+          })
+        })
+          .then(() => {
+            // ... success ...
+            document.getElementById("myForm").innerHTML = `<div class="flex flex-col w-full p-8 text-center"><h3 class="mb-4 text-3xl font-bold text-navy-900">Contact Form Submitted!</h3><p class="text-xl text-gray-600">Thank you for reaching out to us - we will contact you as soon as we are able.</p></div>`
+          })
+          .catch(error => {
+            this.isSubmitting = false;
+            alert(error);
+          });
+
         e.preventDefault();
       }
     }
