@@ -42,7 +42,7 @@
         <input
           class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pride-red focus:border-transparent"
           id="email" type="email" name="email" v-model="formData.email" placeholder="email@example.com"
-          required="">
+          required="" aria-required="true">
       </div>
     </div>
 
@@ -54,7 +54,7 @@
         <textarea
           class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pride-red focus:border-transparent min-h-[150px]"
           id="description" type="text" name="message" v-model="formData.message" placeholder="Your Message..."
-          required=""></textarea>
+          required="" aria-required="true"></textarea>
       </div>
     </div>
 
@@ -67,9 +67,18 @@
       </div>
 
       <button type="submit" name="button" 
-        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300">
-        <span>Submit</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor">
+        :disabled="isSubmitting"
+        :aria-busy="isSubmitting"
+        :class="{'opacity-75 cursor-not-allowed hover:scale-100': isSubmitting}"
+        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300 disabled:bg-gray-400 disabled:hover:bg-gray-400">
+        <span v-if="isSubmitting">Sending...</span>
+        <span v-else>Submit</span>
+
+        <svg v-if="isSubmitting" class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor">
           <path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/>
         </svg>
       </button>
@@ -90,6 +99,7 @@
           botField: ""
         },
         errors: [],
+        isSubmitting: false,
       }
     },
     methods: {
@@ -100,6 +110,7 @@
       },
       checkForm: function (e) {
         if (this.formData.email && this.formData.message) {
+          this.isSubmitting = true;
           fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -113,7 +124,10 @@
               // ... success ...
               document.getElementById("myForm").innerHTML = `<div class="flex flex-col w-full p-8 text-center"><h3 class="mb-4 text-3xl font-bold text-navy-900">Contact Form Submitted!</h3><p class="text-xl text-gray-600">Thank you for reaching out to us - we will contact you as soon as we are able.</p></div>`
             })
-            .catch(error => alert(error));
+            .catch(error => {
+              alert(error);
+              this.isSubmitting = false;
+            });
         }
         
         // ... error handling ...
