@@ -1,0 +1,3 @@
+## 2024-05-24 - Loading States in Vue Islands
+**Learning:** Forms submitting asynchronously in Vue islands need explicit `isSubmitting` states to prevent user confusion and double-submissions, especially when using third-party handlers like Netlify Forms.
+**Action:** Always implement `isSubmitting` state, disable buttons, and add loading indicators for async form submissions in Vue components. Use `role="alert"` for error containers and `aria-hidden="true"` for decorative icons.
