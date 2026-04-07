@@ -4,6 +4,7 @@ import ContactForm from "../components/ContactForm.vue";
 import Gallery from "../components/Gallery.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 //import heroBg from "../assets/mega-highway-pride-concrete-can-lift-everything.jpg";
 import heroBg from "../assets/work/church-parking-lot.jpeg";
 import logo from "../assets/logo.png";
@@ -15,8 +16,6 @@ import residentialGallery from "../assets/markets/residential-gallery-image.jpg"
 import crossSection from "../assets/work/cross_section_concrete_and_foam.jpg";
 import alleyBefore from "../assets/work/alley2_before.jpg";
 import alleyAfter from "../assets/work/alley2_after.jpg";
-import standingWater from "../assets/work/standing-water.jpg";
-import drainageAfter from "../assets/work/drain_runoff_1.jpg";
 import ncfiLogo from "../assets/NCFI/NCFI GEo DB R.png";
 import ncfiStep1 from "../assets/NCFI/1st step slab lift graphic.png";
 import ncfiStep2 from "../assets/NCFI/2nd step slab lift graphic.png";
@@ -25,14 +24,34 @@ import ncfiStep3 from "../assets/NCFI/3rd step slab lift graphic.png";
 const galleryFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{jpeg,jpg,png,gif}', { eager: true });
 const homeGalleryImages = Object.values(galleryFiles).map((file) => file.default);
 const heroStyle = `background-image: url('${heroBg.src}');`;
+
+const locations = await getCollection('locations', ({ data }) => {
+  if (import.meta.env.PROD) {
+    return data.draft !== true;
+  }
+  return true;
+});
+locations.sort((a, b) => a.data.city.localeCompare(b.data.city));
+
+const homeFaqItems = [
+  { question: "How long have you been doing this?", answer: "We've been lifting and stabilizing concrete for nearly 30 years. Before starting Pride Concrete Lifting, our team spent almost two decades traveling the country repairing concrete roads, bridges, and highways for city and state agencies using polyurethane injection." },
+  { question: "How much does concrete lifting cost?", answer: "It depends on the size of the job and how much settling has occurred, but concrete lifting is typically a fraction of the cost of tearing out and replacing. A standard residential driveway usually runs between $1,200 and $3,500. Compare that to a full replacement, which can easily cost $10,000 or more. We provide a free inspection and quote." },
+  { question: "How long does the repair take? When can I use the surface?", answer: "Most jobs are completed in a single day, and the surface is usable immediately when we're done. No waiting days for concrete to cure." },
+  { question: "Will you tear up my yard or driveway?", answer: "No. We drill a small 5/8 inch hole to inject the polyurethane beneath the slab into the soil. When we're done, we fill the holes with concrete grout. No heavy equipment, no jackhammers, and no mess." },
+  { question: "Is the foam safe? Is it toxic?", answer: "The material is non-toxic and non-hazardous to the ground. It's safe around your family, pets, and landscaping. Once cured, it's completely inert — just solid, waterproof support underneath your concrete." },
+  { question: "How long does the repair last?", answer: "If the underlying problem that caused the settling is addressed properly before we void-fill, lift, and stabilize the area, the repair can last the lifetime of the pavement." },
+  { question: "When is it too far gone to lift?", answer: "If a repair site has been neglected for a long time and the concrete has broken into many small pieces, we'll recommend a traditional tear-out and replacement. We do a physical inspection on-site and walk you through what solution makes the most sense." },
+  { question: "Do you work year-round?", answer: "Yes. We work year-round in any conditions. In the winter months, we keep our materials heated so there's never a bad time to get the work done." },
+];
 ---
 
 <BaseLayout
-  title="Concrete Lifting & Stabilization | Dallas - Fort Worth"
-  description="Professional concrete lifting and soil stabilization in DFW. 25+ years experience. Free estimates on driveways, patios, sidewalks, and more."
+  title="Concrete Lifting & Leveling | Dallas-Fort Worth, TX"
+  description="Pride Concrete Lifting has been raising and stabilizing concrete across Dallas-Fort Worth for nearly 30 years. Driveways, sidewalks, pool decks, and more. Free estimates."
   isHomepage={true}
-  ogImage={logo.src} 
+  ogImage={logo.src}
   structuredDataType="business"
+  faqItems={homeFaqItems}
 >
   <div class="bg-white">
     <section class="relative flex items-center min-h-screen bg-cover bg-center bg-no-repeat" style={heroStyle}>
@@ -51,23 +70,23 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
             <br class="hidden lg:block" />
             and Soil Stabilization
             <span class="block mt-2 text-2xl font-medium text-gray-200 md:text-3xl">
-                Serving Dallas, Fort Worth & North Texas
+                Serving Dallas, Fort Worth & All of North Texas
             </span>
           </h1>
           <p
             class="mx-auto text-xl leading-relaxed text-white lg:w-2/3 max-w-4xl"
           >
-            We take pride in being able to deliver superior results in our
-            concrete lifting and soil stabilization work. Our team has over 25
-            years of experience in the concrete lifting industry, and we bring
-            all of that knowledge with us when we come to do the job.
+            We've been lifting and leveling concrete across the DFW metroplex for nearly 30 years.
+            From sunken driveways in Weatherford to trip hazards in Plano, garage floors in Aledo
+            to warehouse slabs in Fort Worth — we bring the experience, the equipment, and the
+            honest pricing to get the job done right.
           </p>
         </div>
 
         <div class="flex justify-center">
           <a href="#contact">
             <button
-              class="group inline-flex items-center px-6 py-4 text-lg font-semibold text-white transition-all duration-500 ease-in-out transform bg-pride-red rounded-lg shadow-xl hover:bg-red-700 hover:scale-105 focus:ring-4 focus:ring-red-300 focus:outline-none"
+              class="group inline-flex items-center px-6 py-4 text-lg font-semibold text-white transition-all duration-500 ease-in-out transform bg-pride-red rounded shadow-md hover:bg-red-700 hover:scale-105 focus:ring-4 focus:ring-red-300 focus:outline-none"
             >
               <Icon
                 name="fa-solid:paper-plane"
@@ -102,17 +121,16 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
             id="about"
             class="mb-6 text-4xl font-bold text-navy-900 lg:text-5xl"
           >
-            Professional Concrete Lifting and Stabilization Using Time-Tested
-            Industry Standards
+            Concrete Lifting Done Right — With Nearly 30 Years Behind Every Job
           </h2>
           <p
             class="mx-auto mt-6 text-xl leading-relaxed text-gray-600 max-w-5xl"
           >
-            We've been Lifting and Leveling concrete for a long time, and with
-            that experience we're able to employ tried and true methods
-            alongside today's more efficient technology to get the job done
-            quicker, safer, and cheaper - with no loss of the quality that we
-            pride ourselves on.
+            When you've been doing this as long as we have, you learn what works and what doesn't.
+            We combine time-tested methods with today's best technology — high-density polyurethane
+            foam injection — to lift and stabilize concrete faster, cleaner, and at a fraction of the
+            cost of tearing it out and starting over. No heavy equipment tearing up your yard,
+            no weeks of waiting for concrete to cure. Just a level slab and a job done right.
           </p>
         </div>
 
@@ -120,7 +138,7 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
           <div class="space-y-4">
             <h3 class="text-3xl font-bold text-navy-900">We Turn This...</h3>
             <Image
-              class="w-full rounded-lg shadow-xl"
+              class="w-full rounded shadow-md"
               src={fallenCurb}
               alt="Fallen Sidewalk Curb"
             />
@@ -128,7 +146,7 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
           <div class="space-y-4">
             <h3 class="text-3xl font-bold text-navy-900">Into This...</h3>
             <Image
-              class="w-full rounded-lg shadow-xl"
+              class="w-full rounded shadow-md"
               src={raisedCurb}
               alt="Sidewalk Curb Now Raised"
             />
@@ -144,27 +162,27 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
             id="services"
             class="mb-6 text-4xl font-bold text-center text-navy-900"
           >
-            We Work Where the Concrete Is
+            If It's Concrete, We Can Lift It
           </h2>
           <p class="mb-8 text-lg leading-relaxed text-gray-600">
-            Concrete is everywhere - Your home is built on top of it, your
-            driveway was poured with it, the roads you drive on and the
-            sidewalks you walk on, even the airport runways commercial airlines
-            rely on for a safe landing!
+            Your home sits on it, your driveway is poured with it, the roads
+            you drive on and the sidewalks you walk on — even the airport
+            runways that land commercial jets. Concrete is everywhere, and when
+            it sinks, we're the ones who raise it back up. Residential,
+            commercial, or municipal — we've done it all across North Texas.
           </p>
-          <div class="p-8 rounded-xl bg-navy-900 shadow-xl">
+          <div class="p-8 rounded bg-navy-900 shadow-xl">
             <p
               class="text-3xl font-bold text-center text-white leading-relaxed"
             >
-              Stable and Level Concrete is Critical to the Safety of our
-              Infrastructure
+              Level Concrete Isn't Just About Looks — It's About Safety
             </p>
           </div>
           <p class="mt-8 text-lg leading-relaxed text-gray-600">
-            We depend on the concrete to hold us up, but over time soil erosion
-            and constant pressure causes that concrete to sink, and that's where
-            we come in to lift that concrete back to its proper place and
-            stabilize it for the future.
+            North Texas soil doesn't do concrete any favors. The clay expands, contracts,
+            erodes, and washes away — and when the support under a slab is gone, gravity
+            does the rest. We lift it back where it belongs and stabilize the soil
+            underneath so it stays there.
           </p>
         </div>
 
@@ -172,7 +190,7 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
           <div class="hidden md:block h-full min-h-[400px]">
             <a href="/services/pool-decks" class="block h-full w-full transition-transform hover:scale-[1.02] duration-300">
               <Image
-                class="w-full h-full object-cover rounded-lg shadow-xl"
+                class="w-full h-full object-cover rounded shadow-md"
                 src={poolsideGallery}
                 alt="Poolside Concrete Lifting"
               />
@@ -182,14 +200,14 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
           <div class="space-y-8">
             <a href="/services/roadways" class="block group transition-transform hover:scale-[1.02] duration-300">
               <Image
-                class="w-full rounded-lg shadow-xl"
+                class="w-full rounded shadow-md"
                 src={airportGallery}
                 alt="Airport Runway"
               />
             </a>
             <a href="/services/driveways" class="block group transition-transform hover:scale-[1.02] duration-300">
               <Image
-                class="w-full rounded-lg shadow-xl"
+                class="w-full rounded shadow-md"
                 src={residentialGallery}
                 alt="Residential Neighborhood"
               />
@@ -200,13 +218,13 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
         <div class="grid gap-12 items-center mx-auto max-w-6xl lg:grid-cols-2">
           <div class="space-y-6">
             <h3 class="text-3xl font-bold text-navy-900">
-              The Cost Effective Way to Level Surfaces and Void-Fill
+              Fix It for a Fraction of the Cost of Replacing It
             </h3>
             <p class="text-lg leading-relaxed text-gray-600">
-              Our methods of lifting and void-filling are less invasive and more
-              cost-efficient than tearing out and replacing. No waiting on
-              concrete to dry or anything to set up - when we leave, the area is
-              immediately ready for use.
+              Tearing out and repouring concrete is expensive, messy, and takes days.
+              Our polyurethane foam injection process lifts and stabilizes your slab in
+              hours — typically at 50-70% less than replacement cost. When we leave,
+              the surface is ready to use immediately. No curing time, no waiting around.
             </p>
             <div class="space-y-4">
               <div class="flex items-start">
@@ -243,7 +261,7 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
           </div>
           <div>
             <Image
-              class="w-full rounded-lg shadow-xl"
+              class="w-full rounded shadow-md"
               alt="Cross Section Showing Void Filled"
               src={crossSection}
             />
@@ -256,13 +274,13 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">
         <div class="mb-16 text-center">
           <h2 class="mb-6 text-4xl font-bold text-navy-900 lg:text-5xl">
-            Stagnant Water Got You Itching?
+            Standing Water? That's More Than a Nuisance
           </h2>
           <p class="mx-auto text-xl leading-relaxed text-gray-600 max-w-5xl">
-            Over time, as concrete settles water can form "bird baths" and not
-            drain properly. While the birds may enjoy a place to swim, these
-            standing puddles of water are the perfect breeding ground for
-            mosquitoes and a chance for disease to spread.
+            When concrete settles, it creates low spots where water pools instead of draining.
+            Those puddles aren't just ugly — they're breeding grounds for mosquitoes and they
+            accelerate the damage to your slab. We level the concrete to restore proper
+            drainage and eliminate the standing water for good.
           </p>
         </div>
 
@@ -272,7 +290,7 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
               Standing Water Before
             </h3>
             <Image
-              class="w-full rounded-lg shadow-xl"
+              class="w-full rounded shadow-md"
               src={alleyBefore}
               alt="Standing Water in an Alleyway"
             />
@@ -282,35 +300,13 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
               Water Draining After
             </h3>
             <Image
-              class="w-full rounded-lg shadow-xl"
+              class="w-full rounded shadow-md"
               src={alleyAfter}
               alt="Water-Free Alleyway After Concrete Lifting"
             />
           </div>
         </div>
 
-        <div class="grid gap-8 mx-auto max-w-6xl md:grid-cols-2">
-          <div class="space-y-4">
-            <h3 class="text-2xl font-bold text-center text-navy-900">
-              Non-Draining Water
-            </h3>
-            <Image
-              class="w-full rounded-lg shadow-xl"
-              src={standingWater}
-              alt="Non-Draining Water in an Alley"
-            />
-          </div>
-          <div class="space-y-4">
-            <h3 class="text-2xl font-bold text-center text-navy-900">
-              Water Draining After Leveling
-            </h3>
-            <Image
-              class="w-full rounded-lg shadow-xl"
-              src={drainageAfter}
-              alt="Water Flowing Properly After Being Raised"
-            />
-          </div>
-        </div>
       </div>
     </section>
 
@@ -345,20 +341,18 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
           </a>
           <div>
             <p class="text-lg leading-relaxed text-gray-600">
-              Pride Concrete Lifting proudly uses NCFI Geotechnical Polyurethane
-              Formulations in all of our jobs. To achieve the goal of lifting
-              pavement, asphalt, or any other concrete material foundation - we
-              inject a polyurethane formulation underneath the material that
-              fills any voided space and as the formulation sets up it begins to
-              expand to bring the concrete back to grade and filling the voided
-              space ensuring long lasting results.
+              We use NCFI Geotechnical polyurethane formulations on every job — the
+              same industrial-grade foam used on Texas highways and airport runways.
+              We drill small holes, inject the foam underneath the slab, and it
+              expands to fill every void while gently lifting the concrete back to
+              grade. It's waterproof, lightweight, and cures in minutes — not days.
             </p>
           </div>
         </div>
 
         <div class="grid gap-8 mx-auto max-w-6xl md:grid-cols-3">
           <div
-            class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl"
+            class="overflow-hidden bg-white rounded shadow-md transition-shadow hover:shadow-lg"
           >
             <div class="overflow-hidden h-80">
               <Image
@@ -372,15 +366,15 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
                 Foam is Injected
               </h3>
               <p class="leading-relaxed text-gray-600">
-                After assessing the material to be raised, a 1/2" or 5/8" hole
-                is drilled to precise depths to gain access to the foundation of
-                the affected area.
+                We drill small holes — about the size of a penny — through the
+                concrete to reach the soil underneath. No jackhammers, no heavy
+                equipment.
               </p>
             </div>
           </div>
 
           <div
-            class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl"
+            class="overflow-hidden bg-white rounded shadow-md transition-shadow hover:shadow-lg"
           >
             <div class="overflow-hidden h-80">
               <Image
@@ -394,15 +388,15 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
                 Expansion of Foam
               </h3>
               <p class="leading-relaxed text-gray-600">
-                A polyurethane foam is then carefully injected into the
-                subgrade, that expands and lifts the material back to proper
-                grade.
+                High-density polyurethane foam is injected through the ports.
+                As it expands, it fills every void underneath and gently raises
+                the slab back to level.
               </p>
             </div>
           </div>
 
           <div
-            class="overflow-hidden bg-white rounded-xl shadow-xl transition-shadow hover:shadow-2xl"
+            class="overflow-hidden bg-white rounded shadow-md transition-shadow hover:shadow-lg"
           >
             <div class="overflow-hidden h-80">
               <Image
@@ -416,9 +410,9 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
                 Lifting and Stabilization
               </h3>
               <p class="leading-relaxed text-gray-600">
-                Once level has been achieved, the foam will then solidify and
-                all voids underneath will be filled, preventing future sinkage
-                or damage to the concrete.
+                The foam cures to 90% strength in about 15 minutes. The voids
+                are filled, the soil is stabilized, and you can walk or drive
+                on the surface right away.
               </p>
             </div>
           </div>
@@ -431,6 +425,135 @@ const heroStyle = `background-image: url('${heroBg.src}');`;
         <Gallery images={homeGalleryImages} />
       </section>
     )}
+
+    <section class="py-20 bg-gray-50" id="areas">
+      <div class="container px-6 mx-auto max-w-7xl lg:px-8">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-4xl font-bold text-navy-900 lg:text-5xl">
+            Areas We Serve
+          </h2>
+          <p class="mx-auto text-xl text-gray-600 max-w-3xl">
+            We lift and stabilize concrete across the entire Dallas-Fort Worth metroplex
+            and beyond — from Parker County out west to Collin County up north.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-5xl mx-auto">
+          {locations.map(loc => (
+            <a
+              href={`/locations/${loc.slug}`}
+              class="flex items-center p-4 bg-white rounded shadow-sm hover:shadow-md transition-shadow group"
+            >
+              <Icon name="fa-solid:map-marker-alt" class="w-4 h-4 mr-3 text-pride-red flex-shrink-0" />
+              <div>
+                <span class="font-semibold text-navy-900 group-hover:text-pride-red transition-colors">{loc.data.city}, TX</span>
+                <span class="block text-sm text-gray-500">{loc.data.county} County</span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <p class="mt-8 text-center text-gray-500">
+          Don't see your city? We likely serve your area too —
+          <a href="#contact" class="text-pride-red font-semibold hover:underline">give us a call</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white" id="faq">
+      <div class="container px-6 mx-auto max-w-4xl lg:px-8">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-4xl font-bold text-navy-900 lg:text-5xl">
+            Common Questions
+          </h2>
+          <p class="text-xl text-gray-600">
+            Straight answers from nearly 30 years of experience
+          </p>
+        </div>
+
+        <div class="space-y-6" x-data="{ open: null }">
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 1 ? null : 1" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">How long have you been doing this?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 1 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 1" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              We've been lifting and stabilizing concrete for nearly 30 years. Before starting Pride Concrete Lifting, our team spent almost two decades traveling the country repairing concrete roads, bridges, and highways for city and state agencies using polyurethane injection. This isn't something we picked up last year — it's what we've done our whole careers.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 2 ? null : 2" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">How much does concrete lifting cost?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 2 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 2" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              It depends on the size of the job and how much settling has occurred, but concrete lifting is typically a fraction of the cost of tearing out and replacing. A standard residential driveway, for example, usually runs between $1,200 and $3,500. Compare that to a full replacement, which can easily cost $10,000 or more. We provide a free inspection and quote so you know exactly what you're looking at.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 3 ? null : 3" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">How long does the repair take? When can I use the surface?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 3 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 3" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              Most jobs are completed in a single day, and the surface is usable immediately when we're done. No waiting days for concrete to cure. You can walk on it, drive on it, and get back to your life the same day.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 4 ? null : 4" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">Will you tear up my yard or driveway?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 4 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 4" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              No. We drill a small 5/8" hole to inject the polyurethane beneath the slab into the soil. When we're done, we fill the holes with concrete grout. There's no heavy equipment tearing up your lawn, no jackhammers, and no mess. Most people can't even tell where we drilled once we've patched the holes.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 5 ? null : 5" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">Is the foam safe? Is it toxic?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 5 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 5" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              The material is non-toxic and non-hazardous to the ground. It's safe around your family, pets, and landscaping. Once cured, it's completely inert — just solid, waterproof support underneath your concrete.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 6 ? null : 6" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">How long does the repair last?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 6 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 6" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              If the underlying problem that caused the settling is addressed properly before we void-fill, lift, and stabilize the area, the repair can last the lifetime of the pavement. We don't just lift the slab — we fix the root cause so you're not calling us back in a few years.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 7 ? null : 7" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">When is it too far gone to lift?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 7 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 7" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              If a repair site has been neglected for a long time and the concrete has broken into many small pieces, we'll recommend a traditional tear-out and replacement. We'd rather give you an honest answer than sell you a repair that won't hold. We do a physical inspection on-site and walk you through what solution makes the most sense for your situation.
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded">
+            <button @click="open = open === 8 ? null : 8" class="flex items-center justify-between w-full px-6 py-4 text-left">
+              <span class="text-lg font-semibold text-navy-900">Do you work year-round?</span>
+              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 8 ? 'rotate-180' : ''" />
+            </button>
+            <div x-show="open === 8" x-transition class="px-6 pb-4 text-gray-600 leading-relaxed">
+              Yes. We work year-round in any conditions. In the winter months, we keep our materials heated so there's never a bad time to get the work done. Our call volume stays consistent throughout the year because Texas soil and weather don't take a break — and neither do we.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="py-20 bg-navy-900">
       <div class="container px-6 mx-auto max-w-7xl lg:px-8">

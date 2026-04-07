@@ -43,7 +43,7 @@ const imageUrls = images.map(img => img.src);
       <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
         {images.map((image, index) => (
           <div 
-            class="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-video bg-gray-100 flex-shrink-0 w-[85vw] md:w-auto snap-center"
+            class="relative group cursor-pointer overflow-hidden rounded shadow-lg hover:shadow-xl transition-all duration-300 aspect-video bg-gray-100 flex-shrink-0 w-[85vw] md:w-auto snap-center"
             @click={`openLightbox(${index})`}
           >
             <Image 
@@ -98,7 +98,7 @@ const imageUrls = images.map(img => img.src);
           <img 
             :src="images[currentImage]" 
             :alt="'Gallery image ' + (currentImage + 1)"
-            class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            class="max-w-full max-h-[90vh] object-contain rounded shadow-lg"
           />
           <p class="text-center text-white mt-4 text-lg">
             <span x-text="currentImage + 1"></span> / <span x-text="images.length"></span>

@@ -5,6 +5,7 @@ import { Image } from 'astro:assets'; // <--- Import this
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.vue';
 import Gallery from '../../components/Gallery.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services', ({ data }) => {
@@ -27,14 +28,21 @@ const { Content } = await render(service);
 ---
 
 <BaseLayout 
-  title={service.data.title} 
+  title={service.data.title}
   description={service.data.description}
   ogImage={service.data.heroImage?.src || "/images/logo.png"}
   structuredDataType="service"
+  faqItems={service.data.faqItems || []}
 >
   <div class="transition-colors duration-1000 bg-white">
     <section class="text-gray-700 mx-auto lg:w-3/4 lg:px-0 items-center pt-32">
       <div class="flex flex-col w-full mx-auto px-5 mb-2 text-left">
+        <div class="mb-4">
+          <Breadcrumbs items={[
+            { label: "Services", href: "/#services" },
+            { label: service.data.title.split('|')[0].trim() }
+          ]} />
+        </div>
         <h1 class="mb-2 text-3xl font-black tracking-tighter text-black lg:text-7xl md:text-4xl">
           {service.data.title}
         </h1>
@@ -46,7 +54,7 @@ const { Content } = await render(service);
               <Image 
                 src={service.data.heroImage} 
                 alt={service.data.title}
-                class="object-cover object-center shadow-md rounded-lg"
+                class="object-cover object-center shadow-md rounded"
                 loading="eager" 
               />
             </div>

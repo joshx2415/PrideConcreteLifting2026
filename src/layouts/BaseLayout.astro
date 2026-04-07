@@ -2,6 +2,7 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
+import type { FAQItem } from '../components/StructuredData.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -11,15 +12,17 @@ export interface Props {
   ogImage?: string;
   keywords?: string;
   structuredDataType?: 'business' | 'service';
+  faqItems?: FAQItem[];
 }
 
-const { 
-  title, 
-  description = "Professional concrete lifting and soil stabilization services in Dallas/Fort Worth. Over 25 years of experience lifting driveways, sidewalks, patios, and more.",
+const {
+  title,
+  description = "Professional concrete lifting and soil stabilization services in Dallas-Fort Worth. Nearly 30 years of experience lifting driveways, sidewalks, pool decks, garage floors, and more. Free estimates.",
   isHomepage = false,
   ogImage = "/images/logo.png",
-  keywords = "concrete lifting, soil stabilization, polyurethane foam injection, slab jacking, concrete leveling, Dallas, Fort Worth, DFW",
-  structuredDataType = 'business'
+  keywords = "concrete lifting, concrete leveling, soil stabilization, polyurethane foam injection, slab jacking, concrete repair, Dallas, Fort Worth, Arlington, Plano, DFW, North Texas",
+  structuredDataType = 'business',
+  faqItems = []
 } = Astro.props;
 
 const siteName = "Pride Concrete Lifting";
@@ -74,7 +77,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Structured Data -->
-    <StructuredData type={structuredDataType} title={title} description={description} image={ogImage} />
+    <StructuredData type={structuredDataType} title={title} description={description} image={ogImage} faqItems={faqItems} />
   </head>
   <body>
     <Nav isHomepage={isHomepage} />

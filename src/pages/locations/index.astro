@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const locations = await getCollection('locations', ({ data }) => {
+  if (import.meta.env.PROD) {
+    return data.draft !== true;
+  }
+  return true;
+});
+locations.sort((a, b) => a.data.city.localeCompare(b.data.city));
+
+// Group by county
+const byCounty = locations.reduce((acc, loc) => {
+  const county = loc.data.county;
+  if (!acc[county]) acc[county] = [];
+  acc[county].push(loc);
+  return acc;
+}, {} as Record<string, typeof locations>);
+
+const countyOrder = Object.keys(byCounty).sort();
+---
+
+<BaseLayout
+  title="Areas We Serve | Concrete Lifting Across DFW"
+  description="Pride Concrete Lifting serves Dallas-Fort Worth and surrounding areas including Tarrant, Parker, Dallas, Collin, Denton, and Johnson counties. Find your city and get a free estimate."
+>
+  <div class="bg-white">
+    <section class="pt-32 pb-8 bg-gray-50">
+      <div class="container px-6 mx-auto max-w-5xl lg:px-8">
+        <div class="mb-2">
+          <Breadcrumbs items={[{ label: "Areas We Serve" }]} />
+        </div>
+        <h1 class="mb-4 text-4xl font-bold tracking-tight text-navy-900 lg:text-5xl">
+          Areas We Serve
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed max-w-3xl">
+          We've been lifting and stabilizing concrete across the Dallas-Fort Worth
+          metroplex for nearly 30 years. From Parker County out west to Collin County
+          up north — if you've got concrete that's sinking, we're close by.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container px-6 mx-auto max-w-5xl lg:px-8">
+        <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+          {countyOrder.map(county => (
+            <div>
+              <h2 class="mb-4 text-lg font-bold text-navy-900 uppercase tracking-wider border-b-2 border-pride-red pb-2">
+                {county} County
+              </h2>
+              <div class="space-y-2">
+                {byCounty[county].map(loc => (
+                  <a
+                    href={`/locations/${loc.slug}`}
+                    class="flex items-center p-3 rounded hover:bg-gray-50 transition-colors group"
+                  >
+                    <Icon name="fa-solid:map-marker-alt" class="w-4 h-4 mr-3 text-pride-red flex-shrink-0" />
+                    <span class="font-semibold text-gray-700 group-hover:text-pride-red transition-colors">
+                      {loc.data.city}, TX
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-16 p-8 rounded bg-navy-900 shadow-md text-center">
+          <h2 class="mb-3 text-2xl font-bold text-white">
+            Don't See Your City?
+          </h2>
+          <p class="mb-6 text-gray-300">
+            We likely serve your area too. Give us a call and we'll let you know.
+          </p>
+          <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="tel:817-888-6254"
+              class="inline-flex items-center px-6 py-3 text-lg font-bold text-white bg-pride-red rounded-full hover:bg-red-700 transition-colors"
+            >
+              <Icon name="fa-solid:phone" class="w-5 h-5 mr-2" />
+              Call 817-888-6254
+            </a>
+            <a
+              href="/#contact"
+              class="inline-flex items-center px-6 py-3 text-lg font-semibold text-navy-900 bg-white rounded-full hover:bg-gray-100 transition-colors"
+            >
+              <Icon name="fa-solid:paper-plane" class="w-5 h-5 mr-2" />
+              Send a Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

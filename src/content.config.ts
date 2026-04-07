@@ -16,6 +16,17 @@ import { glob } from 'astro/loaders';
 //		}),
 //});
 
+const locations = defineCollection({
+  type: 'content',
+  schema: z.object({
+    city: z.string(),
+    county: z.string(),
+    title: z.string(),
+    description: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const services = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
@@ -24,7 +35,11 @@ const services = defineCollection({
     heroImage: image().optional(),
     gallery: z.array(image()).optional(),
     draft: z.boolean().default(false),
+    faqItems: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional(),
   }),
 });
 
-export const collections = { services };
+export const collections = { services, locations };
