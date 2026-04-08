@@ -1,19 +1,25 @@
 ---
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface Props {
   type?: 'business' | 'service';
   title?: string;
   description?: string;
   image?: string;
+  faqItems?: FAQItem[];
 }
 
-const { type = 'business', title, description, image = '/images/logo.png' } = Astro.props;
+const { type = 'business', title, description, image = '/images/logo.png', faqItems = [] } = Astro.props;
 
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Pride Concrete Lifting",
   "image": new URL(image, Astro.site),
-  "description": description || "Professional concrete lifting and soil stabilization services in Dallas/Fort Worth with over 25 years of experience.",
+  "description": description || "Professional concrete lifting and soil stabilization services in Dallas-Fort Worth. Nearly 30 years of experience serving North Texas.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Dallas-Fort Worth",
@@ -34,8 +40,25 @@ const businessSchema = {
     "geoRadius": "50"
   },
   "areaServed": [
-    { "@type": "City", "name": "Dallas" },
-    { "@type": "City", "name": "Fort Worth" }
+    { "@type": "City", "name": "Dallas", "sameAs": "https://en.wikipedia.org/wiki/Dallas" },
+    { "@type": "City", "name": "Fort Worth", "sameAs": "https://en.wikipedia.org/wiki/Fort_Worth,_Texas" },
+    { "@type": "City", "name": "Arlington", "sameAs": "https://en.wikipedia.org/wiki/Arlington,_Texas" },
+    { "@type": "City", "name": "Plano", "sameAs": "https://en.wikipedia.org/wiki/Plano,_Texas" },
+    { "@type": "City", "name": "Frisco", "sameAs": "https://en.wikipedia.org/wiki/Frisco,_Texas" },
+    { "@type": "City", "name": "McKinney", "sameAs": "https://en.wikipedia.org/wiki/McKinney,_Texas" },
+    { "@type": "City", "name": "Denton", "sameAs": "https://en.wikipedia.org/wiki/Denton,_Texas" },
+    { "@type": "City", "name": "Irving", "sameAs": "https://en.wikipedia.org/wiki/Irving,_Texas" },
+    { "@type": "City", "name": "Grand Prairie", "sameAs": "https://en.wikipedia.org/wiki/Grand_Prairie,_Texas" },
+    { "@type": "City", "name": "Garland", "sameAs": "https://en.wikipedia.org/wiki/Garland,_Texas" },
+    { "@type": "City", "name": "Mansfield", "sameAs": "https://en.wikipedia.org/wiki/Mansfield,_Texas" },
+    { "@type": "City", "name": "Southlake", "sameAs": "https://en.wikipedia.org/wiki/Southlake,_Texas" },
+    { "@type": "City", "name": "Weatherford", "sameAs": "https://en.wikipedia.org/wiki/Weatherford,_Texas" },
+    { "@type": "City", "name": "Aledo", "sameAs": "https://en.wikipedia.org/wiki/Aledo,_Texas" },
+    { "@type": "City", "name": "Azle", "sameAs": "https://en.wikipedia.org/wiki/Azle,_Texas" },
+    { "@type": "City", "name": "Springtown", "sameAs": "https://en.wikipedia.org/wiki/Springtown,_Texas" },
+    { "@type": "City", "name": "Hudson Oaks", "sameAs": "https://en.wikipedia.org/wiki/Hudson_Oaks,_Texas" },
+    { "@type": "City", "name": "Willow Park", "sameAs": "https://en.wikipedia.org/wiki/Willow_Park,_Texas" },
+    { "@type": "City", "name": "Burleson", "sameAs": "https://en.wikipedia.org/wiki/Burleson,_Texas" }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -46,7 +69,7 @@ const businessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Concrete Lifting",
-          "description": "Professional concrete lifting and leveling services"
+          "description": "Professional concrete lifting and leveling for driveways, sidewalks, pool decks, and more"
         }
       },
       {
@@ -54,7 +77,15 @@ const businessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Soil Stabilization",
-          "description": "Expert soil stabilization using polyurethane foam"
+          "description": "Polyurethane foam soil stabilization and void filling for residential, commercial, and municipal applications"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Void Filling",
+          "description": "Underground void filling and soil densification for residential, commercial, and municipal properties"
         }
       }
     ]
@@ -79,7 +110,23 @@ const serviceSchema = {
   "serviceType": "Concrete Lifting and Repair"
 };
 
+const faqSchema = faqItems.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+
 const schema = type === 'service' && title ? serviceSchema : businessSchema;
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+{faqSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+)}

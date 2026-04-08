@@ -2,6 +2,7 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import StructuredData from '../components/StructuredData.astro';
+import type { FAQItem } from '../components/StructuredData.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -11,15 +12,17 @@ export interface Props {
   ogImage?: string;
   keywords?: string;
   structuredDataType?: 'business' | 'service';
+  faqItems?: FAQItem[];
 }
 
-const { 
-  title, 
-  description = "Professional concrete lifting and soil stabilization services in Dallas/Fort Worth. Over 25 years of experience lifting driveways, sidewalks, patios, and more.",
+const {
+  title,
+  description = "Professional concrete lifting and soil stabilization services in Dallas-Fort Worth. Nearly 30 years of experience lifting driveways, sidewalks, pool decks, garage floors, and more. Free estimates.",
   isHomepage = false,
   ogImage = "/images/logo.png",
-  keywords = "concrete lifting, soil stabilization, polyurethane foam injection, slab jacking, concrete leveling, Dallas, Fort Worth, DFW",
-  structuredDataType = 'business'
+  keywords = "concrete lifting, concrete leveling, soil stabilization, polyurethane foam injection, slab jacking, concrete repair, Dallas, Fort Worth, Arlington, Plano, DFW, North Texas",
+  structuredDataType = 'business',
+  faqItems = []
 } = Astro.props;
 
 const siteName = "Pride Concrete Lifting";
@@ -68,13 +71,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Structured Data -->
-    <StructuredData type={structuredDataType} title={title} description={description} image={ogImage} />
+    <StructuredData type={structuredDataType} title={title} description={description} image={ogImage} faqItems={faqItems} />
   </head>
   <body>
     <Nav isHomepage={isHomepage} />

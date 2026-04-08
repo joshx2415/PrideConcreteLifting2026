@@ -1,0 +1,183 @@
+---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.vue';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { Icon } from 'astro-icon/components';
+
+export async function getStaticPaths() {
+  const locations = await getCollection('locations', ({ data }) => {
+    if (import.meta.env.PROD) {
+      return data.draft !== true;
+    }
+    return true;
+  });
+
+  const services = await getCollection('services', ({ data }) => {
+    if (import.meta.env.PROD) {
+      return data.draft !== true;
+    }
+    return true;
+  });
+
+  return locations.map(location => ({
+    params: { slug: location.slug },
+    props: { location, services },
+  }));
+}
+
+const { location, services } = Astro.props;
+const { Content } = await render(location);
+---
+
+<BaseLayout
+  title={location.data.title}
+  description={location.data.description}
+  structuredDataType="business"
+>
+  <div class="bg-white">
+    <section class="pt-32 pb-16 bg-gray-50">
+      <div class="container px-6 mx-auto max-w-5xl lg:px-8">
+        <div class="mb-4">
+          <Breadcrumbs items={[
+            { label: "Areas We Serve", href: "/#areas" },
+            { label: `${location.data.city}, TX` }
+          ]} />
+        </div>
+        <h1 class="mb-6 text-4xl font-bold tracking-tight text-navy-900 lg:text-5xl">
+          Concrete Lifting & Leveling in {location.data.city}, Texas
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Pride Concrete Lifting serves {location.data.city} and all of {location.data.county} County
+          with professional concrete lifting, leveling, and soil stabilization.
+          Nearly 30 years of experience. Free estimates.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container px-6 mx-auto max-w-5xl lg:px-8">
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container px-6 mx-auto max-w-5xl lg:px-8">
+        <h2 class="mb-8 text-3xl font-bold text-navy-900">
+          Our Services in {location.data.city}
+        </h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.map(service => (
+            <a
+              href={`/services/${service.slug}`}
+              class="flex items-center p-6 bg-white rounded shadow-md transition-shadow hover:shadow-md"
+            >
+              <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 mr-4 rounded-full bg-pride-red">
+                <Icon name="fa-solid:check" class="w-5 h-5 text-white" />
+              </span>
+              <span class="text-lg font-semibold text-navy-900">{service.data.title.split('|')[0].trim()}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container px-6 mx-auto max-w-5xl lg:px-8">
+        <div class="p-8 rounded bg-navy-900 shadow-md text-center">
+          <h2 class="mb-4 text-3xl font-bold text-white">
+            Ready to Fix Your Concrete in {location.data.city}?
+          </h2>
+          <p class="mb-6 text-lg text-gray-300">
+            We'll come out, take a look, and give you an honest assessment and a free estimate. No pressure, no sales pitch.
+          </p>
+          <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="tel:817-888-6254"
+              class="inline-flex items-center px-6 py-3 text-lg font-bold text-white bg-pride-red rounded-full hover:bg-red-700 transition-colors"
+            >
+              <Icon name="fa-solid:phone" class="w-5 h-5 mr-2" />
+              Call 817-888-6254
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center px-6 py-3 text-lg font-semibold text-navy-900 bg-white rounded-full hover:bg-gray-100 transition-colors"
+            >
+              <Icon name="fa-solid:paper-plane" class="w-5 h-5 mr-2" />
+              Send a Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-navy-900 items-center py-12">
+        <div class="flex flex-col w-full mb-4 text-left p-4 lg:text-center">
+          <h2 id="contact" class="mb-2 text-3xl font-bold text-white tracking-tighter lg:text-5xl md:text-4xl">
+            Send Us A Message
+          </h2>
+          <p class="mt-4 text-lg tracking-wide text-white">
+            Get a Free Estimate in {location.data.city}
+          </p>
+          <p class="mb-8 md:w-1/2 md:px-10 mt-4 mx-auto text-lg leading-snug tracking-tight text-gray-300">
+            Fill out the form below to get in contact with us! We can also be reached via email at:
+            <span class="md:text-xl text-pride-red font-semibold">
+              contact@prideconcretelifting.com</span> or via telephone at:
+            <span class="md:text-xl text-pride-red font-semibold">
+              <a href="tel:817-888-6254">817-888-6254</a>
+            </span>.
+          </p>
+        </div>
+
+        <ContactForm client:load />
+      </div>
+    </section>
+  </div>
+
+  <style is:global>
+    .prose {
+      color: #374151;
+      line-height: 1.75;
+    }
+    .prose p {
+      margin-bottom: 1.5rem;
+    }
+    .prose h2 {
+      color: #001f54;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose h3 {
+      color: #001f54;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    .prose li::marker {
+      color: #c8102e;
+    }
+    .prose a {
+      color: #c8102e;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .prose a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</BaseLayout>
