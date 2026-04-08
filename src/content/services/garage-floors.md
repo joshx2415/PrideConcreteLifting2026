@@ -2,6 +2,10 @@
 title: "Garage Floor Leveling & Apron Repair | Dallas-Fort Worth"
 description: "Garage floor sinking or water pooling inside? Pride Concrete Lifting levels garage floors and aprons across Dallas-Fort Worth. Stop the bump, fix the slope. Free estimates."
 heroImage: "../../assets/work/elevation.jpeg"
+gallery:
+  - "../../assets/work/garage-gap-level-tool.png"
+  - "../../assets/work/door-threshold-gap.png"
+  - "../../assets/work/sidewalk-downspout-after.png"
 faqItems:
   - question: "Can you really fix that bump where the driveway meets the garage?"
     answer: "That's one of the most common calls we get. The garage apron — that section right outside the door — is notorious for settling in North Texas. We lift it back flush with the garage floor so you stop bottoming out every time you pull in."

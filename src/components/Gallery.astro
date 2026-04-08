@@ -9,9 +9,19 @@ export interface Props {
 const { images } = Astro.props;
 
 const imageUrls = images.map(img => img.src);
+
+function deriveAltText(src: string): string {
+  const filename = src.split('/').pop()?.split('.')[0] ?? '';
+  // Strip hashes added by Astro's asset pipeline (e.g., "_BxK2q1fR")
+  const cleaned = filename.replace(/_[A-Za-z0-9]{6,}$/, '');
+  return cleaned
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+    .trim() || `Gallery image`;
+}
 ---
 
-<section class="py-12 bg-gray-50">
+<section class="py-12">
   <div class="container px-6 mx-auto max-w-7xl">
     <h2 class="mb-8 text-3xl font-bold text-center text-navy-900">Project Gallery</h2>
     
@@ -42,22 +52,18 @@ const imageUrls = images.map(img => img.src);
     >
       <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
         {images.map((image, index) => (
-          <div 
-            class="relative group cursor-pointer overflow-hidden rounded shadow-lg hover:shadow-xl transition-all duration-300 aspect-video bg-gray-100 flex-shrink-0 w-[85vw] md:w-auto snap-center"
+          <div
+            class="relative group cursor-pointer overflow-hidden aspect-video bg-gray-100 flex-shrink-0 w-[85vw] md:w-auto snap-center border border-gray-200"
             @click={`openLightbox(${index})`}
           >
-            <Image 
-              src={image} 
-              alt={`Gallery image ${index + 1}`}
-              width={600} 
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            <Image
+              src={image}
+              alt={deriveAltText(image.src)}
+              width={600}
+              class="absolute inset-0 w-full h-full object-cover"
             />
             
-            <div class="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center z-10">
-              <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>
-              </svg>
-            </div>
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 z-10"></div>
           </div>
         ))}
       </div>
@@ -70,7 +76,7 @@ const imageUrls = images.map(img => img.src);
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
         style="display: none;"
         @click="closeLightbox()"
       >
@@ -98,7 +104,7 @@ const imageUrls = images.map(img => img.src);
           <img 
             :src="images[currentImage]" 
             :alt="'Gallery image ' + (currentImage + 1)"
-            class="max-w-full max-h-[90vh] object-contain rounded shadow-lg"
+            class="max-w-full max-h-[90vh] object-contain"
           />
           <p class="text-center text-white mt-4 text-lg">
             <span x-text="currentImage + 1"></span> / <span x-text="images.length"></span>

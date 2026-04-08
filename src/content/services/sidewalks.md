@@ -7,6 +7,9 @@ gallery:
   - "../../assets/work/sidewalk-repaired.jpg"
   - "../../assets/work/tripping-hazard.jpg"
   - "../../assets/work/tripping-hazard-fixed.jpg"
+  - "../../assets/gallery/sidewalk-slab-offset-tripping-hazard.png"
+  - "../../assets/work/sidewalk-settling-wide.png"
+  - "../../assets/work/concrete-gap-water-bottle-scale.png"
 faqItems:
   - question: "My city sent me a notice about my uneven sidewalk. Can you fix that?"
     answer: "It depends on who owns the sidewalk. Many sidewalks along the street are actually city property — the city would need to contact us directly for those. For sidewalks on your property, we'll come out and evaluate whether our process is the best solution. Smaller sidewalk sections sometimes do better with a traditional tear-out and replacement, but many can be lifted quickly and affordably."

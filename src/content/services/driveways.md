@@ -2,6 +2,10 @@
 title: "Driveway Lifting & Leveling | Concrete Repair in Dallas-Fort Worth"
 description: "Sunken driveway in DFW? Pride Concrete Lifting uses polyurethane foam injection to lift and level driveways across Dallas, Fort Worth, Arlington, and North Texas. Nearly 30 years experience. Free estimates."
 heroImage: "../../assets/markets/we-lift-driveways.jpg"
+gallery:
+  - "../../assets/gallery/driveway-severe-settling.jpeg"
+  - "../../assets/gallery/parking-lot-settled-joints-cone.jpeg"
+  - "../../assets/work/parking-lot-repaired-cone.jpeg"
 faqItems:
   - question: "How much does it cost to lift a driveway?"
     answer: "A typical residential driveway repair in the DFW area runs between $1,200 and $3,500, depending on the amount of settling and the size of the affected area. Compare that to tearing out and replacing, which can easily run $10,000 or more. We provide a free inspection and quote."

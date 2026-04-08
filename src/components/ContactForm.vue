@@ -7,7 +7,7 @@
     data-netlify="true" 
     enctype="application/x-www-form-urlencoded"
     @submit.prevent="checkForm"
-    class="flex flex-col w-full max-w-4xl p-10 px-8 pt-8 pb-8 mx-auto transition duration-500 ease-in-out transform bg-white rounded shadow-md"
+    class="flex flex-col w-full max-w-4xl p-10 px-8 pt-8 pb-8 mx-auto bg-white border border-gray-200"
   >
     <input type="hidden" name="form-name" value="PrideForm2026" />
     
@@ -22,14 +22,14 @@
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-title">Name</label>
         <input
-          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-pride-red focus:border-transparent"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-pride-red focus:border-transparent"
           id="grid-title" type="text" name="name" v-model="formData.name" placeholder="John Smith">
       </div>
 
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-url">Phone Number</label>
         <input
-          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-pride-red focus:border-transparent"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-pride-red focus:border-transparent"
           id="grid-url" type="tel" name="telephone" v-model="formData.telephone" placeholder="(123) 456-7890">
       </div>
     </div>
@@ -40,7 +40,7 @@
           Email <span class="text-pride-red">*</span>
         </label>
         <input
-          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-pride-red focus:border-transparent"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-pride-red focus:border-transparent"
           id="email" type="email" name="email" v-model="formData.email" placeholder="email@example.com"
           required="">
       </div>
@@ -52,7 +52,7 @@
           Message <span class="text-pride-red">*</span>
         </label>
         <textarea
-          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 rounded focus:ring-2 focus:ring-pride-red focus:border-transparent min-h-[150px]"
+          class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-pride-red focus:border-transparent min-h-[150px]"
           id="description" type="text" name="message" v-model="formData.message" placeholder="Your Message..."
           required=""></textarea>
       </div>
@@ -67,7 +67,7 @@
       </div>
 
       <button type="submit" name="button" 
-        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition duration-500 ease-in-out transform rounded bg-pride-red shadow-lg hover:bg-red-700 hover:scale-105 focus:shadow-outline focus:outline-none focus:ring-4 focus:ring-red-300">
+        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition-colors duration-200 bg-pride-red hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">
         <span>Submit</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor">
           <path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/>

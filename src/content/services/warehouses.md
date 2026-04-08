@@ -2,6 +2,10 @@
 title: "Warehouse Floor Leveling & Industrial Slab Repair | Texas"
 description: "Rocking slabs slowing down your warehouse? Pride Concrete Lifting levels industrial floors, stabilizes joints, and repairs concrete without shutting down operations. Nights and weekends available."
 heroImage: "../../assets/NCFI/Pinpoint Lifting Foam.png"
+gallery:
+  - "../../assets/gallery/loading-dock-settled-threshold.png"
+  - "../../assets/gallery/pride-truck-logans-roadhouse.jpeg"
+  - "../../assets/gallery/pride-truck-sonic-night.jpeg"
 faqItems:
   - question: "Can you really fix warehouse floors without shutting down operations?"
     answer: "That's what we do. Our foam cures to 90% strength in 15 minutes — we can repair a section during a lunch break or shift change, and you can run traffic over it immediately."

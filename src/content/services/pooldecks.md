@@ -6,6 +6,11 @@ gallery:
   - "../../assets/work/infinity-pool-leveling.jpg"
   - "../../assets/work/pool-deck-sunken.jpg"
   - "../../assets/work/pool-deck-lifting.jpg"
+  - "../../assets/gallery/pool-deck-before-after-comparison.jpeg"
+  - "../../assets/gallery/pool-coping-gap-settling.png"
+  - "../../assets/gallery/pool-deck-settling-before-after.jpeg"
+  - "../../assets/gallery/pool-lifting-drilling-collage.jpeg"
+  - "../../assets/work/pool-deck-foam-injection.png"
 faqItems:
   - question: "Can foam be used near pools? Does it affect pool water or chemicals?"
     answer: "Our materials are injected underneath the pool deck and into the soil — they don't come in contact with your pool water or chemicals. We lift and stabilize pool decks on a routine basis with great results. The foam is also hydrophobic, so it won't break down from moisture exposure."
