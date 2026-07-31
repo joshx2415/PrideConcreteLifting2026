@@ -55,7 +55,7 @@ const countyOrder = Object.keys(byCounty).sort();
               <div class="space-y-2">
                 {byCounty[county].map(loc => (
                   <a
-                    href={`/locations/${loc.slug}`}
+                    href={`/locations/${loc.slug}/`}
                     class="flex items-center p-3 rounded hover:bg-gray-50 transition-colors group"
                   >
                     <Icon name="fa-solid:map-marker-alt" class="w-4 h-4 mr-3 text-pride-red flex-shrink-0" />

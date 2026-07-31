@@ -74,4 +74,4 @@ Constant heavy traffic compacts the soil beneath the joints over time. Water inf
 
 **[Contact Our Commercial Team for a Quote](#contact)**
 
-*We also handle [municipal roadway repair](/services/roadways) and [void filling & soil stabilization](/services/void-filling) for commercial and industrial clients across Texas.*
+*We also handle [municipal roadway repair](/services/roadways/) and [void filling & soil stabilization](/services/void-filling/) for commercial and industrial clients across Texas.*

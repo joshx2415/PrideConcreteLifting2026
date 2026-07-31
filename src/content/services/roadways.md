@@ -76,4 +76,4 @@ Yes. We work with City Managers, Public Works Directors, County Engineers, DOTs,
 
 **[Contact Our Commercial Team for a Quote](#contact)**
 
-*We also handle [warehouse & industrial floor leveling](/services/warehouses) and [void filling & soil stabilization](/services/void-filling) for commercial and municipal clients.*
+*We also handle [warehouse & industrial floor leveling](/services/warehouses/) and [void filling & soil stabilization](/services/void-filling/) for commercial and municipal clients.*

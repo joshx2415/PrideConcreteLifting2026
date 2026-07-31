@@ -82,4 +82,4 @@ It varies by the size of the job, but it's consistently a fraction of what tear-
 
 **[Get a Free Estimate Today](#contact)**
 
-*We also handle [driveway lifting](/services/driveways), [pool deck repair](/services/pooldecks), and [municipal roadway projects](/services/roadways) across the DFW metroplex.*
+*We also handle [driveway lifting](/services/driveways/), [pool deck repair](/services/pooldecks/), and [municipal roadway projects](/services/roadways/) across the DFW metroplex.*
