@@ -77,4 +77,4 @@ Absolutely — that's the best time to catch it. Filling a void now costs a frac
 
 **[Get a Free Estimate Today](#contact)**
 
-*Related services: [driveway lifting](/services/driveways), [garage floor leveling](/services/garage-floors), and [warehouse & industrial floor repair](/services/warehouses).*
+*Related services: [driveway lifting](/services/driveways/), [garage floor leveling](/services/garage-floors/), and [warehouse & industrial floor repair](/services/warehouses/).*

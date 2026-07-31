@@ -82,4 +82,4 @@ The material is non-toxic and non-hazardous. It's safe for the ground, your land
 
 **[Get a Free Estimate Today](#contact)**
 
-*Related services: [driveway lifting](/services/driveways), [void filling & soil stabilization](/services/void-filling), and [garage floor leveling](/services/garage-floors).*
+*Related services: [driveway lifting](/services/driveways/), [void filling & soil stabilization](/services/void-filling/), and [garage floor leveling](/services/garage-floors/).*

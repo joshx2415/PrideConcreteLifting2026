@@ -72,7 +72,7 @@ const { Content } = await render(location);
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map(service => (
             <a
-              href={`/services/${service.slug}`}
+              href={`/services/${service.slug}/`}
               class="flex items-center p-6 bg-white rounded shadow-md transition-shadow hover:shadow-md"
             >
               <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 mr-4 rounded-full bg-pride-red">

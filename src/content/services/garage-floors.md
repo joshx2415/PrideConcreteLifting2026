@@ -75,4 +75,4 @@ If the underlying cause of the settling is addressed properly — and we make su
 
 **[Get a Free Estimate Today](#contact)**
 
-*Related services: [driveway lifting](/services/driveways), [void filling & soil stabilization](/services/void-filling), and [sidewalk leveling](/services/sidewalks).*
+*Related services: [driveway lifting](/services/driveways/), [void filling & soil stabilization](/services/void-filling/), and [sidewalk leveling](/services/sidewalks/).*

@@ -86,4 +86,4 @@ We work year-round. In the winter months, we keep our materials heated so we can
 
 **[Get a Free Estimate Today](#contact)**
 
-*Looking for related services? We also lift [sidewalks](/services/sidewalks), [garage floors](/services/garage-floors), and handle [void filling](/services/void-filling) across DFW.*
+*Looking for related services? We also lift [sidewalks](/services/sidewalks/), [garage floors](/services/garage-floors/), and handle [void filling](/services/void-filling/) across DFW.*
