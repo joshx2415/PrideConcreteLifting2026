@@ -2,7 +2,7 @@
 city: "Weatherford"
 county: "Parker"
 title: "Concrete Lifting & Leveling in Weatherford, TX"
-description: "Concrete lifting and soil stabilization in Weatherford, TX. Pride Concrete Lifting repairs driveways, sidewalks, and pool decks in Parker County. Nearly 30 years experience. Free estimates."
+description: "Parker County soil has a mind of its own. We've lifted Weatherford concrete for nearly 30 years — driveways, sidewalks & pool decks leveled in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Weatherford — Parker County's Soil Has a Mind of Its Own

@@ -2,7 +2,7 @@
 city: "Arlington"
 county: "Tarrant"
 title: "Concrete Lifting & Leveling in Arlington, TX"
-description: "Concrete lifting and leveling in Arlington, TX. Pride Concrete Lifting repairs driveways, sidewalks, pool decks, and commercial concrete across Arlington. Free estimates."
+description: "Sunken driveway or settled sidewalk in Arlington? We lift residential and commercial concrete back to level in hours — no tear-out, no mess. Free estimates."
 ---
 
 ## Concrete Lifting in Arlington — Right in the Heart of DFW

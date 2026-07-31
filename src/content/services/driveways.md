@@ -1,6 +1,6 @@
 ---
-title: "Driveway Lifting & Leveling | Concrete Repair in Dallas-Fort Worth"
-description: "Sunken driveway in DFW? Pride Concrete Lifting uses polyurethane foam injection to lift and level driveways across Dallas, Fort Worth, Arlington, and North Texas. Nearly 30 years experience. Free estimates."
+title: "Driveway Lifting & Leveling | Dallas-Fort Worth"
+description: "Sunken driveway? We lift and level it in a day — typically $1,200–$3,500 vs $10,000+ to replace. Nearly 30 years across Dallas-Fort Worth. Free estimates."
 heroImage: "../../assets/markets/we-lift-driveways.jpg"
 gallery:
   - "../../assets/gallery/driveway-severe-settling.jpeg"
@@ -25,7 +25,7 @@ We've been lifting driveways across Dallas-Fort Worth for nearly 30 years. We've
 
 ## Why Driveways Sink in North Texas
 
-If you live anywhere in the DFW metroplex — from Weatherford and Aledo out west to Plano and McKinney up north, Arlington to Burleson down south — your home is sitting on some of the most unpredictable soil in the country. Texas clay expands when it's wet and shrinks when it dries, and it does both with a vengeance.
+If you live anywhere in the DFW metroplex — from Weatherford and Aledo out west to Denton and Southlake up north, Arlington to Burleson down south — your home is sitting on some of the most unpredictable soil in the country. Texas clay expands when it's wet and shrinks when it dries, and it does both with a vengeance.
 
 That cycle creates gaps underneath your driveway. Once the support is gone, gravity does the rest.
 

@@ -2,7 +2,7 @@
 city: "Grand Prairie"
 county: "Dallas"
 title: "Concrete Lifting & Leveling in Grand Prairie, TX"
-description: "Concrete lifting in Grand Prairie, TX. Pride Concrete Lifting levels driveways, sidewalks, and commercial concrete in Grand Prairie and the Mid-Cities. Free estimates."
+description: "Sunken concrete in Grand Prairie or the Mid-Cities? We lift driveways, sidewalks & commercial slabs back to level in hours — no tear-out. Free estimates."
 ---
 
 ## Concrete Lifting in Grand Prairie — Where Dallas Meets Fort Worth

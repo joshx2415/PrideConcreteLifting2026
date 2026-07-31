@@ -43,8 +43,10 @@ const { Content } = await render(service);
             { label: service.data.title.split('|')[0].trim() }
           ]} />
         </div>
+        {/* N.B. The frontmatter title is the SEO <title> — pipe segment and
+            all. The visible H1 takes only the human half before the pipe. */}
         <h1 class="mb-2 text-3xl font-black tracking-tighter text-black lg:text-7xl md:text-4xl">
-          {service.data.title}
+          {service.data.title.split('|')[0].trim()}
         </h1>
 
         {service.data.heroImage && (

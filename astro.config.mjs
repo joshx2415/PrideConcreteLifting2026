@@ -17,20 +17,18 @@ export default defineConfig({
   // Netlify serves directory-style pages at /path/ and 301s the bare /path.
   // Enforcing the trailing slash here keeps dev, build, and CDN in agreement.
   trailingSlash: 'always',
-  redirects: {
-    '/driveways': '/services/driveways/',
-    '/pooldecks': '/services/pooldecks/',
-    '/roadways': '/services/roadways/',
-    '/sidewalks': '/services/sidewalks/',
-  },
+  // N.B. Legacy shortcut redirects live in netlify.toml as true 301s.
+  // Astro's static `redirects` emits meta-refresh stubs served as 200s —
+  // exactly the shadow GSC flagged before. Do not resurrect them here.
   integrations: [
-    mdx(), 
+    mdx(),
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
+      // N.B. No `lastmod: new Date()` — stamping every page as freshly
+      // modified at every build teaches Google to distrust our sitemap.
       filter: (page) => !page.includes('/admin') && !page.includes('/test'),
-    }), 
+    }),
     alpinejs(), 
     icon(), 
     vue()

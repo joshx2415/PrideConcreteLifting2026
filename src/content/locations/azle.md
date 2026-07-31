@@ -2,7 +2,7 @@
 city: "Azle"
 county: "Tarrant"
 title: "Concrete Lifting & Leveling in Azle, TX"
-description: "Concrete lifting in Azle and Springtown, TX. Pride Concrete Lifting repairs driveways, sidewalks, and concrete slabs in northwest Tarrant and Parker counties. Free estimates."
+description: "Concrete sinking in Azle or Springtown? We lift driveways, sidewalks & slabs across northwest Tarrant and Parker counties — done in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Azle & Springtown

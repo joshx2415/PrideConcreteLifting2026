@@ -1,6 +1,6 @@
 ---
 title: "Garage Floor Leveling & Apron Repair | Dallas-Fort Worth"
-description: "Garage floor sinking or water pooling inside? Pride Concrete Lifting levels garage floors and aprons across Dallas-Fort Worth. Stop the bump, fix the slope. Free estimates."
+description: "Garage floor sinking or water creeping in at the threshold? We level garage slabs and aprons in hours — no demolition, no mess. Free estimates across DFW."
 heroImage: "../../assets/work/elevation.jpeg"
 gallery:
   - "../../assets/work/garage-gap-level-tool.png"

@@ -2,7 +2,7 @@
 city: "Burleson"
 county: "Johnson"
 title: "Concrete Lifting & Leveling in Burleson, TX"
-description: "Concrete lifting in Burleson, TX. Pride Concrete Lifting levels driveways, sidewalks, and pool decks in Burleson and southern Tarrant County. Free estimates."
+description: "Burleson sits on the same tough clay as Fort Worth. We lift settled driveways, sidewalks & pool decks back to level in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Burleson — South of Fort Worth, Same Tough Soil

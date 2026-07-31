@@ -1,6 +1,6 @@
 ---
 title: "Pool Deck Leveling & Concrete Repair | Dallas-Fort Worth"
-description: "Sunken pool deck or uneven infinity pool edge? Pride Concrete Lifting raises and levels pool deck concrete across Dallas-Fort Worth. Safe, clean, fast. Free estimates."
+description: "Pool deck sinking or pulling away from the coping? We lift and level it without draining the pool or breaking concrete — done in a day. Free DFW estimates."
 heroImage: "../../assets/markets/poolside-gallery-image.jpg"
 gallery:
   - "../../assets/work/infinity-pool-leveling.jpg"

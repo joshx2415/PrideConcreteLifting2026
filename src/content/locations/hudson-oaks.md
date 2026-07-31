@@ -2,7 +2,7 @@
 city: "Hudson Oaks"
 county: "Parker"
 title: "Concrete Lifting & Leveling in Hudson Oaks, TX"
-description: "Concrete lifting in Hudson Oaks, TX. Pride Concrete Lifting serves Hudson Oaks, Willow Park, and western Parker County with driveway, sidewalk, and pool deck repair. Free estimates."
+description: "Hudson Oaks and Willow Park sit on Parker County's restless clay. We lift settled driveways, sidewalks & pool decks back to level in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Hudson Oaks & Willow Park

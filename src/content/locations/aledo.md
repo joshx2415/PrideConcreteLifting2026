@@ -2,7 +2,7 @@
 city: "Aledo"
 county: "Parker"
 title: "Concrete Lifting & Leveling in Aledo, TX"
-description: "Concrete lifting and repair in Aledo, TX. Pride Concrete Lifting levels driveways, sidewalks, and pool decks in Aledo and Walsh Ranch. Nearly 30 years experience. Free estimates."
+description: "New construction in Aledo and Walsh Ranch settles as fill dirt compacts. We lift driveways, sidewalks & pool decks back to level in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Aledo — New Construction Settles Too

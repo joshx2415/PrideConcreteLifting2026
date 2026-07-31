@@ -27,22 +27,24 @@
       </div>
 
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
-        <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-url">Phone Number</label>
+        <label class="block mb-2 text-lg font-semibold text-navy-900" for="grid-url">
+          Phone Number <span class="text-pride-red">*</span>
+        </label>
         <input
           class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-pride-red focus:border-transparent"
-          id="grid-url" type="tel" name="telephone" v-model="formData.telephone" placeholder="(123) 456-7890">
+          id="grid-url" type="tel" name="telephone" v-model="formData.telephone" placeholder="(123) 456-7890"
+          required="">
       </div>
     </div>
 
     <div class="flex flex-wrap mb-6 -mx-3">
       <div class="w-full px-3">
-        <label class="block mb-2 text-lg font-semibold text-navy-900" for="email"> 
-          Email <span class="text-pride-red">*</span>
+        <label class="block mb-2 text-lg font-semibold text-navy-900" for="email">
+          Email
         </label>
         <input
           class="form-input w-full px-4 py-3 text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-pride-red focus:border-transparent"
-          id="email" type="email" name="email" v-model="formData.email" placeholder="email@example.com"
-          required="">
+          id="email" type="email" name="email" v-model="formData.email" placeholder="email@example.com">
       </div>
     </div>
 
@@ -66,13 +68,19 @@
         </ul>
       </div>
 
-      <button type="submit" name="button" 
-        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition-colors duration-200 bg-pride-red hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">
-        <span>Submit</span>
+      <button type="submit" name="button" :disabled="isSubmitting"
+        class="flex items-center justify-center w-full gap-3 px-6 py-4 text-lg font-semibold text-white transition-colors duration-200 bg-pride-red hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60 disabled:cursor-wait">
+        <span>{{ isSubmitting ? 'Sending...' : 'Get My Free Estimate' }}</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512" fill="currentColor">
           <path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/>
         </svg>
       </button>
+
+      <p class="text-center text-gray-600">
+        We typically respond within one business day.
+        Need us sooner? Call
+        <a href="tel:817-888-6254" class="font-semibold text-navy-900 hover:text-pride-red transition-colors">817-888-6254</a>.
+      </p>
     </div>
 
   </form>
@@ -90,37 +98,43 @@
           botField: ""
         },
         errors: [],
+        isSubmitting: false,
       }
     },
     methods: {
       encode(data) {
         return Object.keys(data)
-          .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+          .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key] || ""))
           .join("&");
       },
+      // N.B. Validate FIRST, then submit — the old order fired the fetch
+      // before the error check, a quiet goblin. The isSubmitting guard
+      // prevents double-taps from posting the lead twice.
       checkForm: function (e) {
-        if (this.formData.email && this.formData.message) {
-          fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: this.encode({ 
-              "form-name": "PrideForm2026", 
-              "bot-field": this.formData.botField, 
-              ...this.formData 
-            })
-          })
-            .then(() => {
-              // ... success ...
-              document.getElementById("myForm").innerHTML = `<div class="flex flex-col w-full p-8 text-center"><h3 class="mb-4 text-3xl font-bold text-navy-900">Contact Form Submitted!</h3><p class="text-xl text-gray-600">Thank you for reaching out to us - we will contact you as soon as we are able.</p></div>`
-            })
-            .catch(error => alert(error));
-        }
-        
-        // ... error handling ...
-        this.errors = [];
-        if (!this.formData.email) this.errors.push('Email required.');
-        if (!this.formData.message) this.errors.push('Message required.');
         e.preventDefault();
+        this.errors = [];
+        if (!this.formData.telephone) this.errors.push('Phone number required — it\'s how we reach you with your estimate.');
+        if (!this.formData.message) this.errors.push('Message required — tell us a little about the concrete that needs help.');
+        if (this.errors.length || this.isSubmitting) return;
+
+        this.isSubmitting = true;
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: this.encode({
+            "form-name": "PrideForm2026",
+            "bot-field": this.formData.botField,
+            ...this.formData
+          })
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error("Form submission failed");
+            document.getElementById("myForm").innerHTML = `<div class="flex flex-col w-full p-8 text-center"><h3 class="mb-4 text-3xl font-bold text-navy-900">Got It — We'll Be In Touch!</h3><p class="text-xl text-gray-600">Thanks for reaching out. We'll get back to you within one business day to set up your free estimate.</p><p class="mt-4 text-lg text-gray-600">Need us sooner? Call <a href="tel:817-888-6254" class="font-semibold" style="color:#001f54">817-888-6254</a>.</p></div>`
+          })
+          .catch(() => {
+            this.isSubmitting = false;
+            this.errors = ['Something went wrong sending your message. Please try again, or call us at 817-888-6254.'];
+          });
       }
     }
   }

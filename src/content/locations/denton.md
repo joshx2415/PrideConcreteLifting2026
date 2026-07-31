@@ -2,7 +2,7 @@
 city: "Denton"
 county: "Denton"
 title: "Concrete Lifting & Leveling in Denton, TX"
-description: "Concrete lifting in Denton, TX. Pride Concrete Lifting levels driveways, sidewalks, and commercial concrete across Denton County. Free estimates."
+description: "Denton driveways and sidewalks settle fast on North Texas clay. We lift them back to level in hours — no demolition, no mess. Free estimates."
 ---
 
 ## Concrete Lifting in Denton — University Town, Real-World Soil Problems
