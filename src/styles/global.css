@@ -1,13 +1,17 @@
+/* N.B. Fonts are self-hosted via Fontsource — no render-blocking round-trip
+   to Google's CDN, no third-party dependency in the critical path. */
+@import "@fontsource-variable/oswald";
+@import "@fontsource-variable/source-serif-4";
 @import "tailwindcss";
 
 body {
   background-color: white;
   color: #111827;
-  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-family: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-family: 'Oswald Variable', 'Arial Narrow', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;

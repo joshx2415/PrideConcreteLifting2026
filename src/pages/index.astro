@@ -7,7 +7,6 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 //import heroBg from "../assets/mega-highway-pride-concrete-can-lift-everything.jpg";
 import heroBg from "../assets/work/church-parking-lot.jpeg";
-import logo from "../assets/logo.png";
 import fallenCurb from "../assets/work/fallen_curb.jpg";
 import raisedCurb from "../assets/work/raised_curb.jpg";
 import crossSection from "../assets/work/cross_section_concrete_and_foam.jpg";
@@ -21,7 +20,6 @@ import prideTruck from "../assets/gallery/pride-truck-logans-roadhouse.jpeg";
 
 const galleryFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{jpeg,jpg,png,gif}', { eager: true });
 const homeGalleryImages = Object.values(galleryFiles).map((file) => file.default);
-const heroStyle = `background-image: url('${heroBg.src}');`;
 
 const locations = await getCollection('locations', ({ data }) => {
   if (import.meta.env.PROD) {
@@ -76,12 +74,24 @@ const homeFaqItems = [
   title="Concrete Lifting & Leveling | Dallas-Fort Worth, TX"
   description="Sunken concrete? We lift driveways, sidewalks & pool decks back to level in a day — for a fraction of replacement cost. 30 years in DFW. Free estimates: 817-888-6254."
   isHomepage={true}
-  ogImage={logo.src}
   structuredDataType="business"
   faqItems={homeFaqItems}
 >
   <div class="bg-white">
-    <section class="relative flex items-center min-h-screen bg-cover bg-center bg-no-repeat" style={heroStyle}>
+    <section class="relative flex items-center min-h-screen overflow-hidden">
+      {/* N.B. The hero is the LCP element on the most important page of the
+          site. A real <img> (not a CSS background) lets the browser pick a
+          responsive size and fetch it at high priority — Core Web Vitals
+          feels the difference, and so do the rankings. */}
+      <Image
+        src={heroBg}
+        alt="Pride Concrete Lifting crew leveling a commercial parking lot"
+        class="absolute inset-0 w-full h-full object-cover"
+        widths={[640, 1024, 1284]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
       <div
         class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"
       >
@@ -626,10 +636,4 @@ const homeFaqItems = [
     </section>
   </div>
 
-  <style>    
-    .poolside-bg {
-      background-size: cover;
-      background-position: center;
-    }
-  </style>
 </BaseLayout>

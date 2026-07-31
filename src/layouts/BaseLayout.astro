@@ -18,7 +18,7 @@ const {
   title,
   description = "Professional concrete lifting and soil stabilization services in Dallas-Fort Worth. Nearly 30 years of experience lifting driveways, sidewalks, pool decks, garage floors, and more. Free estimates.",
   isHomepage = false,
-  ogImage = "/images/logo.png",
+  ogImage = "/images/og-default.jpg",
   structuredDataType = 'business',
   faqItems = []
 } = Astro.props;
@@ -71,11 +71,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="geo.region" content="US-TX" />
     <meta name="geo.placename" content="Dallas-Fort Worth" />
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
-    
+    <!-- N.B. Fonts are self-hosted (Fontsource, imported via global.css).
+         No Google Fonts <link> here — it was render-blocking on every page. -->
+
     <!-- N.B. Alpine.js is bundled by the @astrojs/alpinejs integration.
          Do not re-add the CDN <script> here — two copies of Alpine racing
          to initialize the same directives is a goblin we have banished. -->
