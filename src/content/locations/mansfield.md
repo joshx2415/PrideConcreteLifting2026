@@ -2,7 +2,7 @@
 city: "Mansfield"
 county: "Tarrant"
 title: "Concrete Lifting & Leveling in Mansfield, TX"
-description: "Concrete lifting in Mansfield, TX. Pride Concrete Lifting repairs driveways, sidewalks, and pool decks in Mansfield and southeast Tarrant County. Free estimates."
+description: "Mansfield's newer neighborhoods settle as fill dirt compacts. We lift driveways, sidewalks & pool decks back to level in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Mansfield — Southeast Tarrant County

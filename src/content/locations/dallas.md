@@ -2,7 +2,7 @@
 city: "Dallas"
 county: "Dallas"
 title: "Concrete Lifting & Leveling in Dallas, TX"
-description: "Concrete lifting and soil stabilization in Dallas, TX. Pride Concrete Lifting levels driveways, sidewalks, pool decks, and commercial concrete. Nearly 30 years experience. Free estimates."
+description: "From Lake Highlands to Oak Cliff, Dallas clay sinks concrete. We lift driveways, sidewalks & pool decks in a day for a fraction of replacement cost. Free estimates."
 ---
 
 ## Concrete Lifting in Dallas — From Lake Highlands to Oak Cliff

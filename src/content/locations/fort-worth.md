@@ -2,7 +2,7 @@
 city: "Fort Worth"
 county: "Tarrant"
 title: "Concrete Lifting & Leveling in Fort Worth, TX"
-description: "Pride Concrete Lifting serves Fort Worth with professional concrete lifting, leveling, and soil stabilization. Driveways, sidewalks, pool decks, and more. Nearly 30 years experience. Free estimates."
+description: "Fort Worth is home base — nearly 30 years lifting concrete from the Stockyards to the suburbs. Driveways, sidewalks & pool decks leveled in a day. Free estimates."
 ---
 
 ## Fort Worth Concrete Lifting — From the Stockyards to the Suburbs

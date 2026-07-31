@@ -2,7 +2,7 @@
 city: "Irving"
 county: "Dallas"
 title: "Concrete Lifting & Leveling in Irving, TX"
-description: "Concrete lifting in Irving, TX. Pride Concrete Lifting levels driveways, sidewalks, and commercial concrete in Irving and Las Colinas. Free estimates."
+description: "Settled slab in Irving or Las Colinas? We lift residential and commercial concrete back to level in hours — no demolition, no mess. Free estimates."
 ---
 
 ## Concrete Lifting in Irving — Residential and Commercial

@@ -2,7 +2,7 @@
 city: "Southlake"
 county: "Tarrant"
 title: "Concrete Lifting & Leveling in Southlake, TX"
-description: "Concrete lifting in Southlake, TX. Pride Concrete Lifting repairs driveways, sidewalks, and pool decks in Southlake, Keller, and Colleyville. Free estimates."
+description: "Southlake, Keller & Colleyville: we lift settled driveways, walkways & pool decks cleanly — no torn-up landscaping, done in a day. Free estimates."
 ---
 
 ## Concrete Lifting in Southlake — Protecting Premium Properties
