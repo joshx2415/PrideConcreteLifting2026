@@ -1,6 +1,6 @@
 ---
 title: "Void Filling & Soil Stabilization | Dallas-Fort Worth"
-description: "Hidden voids under your concrete? Pride Concrete Lifting fills underground voids and stabilizes soil across DFW. Seawalls, culverts, utility trenches, and more. Free estimates."
+description: "Voids under your slab wash out a little more with every rain. We fill and stabilize them with structural foam before the concrete cracks. Free DFW estimates."
 heroImage: "../../assets/work/cross_section_concrete_and_foam.jpg"
 gallery:
   - "../../assets/work/eroded-concrete-base.jpg"

@@ -10,7 +10,6 @@ export interface Props {
   description?: string;
   isHomepage?: boolean;
   ogImage?: string;
-  keywords?: string;
   structuredDataType?: 'business' | 'service';
   faqItems?: FAQItem[];
 }
@@ -20,13 +19,15 @@ const {
   description = "Professional concrete lifting and soil stabilization services in Dallas-Fort Worth. Nearly 30 years of experience lifting driveways, sidewalks, pool decks, garage floors, and more. Free estimates.",
   isHomepage = false,
   ogImage = "/images/logo.png",
-  keywords = "concrete lifting, concrete leveling, soil stabilization, polyurethane foam injection, slab jacking, concrete repair, Dallas, Fort Worth, Arlington, Plano, DFW, North Texas",
   structuredDataType = 'business',
   faqItems = []
 } = Astro.props;
 
 const siteName = "Pride Concrete Lifting";
-const fullTitle = isHomepage ? title : `${title} | ${siteName}`;
+// N.B. The brand belongs in every <title> — the homepage most of all.
+// It was once exempted via isHomepage, leaving our own name absent from
+// the one page Google most associates with the brand.
+const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -41,8 +42,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-    
+    <!-- N.B. No meta keywords tag. Google has ignored it since 2009; its only
+         modern function is to whisper "this site does 2012 SEO" to competitors
+         and spam classifiers alike. Requiescat in pace. -->
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
     
@@ -73,9 +76,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
     
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+    <!-- N.B. Alpine.js is bundled by the @astrojs/alpinejs integration.
+         Do not re-add the CDN <script> here — two copies of Alpine racing
+         to initialize the same directives is a goblin we have banished. -->
+
     <!-- Structured Data -->
     <StructuredData type={structuredDataType} title={title} description={description} image={ogImage} faqItems={faqItems} />
   </head>

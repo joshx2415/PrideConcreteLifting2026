@@ -31,21 +31,50 @@ const locations = await getCollection('locations', ({ data }) => {
 });
 locations.sort((a, b) => a.data.city.localeCompare(b.data.city));
 
+const services = await getCollection('services', ({ data }) => {
+  if (import.meta.env.PROD) {
+    return data.draft !== true;
+  }
+  return true;
+});
+
+// N.B. The homepage service cards are the primary internal-link path to the
+// money pages. Residential services lead; commercial and municipal follow.
+const serviceCardOrder = ['driveways', 'sidewalks', 'pooldecks', 'garage-floors', 'void-filling', 'warehouses', 'roadways'];
+const serviceBlurbs: Record<string, string> = {
+  'driveways': "Sunken panels and settled aprons raised in an afternoon — drive on it the same day.",
+  'sidewalks': "Trip hazards leveled for homes, HOAs, and cities. ADA-friendly.",
+  'pooldecks': "Close the gaps and level the deck — without draining the pool.",
+  'garage-floors': "Fix the bump at the threshold and the slope that lets water in.",
+  'void-filling': "Fill the voids you can't see before they become cracks you can.",
+  'warehouses': "Rocking slabs and settled joints repaired without stopping operations.",
+  'roadways': "Highways, streets, and bridge approaches for municipalities and DOTs.",
+};
+const orderOf = (slug: string) => {
+  const i = serviceCardOrder.indexOf(slug);
+  return i === -1 ? serviceCardOrder.length : i;
+};
+const serviceCards = [...services].sort((a, b) => orderOf(a.slug) - orderOf(b.slug));
+
+// N.B. This list is the single source of truth for the FAQ: it feeds both
+// the FAQPage schema AND the visible accordion below. Google expects schema
+// text to match what visitors see — never let the two drift apart again.
 const homeFaqItems = [
-  { question: "How long have you been doing this?", answer: "We've been lifting and stabilizing concrete for nearly 30 years. Before starting Pride Concrete Lifting, our team spent almost two decades traveling the country repairing concrete roads, bridges, and highways for city and state agencies using polyurethane injection." },
-  { question: "How much does concrete lifting cost?", answer: "It depends on the size of the job and how much settling has occurred, but concrete lifting is typically a fraction of the cost of tearing out and replacing. A standard residential driveway usually runs between $1,200 and $3,500. Compare that to a full replacement, which can easily cost $10,000 or more. We provide a free inspection and quote." },
-  { question: "How long does the repair take? When can I use the surface?", answer: "Most jobs are completed in a single day, and the surface is usable immediately when we're done. No waiting days for concrete to cure." },
-  { question: "Will you tear up my yard or driveway?", answer: "No. We drill a small 5/8 inch hole to inject the polyurethane beneath the slab into the soil. When we're done, we fill the holes with concrete grout. No heavy equipment, no jackhammers, and no mess." },
+  { question: "How much does concrete lifting cost?", answer: "It depends on the size of the job and how much settling has occurred, but concrete lifting is typically a fraction of the cost of tearing out and replacing. A standard residential driveway usually runs between $1,200 and $3,500. Compare that to a full replacement, which can easily cost $10,000 or more. We provide a free inspection and quote so you know exactly what you're looking at before any work starts." },
+  { question: "Is this the same as mudjacking?", answer: "Same idea, better material. Mudjacking pumps a heavy cement slurry under the slab — it can wash out in the next big storm, and its weight often re-sinks the very soil it sits on. We inject high-density polyurethane foam instead: it's lightweight, waterproof, and reaches 90% strength in about 15 minutes. It's the same method used on Texas highways and airport runways." },
+  { question: "How long does the repair take? When can I use the surface?", answer: "Most jobs are completed in a single day, and the surface is usable immediately when we're done. No waiting days for concrete to cure. You can walk on it, drive on it, and get back to your life the same day." },
+  { question: "Will you tear up my yard or driveway?", answer: "No. We drill a small 5/8 inch hole to inject the polyurethane beneath the slab into the soil. When we're done, we fill the holes with concrete grout. No heavy equipment tearing up your lawn, no jackhammers, and no mess. Most people can't even tell where we drilled once we've patched the holes." },
+  { question: "How long have you been doing this?", answer: "We've been lifting and stabilizing concrete for nearly 30 years. Before starting Pride Concrete Lifting, our team spent almost two decades traveling the country repairing concrete roads, bridges, and highways for city and state agencies using polyurethane injection. This isn't something we picked up last year — it's what we've done our whole careers." },
   { question: "Is the foam safe? Is it toxic?", answer: "The material is non-toxic and non-hazardous to the ground. It's safe around your family, pets, and landscaping. Once cured, it's completely inert — just solid, waterproof support underneath your concrete." },
-  { question: "How long does the repair last?", answer: "If the underlying problem that caused the settling is addressed properly before we void-fill, lift, and stabilize the area, the repair can last the lifetime of the pavement." },
-  { question: "When is it too far gone to lift?", answer: "If a repair site has been neglected for a long time and the concrete has broken into many small pieces, we'll recommend a traditional tear-out and replacement. We do a physical inspection on-site and walk you through what solution makes the most sense." },
-  { question: "Do you work year-round?", answer: "Yes. We work year-round in any conditions. In the winter months, we keep our materials heated so there's never a bad time to get the work done." },
+  { question: "How long does the repair last?", answer: "If the underlying problem that caused the settling is addressed properly before we void-fill, lift, and stabilize the area, the repair can last the lifetime of the pavement. We don't just lift the slab — we fix the root cause so you're not calling us back in a few years." },
+  { question: "When is it too far gone to lift?", answer: "If a repair site has been neglected for a long time and the concrete has broken into many small pieces, we'll recommend a traditional tear-out and replacement. We'd rather give you an honest answer than sell you a repair that won't hold. We do a physical inspection on-site and walk you through what solution makes the most sense for your situation." },
+  { question: "Do you work year-round?", answer: "Yes. We work year-round in any conditions. In the winter months, we keep our materials heated so there's never a bad time to get the work done. Texas soil and weather don't take a break — and neither do we." },
 ];
 ---
 
 <BaseLayout
   title="Concrete Lifting & Leveling | Dallas-Fort Worth, TX"
-  description="Pride Concrete Lifting has been raising and stabilizing concrete across Dallas-Fort Worth for nearly 30 years. Driveways, sidewalks, pool decks, and more. Free estimates."
+  description="Sunken concrete? We lift driveways, sidewalks & pool decks back to level in a day — for a fraction of replacement cost. 30 years in DFW. Free estimates: 817-888-6254."
   isHomepage={true}
   ogImage={logo.src}
   structuredDataType="business"
@@ -74,10 +103,10 @@ const homeFaqItems = [
           <p
             class="mx-auto text-xl leading-relaxed text-white lg:w-2/3 max-w-4xl"
           >
-            We've been lifting and leveling concrete across the DFW metroplex for nearly 30 years.
-            From sunken driveways in Weatherford to trip hazards in Plano, garage floors in Aledo
-            to warehouse slabs in Fort Worth — we bring the experience, the equipment, and the
-            honest pricing to get the job done right.
+            Sunken driveway? Trip-hazard sidewalk? Settled pool deck? We raise it
+            back to level in a single day — for a fraction of the cost of tearing it
+            out. Nearly 30 years lifting concrete across DFW, from Weatherford
+            driveways to Texas highways.
           </p>
         </div>
 
@@ -224,6 +253,55 @@ const homeFaqItems = [
             does the rest. We lift it back where it belongs and stabilize the soil
             underneath so it stays there.
           </p>
+        </div>
+
+        <div class="grid gap-8 mx-auto mb-16 max-w-6xl sm:grid-cols-2 lg:grid-cols-4">
+          {serviceCards.map(service => (
+            <a
+              href={`/services/${service.slug}/`}
+              class="group flex flex-col bg-white border-t-4 border-t-navy-900 border-x border-b border-gray-200 hover:border-t-pride-red transition-colors"
+            >
+              {service.data.heroImage && (
+                <div class="overflow-hidden h-44 flex-shrink-0">
+                  <Image
+                    src={service.data.heroImage}
+                    alt={service.data.title.split('|')[0].trim()}
+                    class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    widths={[400, 800]}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                  />
+                </div>
+              )}
+              <div class="flex flex-col flex-1 p-5">
+                <h3 class="mb-2 text-lg font-bold leading-snug text-navy-900 group-hover:text-pride-red transition-colors">
+                  {service.data.title.split('|')[0].trim()}
+                </h3>
+                <p class="mb-4 text-sm leading-relaxed text-gray-600">
+                  {serviceBlurbs[service.slug]}
+                </p>
+                <span class="mt-auto inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-pride-red">
+                  Learn More
+                  <Icon name="fa-solid:arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+          ))}
+          <a
+            href="#contact"
+            class="group flex flex-col justify-center p-6 text-white bg-navy-900 border-t-4 border-t-pride-red"
+          >
+            <h3 class="mb-3 text-xl font-bold leading-snug">
+              Something Else Made of Concrete?
+            </h3>
+            <p class="mb-5 text-sm leading-relaxed text-gray-300">
+              If it's concrete, we can lift it. Tell us what you've got and
+              we'll shoot you straight.
+            </p>
+            <span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white">
+              Get a Free Estimate
+              <Icon name="fa-solid:arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </a>
         </div>
 
         <div class="grid gap-12 items-center mx-auto max-w-6xl lg:grid-cols-2">
@@ -451,7 +529,7 @@ const homeFaqItems = [
 
           <p class="mx-auto text-xl text-gray-800 max-w-3xl">
             We lift and stabilize concrete across the entire Dallas-Fort Worth metroplex
-            and beyond — from Parker County out west to Collin County up north.
+            and beyond — from Parker County out west to Denton County up north.
           </p>
         </div>
 
@@ -489,86 +567,20 @@ const homeFaqItems = [
           </p>
         </div>
 
+        {/* N.B. Rendered from homeFaqItems — the same array that feeds the
+            FAQPage schema. One source of truth; schema and page cannot drift. */}
         <div class="space-y-6" x-data="{ open: null }">
-          <div class="border border-gray-200">
-            <button @click="open = open === 1 ? null : 1" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">How long have you been doing this?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 1 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 1" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              We've been lifting and stabilizing concrete for nearly 30 years. Before starting Pride Concrete Lifting, our team spent almost two decades traveling the country repairing concrete roads, bridges, and highways for city and state agencies using polyurethane injection. This isn't something we picked up last year — it's what we've done our whole careers.
+          {homeFaqItems.map((item, i) => (
+            <div class="border border-gray-200">
+              <button @click={`open = open === ${i} ? null : ${i}`} class="flex items-center justify-between w-full px-6 py-4 text-left">
+                <span class="text-lg font-semibold text-navy-900">{item.question}</span>
+                <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class={`open === ${i} ? 'rotate-180' : ''`} />
+              </button>
+              <div x-show={`open === ${i}`} x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
+                {item.answer}
+              </div>
             </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 2 ? null : 2" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">How much does concrete lifting cost?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 2 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 2" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              It depends on the size of the job and how much settling has occurred, but concrete lifting is typically a fraction of the cost of tearing out and replacing. A standard residential driveway, for example, usually runs between $1,200 and $3,500. Compare that to a full replacement, which can easily cost $10,000 or more. We provide a free inspection and quote so you know exactly what you're looking at.
-            </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 3 ? null : 3" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">How long does the repair take? When can I use the surface?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 3 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 3" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              Most jobs are completed in a single day, and the surface is usable immediately when we're done. No waiting days for concrete to cure. You can walk on it, drive on it, and get back to your life the same day.
-            </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 4 ? null : 4" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">Will you tear up my yard or driveway?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 4 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 4" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              No. We drill a small 5/8" hole to inject the polyurethane beneath the slab into the soil. When we're done, we fill the holes with concrete grout. There's no heavy equipment tearing up your lawn, no jackhammers, and no mess. Most people can't even tell where we drilled once we've patched the holes.
-            </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 5 ? null : 5" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">Is the foam safe? Is it toxic?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 5 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 5" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              The material is non-toxic and non-hazardous to the ground. It's safe around your family, pets, and landscaping. Once cured, it's completely inert — just solid, waterproof support underneath your concrete.
-            </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 6 ? null : 6" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">How long does the repair last?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 6 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 6" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              If the underlying problem that caused the settling is addressed properly before we void-fill, lift, and stabilize the area, the repair can last the lifetime of the pavement. We don't just lift the slab — we fix the root cause so you're not calling us back in a few years.
-            </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 7 ? null : 7" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">When is it too far gone to lift?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 7 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 7" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              If a repair site has been neglected for a long time and the concrete has broken into many small pieces, we'll recommend a traditional tear-out and replacement. We'd rather give you an honest answer than sell you a repair that won't hold. We do a physical inspection on-site and walk you through what solution makes the most sense for your situation.
-            </div>
-          </div>
-
-          <div class="border border-gray-200">
-            <button @click="open = open === 8 ? null : 8" class="flex items-center justify-between w-full px-6 py-4 text-left">
-              <span class="text-lg font-semibold text-navy-900">Do you work year-round?</span>
-              <Icon name="fa-solid:chevron-down" class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open === 8 ? 'rotate-180' : ''" />
-            </button>
-            <div x-show="open === 8" x-transition class="px-6 pb-4 text-gray-800 leading-relaxed">
-              Yes. We work year-round in any conditions. In the winter months, we keep our materials heated so there's never a bad time to get the work done. Our call volume stays consistent throughout the year because Texas soil and weather don't take a break — and neither do we.
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

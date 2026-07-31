@@ -6,3 +6,45 @@
 
   # The output folder for the static site
   publish = "dist"
+
+# N.B. Legacy shortcut URLs live here — NOT in astro.config.mjs — so Netlify
+# answers with a true HTTP 301. Astro's static `redirects` option emits a
+# meta-refresh stub page served as a 200, which Google Search Console treats
+# with suspicion. We have fought that goblin once already; never again.
+[[redirects]]
+  from = "/driveways"
+  to = "/services/driveways/"
+  status = 301
+
+[[redirects]]
+  from = "/pooldecks"
+  to = "/services/pooldecks/"
+  status = 301
+
+[[redirects]]
+  from = "/roadways"
+  to = "/services/roadways/"
+  status = 301
+
+[[redirects]]
+  from = "/sidewalks"
+  to = "/services/sidewalks/"
+  status = 301
+
+# Plano, Frisco, and McKinney were retired from the service area (2026-07):
+# Collin County proved too far afield. The pages were indexed, so send
+# their ghosts somewhere useful.
+[[redirects]]
+  from = "/locations/plano/"
+  to = "/locations/"
+  status = 301
+
+[[redirects]]
+  from = "/locations/frisco/"
+  to = "/locations/"
+  status = 301
+
+[[redirects]]
+  from = "/locations/mckinney/"
+  to = "/locations/"
+  status = 301

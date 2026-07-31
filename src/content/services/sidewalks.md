@@ -1,6 +1,6 @@
 ---
 title: "Sidewalk Leveling & Trip Hazard Repair | Dallas-Fort Worth"
-description: "Uneven sidewalk or trip hazard in DFW? Pride Concrete Lifting levels walkways for homes, businesses, and municipalities. ADA compliance, HOA-friendly. Free estimates."
+description: "Trip hazard or HOA letter? We level sidewalks in hours — no tear-out, no mess, ADA-friendly. Serving DFW homes, HOAs & cities for nearly 30 years. Free estimates."
 heroImage: "../../assets/work/sunken-sidewalk.jpg"
 gallery:
   - "../../assets/work/sunken-sidewalk.jpg"
@@ -41,7 +41,7 @@ We work with property managers and facility directors across DFW — from retail
 
 ## For Homeowners: HOA Notices & City Code
 
-If you've gotten a letter from your HOA or your city about an uneven sidewalk, you're not alone. We get calls about these every week — from neighborhoods in Plano and McKinney to new developments in Walsh Ranch, Aledo, and Weatherford, and all throughout Tarrant, Parker, and Collin counties.
+If you've gotten a letter from your HOA or your city about an uneven sidewalk, you're not alone. We get calls about these every week — from neighborhoods in Southlake and Arlington to new developments in Walsh Ranch, Aledo, and Weatherford, and all throughout Tarrant, Parker, and Johnson counties.
 
 **A note on city-owned sidewalks:** Many sidewalks along the street are actually city property. If the city sent the notice, they may need to contact us directly since the work wouldn't be on your property. We're happy to help sort that out — just give us a call.
 

@@ -1,6 +1,6 @@
 ---
 title: "Municipal Roadway Lifting & Infrastructure Repair | Texas"
-description: "Concrete lifting and soil stabilization for Texas highways, streets, and bridge approaches. Pride Concrete Lifting works with municipalities, DOTs, and HOAs. Cost-effective, minimal traffic disruption."
+description: "Settled panels, faulted joints, sunken bridge approaches — lifted and stabilized with minimal lane closure time. Two decades of DOT and municipal work across Texas."
 heroImage: "../../assets/markets/highway-gallery-image.jpg"
 gallery:
   - "../../assets/work/roadway-repair.jpg"
